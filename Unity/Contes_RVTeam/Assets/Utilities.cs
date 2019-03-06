@@ -40,18 +40,18 @@ public static class Utilities {
     /// <summary>
     /// Set all children active.
     /// </summary>
-    /// <param name="monoB"></param>
-    public static void Show(this MonoBehaviour monoB)
+    /// <param name="go"></param>
+    public static void Show(this GameObject go)
     {
-        monoB.transform.SetChildrenActive(true);
+        go.transform.SetChildrenActive(true);
     }
     /// <summary>
     /// Set all children inactive.
     /// </summary>
-    /// <param name="monoB"></param>
-    public static void Hide(this MonoBehaviour monoB)
+    /// <param name="go"></param>
+    public static void Hide(this GameObject go)
     {
-        monoB.transform.SetChildrenActive(false);
+        go.transform.SetChildrenActive(false);
     }
 
     static void SetChildrenActive(this Transform transform, bool state)

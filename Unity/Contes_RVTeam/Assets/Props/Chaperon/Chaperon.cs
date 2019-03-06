@@ -6,70 +6,141 @@ public class Chaperon : MonoBehaviour {
 
     Transform PlayerHead { get { return Player.instance.headCollider.transform; } }
     [SerializeField]
-    GameObject grabbable;
-    Cloth grabbableCloth;
+    Transform grabbable;
+    bool GrabbableCloseToHead { get { return Vector3.Distance(grabbable.position, PlayerHead.position) < .4f; } }
     [SerializeField]
-    GameObject wearable;
+    Transform wearable;
     Cloth wearableCloth;
+
     [SerializeField]
     Transform fakeGround;
+    bool fakeGroundMoves;
+    [SerializeField]
+    float clothHeight = 2;
 
     [SerializeField]
     float rotationStrength = .05f;
-    [SerializeField]
-    float clothHeight = 2;
-    bool fakeGroundMoves;
+
+    public enum State { Attached, Grabbable, Wearable }
+    State state = State.Attached;
+
+    Interactable interactable;
+
 
     private void Awake()
     {
-        // Get cloths.
-        grabbableCloth = grabbable.GetComponentInChildren<Cloth>(true);
         wearableCloth = wearable.GetComponentInChildren<Cloth>(true);
+        interactable = grabbable.GetComponent<Interactable>();
+        // React to grabbing the grabbable.
+        interactable.onAttachedToHand += delegate { OnGrabbed(); };
+        interactable.onDetachedFromHand += delegate { OnUngrabbed(); };
     }
 
-    private void Start()
+    void Start()
     {
-        Equip();
+        SetState(State.Grabbable);
     }
 
-    public void Equip()
+
+    public void SetState(State newState)
+    {
+        if (newState == state)
+            return;
+        state = newState;
+        switch (state)
+        {
+            case State.Attached:
+                StopAllCoroutines();
+                break;
+            case State.Grabbable:
+                grabbable.gameObject.SetActive(true);
+                wearable.gameObject.SetActive(false);
+                StopAllCoroutines();
+                break;
+            case State.Wearable:
+                grabbable.gameObject.SetActive(false);
+                wearable.gameObject.SetActive(true);
+                EquipWearable();
+                break;
+            default:
+                break;
+        }
+        PlayGroundCorrection();
+    }
+
+
+    void OnGrabbed()
+    {
+        StartCoroutine(CheckForWearingGrabbable());
+    }
+
+    void OnUngrabbed()
+    {
+        PlayGroundCorrection();
+        if (GrabbableCloseToHead)
+            grabbable.gameObject.SetActive(false);
+    }
+
+    IEnumerator CheckForWearingGrabbable()
+    {
+        bool wasCloseToHead = GrabbableCloseToHead;
+        while (grabbable.gameObject.activeSelf)
+        {
+            if (GrabbableCloseToHead)
+            {
+                if (!wasCloseToHead)
+                {
+                    grabbable.gameObject.Hide();
+                    wearable.gameObject.SetActive(true);
+                    EquipWearable();
+                    wasCloseToHead = GrabbableCloseToHead;
+                }
+            }
+            else
+            {
+                wearable.gameObject.SetActive(false);
+                grabbable.gameObject.Show();
+                wasCloseToHead = GrabbableCloseToHead;
+            }
+            yield return null;
+        }
+    }
+
+    public void EquipWearable()
     {
         // Show the correct cloth, snap to the player's head and start to follow the head.
-        grabbable.SetActive(false);
-        wearable.SetActive(true);
-        transform.position = PlayerHead.position;
-        transform.rotation = Quaternion.identity;
-        StartCoroutine(FollowHead());
-        // Move the ground upwards slowly to prevent the cloth from clipping.
-        StartGroundCorrection();
+        wearable.position = PlayerHead.position;
+        wearable.rotation = Quaternion.identity;
+        StartCoroutine(UpdatingWearable());
     }
 
-    IEnumerator FollowHead()
+    IEnumerator UpdatingWearable()
     {
         // Reset the cloth.
         wearableCloth.enabled = false;
         yield return null;
         wearableCloth.enabled = true;
-        while (true)
+        while (wearable.gameObject.activeSelf)
         {
             // Set cloth transform.
-            transform.position = PlayerHead.position;
+            wearable.position = PlayerHead.position;
             Vector3 targetRotation = transform.eulerAngles.SetY(PlayerHead.eulerAngles.y);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(targetRotation), rotationStrength);
-            // Set fake ground transform.
+            wearable.rotation = Quaternion.Lerp(wearable.rotation, Quaternion.Euler(targetRotation), rotationStrength);
+            // Update the fake ground.
             if (!fakeGroundMoves)
                 fakeGround.position = PlayerHead.position.SetY(Player.instance.transform.position.y);
             yield return null;
         }
     }
 
-    void StartGroundCorrection()
+    void PlayGroundCorrection()
     {
         // Move the ground upwards slowly.
         fakeGroundMoves = true;
+        fakeGround.position = grabbable.position;
         this.MakeProgressionAnim(1, delegate (float progression)
         {
-            fakeGround.position = PlayerHead.position.SetY(Player.instance.transform.position.y - clothHeight * (1 - progression));
+            fakeGround.position = fakeGround.position.SetY(Player.instance.transform.position.y - clothHeight * (1 - progression));
         }, delegate
         {
             fakeGroundMoves = false;
