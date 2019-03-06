@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ff9648aec4b3d408c92251cff37c88, type: 3}
+  m_Name: Texture suffixes
+  m_EditorClassIdentifier: 
+  suffixes:
+  - materialKeyword: _MainTex
+    textureSuffixes:
+    - _AlbedoTransparency
+    - _Alb
+  - materialKeyword: _MetallicGlossMap
+    textureSuffixes:
+    - _MetallicSmoothness
+  - materialKeyword: _OcclusionMap
+    textureSuffixes:
+    - _AO
+  - materialKeyword: _BumpMap
+    textureSuffixes:
+    - _Normal
+    - _Nor
+  - materialKeyword: _EmissionMap
+    textureSuffixes:
+    - _Emission
