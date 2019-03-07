@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Lanterne
+  - projectile
+  - FxTemporaire
+  - HeadCollider
   layers:
   - Default
   - TransparentFX
