@@ -25,7 +25,7 @@ public class DwellAxis : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         Crank otherCrank = other.GetComponentInParent<Crank>();
-        if (otherCrank != null)// && otherCrank.IsGrabbed)
+        if (otherCrank != null && otherCrank.IsGrabbed)
         {
             // Attach the crank and start updating the progression.
             crank = other.GetComponentInParent<Crank>();
