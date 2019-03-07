@@ -41,17 +41,21 @@ public class DwellAxis : MonoBehaviour {
     IEnumerator UpdateProgression()
     {
         float previousDrive = crank.LinearMapping;
+        bool clockwise = true;
         while (true)
         {
             transform.localEulerAngles = transform.localEulerAngles.SetZ(Mathf.Lerp(-180, 180, crank.LinearMapping));
             if (Mathf.Abs(previousDrive - crank.LinearMapping) < .8f)
             {
-                bucket.Translate(Vector3.up * (previousDrive - crank.LinearMapping), Space.World);
+                bucket.Translate(Vector3.up * (previousDrive - crank.LinearMapping) * (clockwise ? 1 : -1), Space.World);
                 // Clamp position.
                 if (bucket.position.y > bucketUpDownLimits.x)
                     bucket.position = bucket.position.SetY(bucketUpDownLimits.x);
                 else if (bucket.position.y < bucketUpDownLimits.y)
+                {
                     bucket.position = bucket.position.SetY(bucketUpDownLimits.y);
+                    clockwise = !clockwise;
+                }
             }
             previousDrive = crank.LinearMapping;
             yield return null;
