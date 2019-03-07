@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-public class DwellCrank : MonoBehaviour {
+public class Crank : MonoBehaviour {
 
-    Interactable interactable;
+    public Interactable Interactable { get; private set; }
     Throwable throwable;
     Rigidbody rb;
     CircularDrive circularDrive;
 
-    public bool IsGrabbed { get { return interactable.attachedToHand != null; } }
+    public bool IsGrabbed { get { return Interactable.attachedToHand != null; } }
     public float LinearMapping {
         get {
             if (!circularDrive || !circularDrive.linearMapping)
@@ -19,7 +19,7 @@ public class DwellCrank : MonoBehaviour {
 
     private void Awake()
     {
-        interactable = GetComponent<Interactable>();
+        Interactable = GetComponent<Interactable>();
         throwable = GetComponent<Throwable>();
         rb = GetComponent<Rigidbody>();
     }
@@ -27,7 +27,8 @@ public class DwellCrank : MonoBehaviour {
     public void UseAsCrank(CircularDrive.Axis_t axis)
     {
         // Remove the throwable behaviour and setup the crank behaviour.
-        interactable.attachedToHand.DetachObject(gameObject);
+        if (IsGrabbed)
+            Interactable.attachedToHand.DetachObject(gameObject);
         Destroy(throwable);
         Destroy(rb);
         circularDrive = gameObject.AddComponent<CircularDrive>();

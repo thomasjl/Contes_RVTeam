@@ -7,10 +7,15 @@ public class DwellAxis : MonoBehaviour {
     SphereCollider attachCollider;
     [SerializeField]
     Transform bucket;
+    public Transform Bucket { get { return bucket; } }
     [SerializeField]
     BoxCollider bucketLimit;
     Vector2 bucketUpDownLimits;
-    DwellCrank crank;
+    public float Progression { get { return (bucket.position.y - bucketUpDownLimits.y) / (bucketUpDownLimits.x - bucketUpDownLimits.y); } }
+    Crank crank;
+
+    public delegate void DwellEventHandler();
+    public event DwellEventHandler HasCrank;
 
     private void Awake()
     {
@@ -19,14 +24,17 @@ public class DwellAxis : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        DwellCrank otherCrank = other.GetComponentInParent<DwellCrank>();
-        if (otherCrank != null && otherCrank.IsGrabbed)
+        Crank otherCrank = other.GetComponentInParent<Crank>();
+        if (otherCrank != null)// && otherCrank.IsGrabbed)
         {
             // Attach the crank and start updating the progression.
-            crank = other.GetComponentInParent<DwellCrank>();
+            crank = other.GetComponentInParent<Crank>();
             crank.UseAsCrank(Valve.VR.InteractionSystem.CircularDrive.Axis_t.ZAxis);
             crank.transform.position = transform.TransformPoint(attachCollider.center);
             StartCoroutine(UpdateProgression());
+            // Call event.
+            if (HasCrank != null)
+                HasCrank();
         }
     }
 
@@ -38,7 +46,7 @@ public class DwellAxis : MonoBehaviour {
             transform.localEulerAngles = transform.localEulerAngles.SetZ(Mathf.Lerp(-180, 180, crank.LinearMapping));
             if (Mathf.Abs(previousDrive - crank.LinearMapping) < .8f)
             {
-                bucket.Translate(Vector3.up * (previousDrive - crank.LinearMapping));
+                bucket.Translate(Vector3.up * (previousDrive - crank.LinearMapping), Space.World);
                 // Clamp position.
                 if (bucket.position.y > bucketUpDownLimits.x)
                     bucket.position = bucket.position.SetY(bucketUpDownLimits.x);
