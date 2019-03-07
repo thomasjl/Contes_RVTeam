@@ -195,6 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4753330422507572}
+  - component: {fileID: 114975248930357906}
   m_Layer: 0
   m_Name: Dwell
   m_TagString: Untagged
@@ -948,8 +949,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 2.4121633, z: 0.1}
-  m_Center: {x: 0, y: -0.5512388, z: 0}
+  m_Size: {x: 0.1, y: 2.7118676, z: 0.1}
+  m_Center: {x: 0, y: -0.40138662, z: 0}
 --- !u!65 &65682615087026922
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1118,6 +1119,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rope: {fileID: 4937122213026362}
   ropeWinding: {fileID: 4437990656729234}
+--- !u!114 &114975248930357906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836576617831538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de5e1bea92cd164ea6db60a68f6de09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135482426605719124
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -11,6 +11,7 @@ public class DwellAxis : MonoBehaviour {
     [SerializeField]
     BoxCollider bucketLimit;
     Vector2 bucketUpDownLimits;
+    public float Bottom { get { return bucketUpDownLimits.y; } }
     public float Progression { get { return (bucket.position.y - bucketUpDownLimits.y) / (bucketUpDownLimits.x - bucketUpDownLimits.y); } }
     Crank crank;
 
