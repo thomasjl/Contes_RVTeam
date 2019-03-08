@@ -17,41 +17,32 @@ public class Chaperon : MonoBehaviour {
     [SerializeField]
     float clothHeight = 2;
 
-    Interactable interactable;
-
 
     private void Awake()
     {
-        interactable = grabbable.GetComponent<Interactable>();
         // React to grabbing the grabbable.
-        interactable.onAttachedToHand += delegate { OnGrabbed(); };
-        interactable.onDetachedFromHand += delegate { OnUngrabbed(); };
+        grabbable.Interactable.onAttachedToHand += delegate { OnGrabbed(); };
+        grabbable.Interactable.onDetachedFromHand += delegate { OnUngrabbed(); };
+        grabbable.Detached += PlayGroundCorrection;
     }
 
     private void Start()
     {
         wearable.gameObject.SetActive(false);
-        AttachToDwell();
     }
 
 
     public void AttachToDwell()
     {
-        // Snap to the bucket and be ready to be grabbed.
-        grabbable.transform.position = Dwell.instance.Bucket.position;
-        grabbable.transform.parent = Dwell.instance.Bucket;
-        grabbable.Rb.isKinematic = true;
-        grabbable.Interactable.onAttachedToHand += DetachFromDwell;
+        grabbable.AttachToDwell();
         fakeGround.transform.position = grabbable.transform.position.SetY(Dwell.instance.Bottom);
     }
-    void DetachFromDwell(Hand hand)
-    {
-        // Reset grabbable.
-        grabbable.transform.parent = transform;
-        grabbable.Rb.isKinematic = false;
-        grabbable.Interactable.onAttachedToHand -= DetachFromDwell;
-    }
 
+    public void AttachToTree()
+    {
+        grabbable.AttachToTree();
+    }
+    
 
     #region Equiping the grabbable ------------------
     void OnGrabbed()
@@ -61,6 +52,8 @@ public class Chaperon : MonoBehaviour {
 
     void OnUngrabbed()
     {
+        if (grabbable.Attached)
+            return;
         PlayGroundCorrection();
         if (GrabbableIsClose)
             // Validate equip.
@@ -98,26 +91,17 @@ public class Chaperon : MonoBehaviour {
     #region Fake ground ----------
     void PlayGroundCorrection()
     {
-        if (fakeGroundMoves)
-            return;
-        fakeGround.position = grabbable.transform.position;
         if (animatingFakeGround != null)
             StopCoroutine(animatingFakeGround);
         animatingFakeGround = AnimatingFakeGround();
         StartCoroutine(animatingFakeGround);
     }
 
-    public void MoveFakeGroundOnPlayerHead()
-    {
-        if (fakeGroundMoves)
-            return;
-        fakeGround.position = PlayerHead.position.SetY(Player.instance.transform.position.y);
-    }
-
     IEnumerator animatingFakeGround;
     IEnumerator AnimatingFakeGround()
     {
         fakeGroundMoves = true;
+        fakeGround.position = grabbable.transform.position;
         float progression = 0;
         // Move the ground upwards slowly.
         while (progression < 1)
@@ -128,6 +112,13 @@ public class Chaperon : MonoBehaviour {
         }
         fakeGroundMoves = false;
         animatingFakeGround = null;
+    }
+
+    public void MoveFakeGroundOnPlayerHead()
+    {
+        if (fakeGroundMoves)
+            return;
+        fakeGround.position = PlayerHead.position.SetY(Player.instance.transform.position.y);
     }
     #endregion --------------------
 }
