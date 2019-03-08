@@ -84,7 +84,7 @@ public class ChaperonGrabbable : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (stick == null && other.GetComponent<ChaperonStick>() != null)
+        if (stick == null && other.GetComponent<ChaperonStick>() != null && transform.parent == OnTreeTransform)
         {
             stick = other.GetComponent<ChaperonStick>();
             AttachToStick();
