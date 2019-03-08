@@ -24,4 +24,10 @@ public class Thorns : MonoBehaviour {
         instance = this;
         thorns = GetComponentsInChildren<Thorn>().ToList();
     }
+
+    public void Flatten()
+    {
+        foreach (Thorn thorn in thorns)
+            thorn.Flatten();
+    }
 }
