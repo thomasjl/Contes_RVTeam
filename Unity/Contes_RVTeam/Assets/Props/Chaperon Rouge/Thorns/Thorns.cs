@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class Thorns : MonoBehaviour {
 
@@ -29,5 +30,11 @@ public class Thorns : MonoBehaviour {
     {
         foreach (Thorn thorn in thorns)
             thorn.Flatten();
+    }
+
+    internal void Unflatten()
+    {
+        foreach (Thorn thorn in thorns)
+            thorn.Unflatten();
     }
 }

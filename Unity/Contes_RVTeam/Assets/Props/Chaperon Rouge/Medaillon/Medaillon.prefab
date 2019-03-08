@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 54446024470333794}
   - component: {fileID: 114120577219923646}
   - component: {fileID: 114828952478324646}
+  - component: {fileID: 114426735367664482}
   m_Layer: 0
   m_Name: Medaillon
   m_TagString: Untagged
@@ -194,6 +195,18 @@ MonoBehaviour:
   handFollowTransform: 1
   highlightOnHover: 1
   hideHighlight: []
+--- !u!114 &114426735367664482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662657256550876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4cd257fec30a104683d2f3d5481925d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceFromThorns: 1
 --- !u!114 &114496601418536316
 MonoBehaviour:
   m_ObjectHideFlags: 1

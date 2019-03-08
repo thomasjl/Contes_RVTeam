@@ -8,6 +8,7 @@ public class Thorn : MonoBehaviour {
     public bool Clear { get; private set; }
     [SerializeField]
     AudioClip cut, flatten;
+    bool flattening = false;
 
     private void Awake()
     {
@@ -35,16 +36,31 @@ public class Thorn : MonoBehaviour {
 
     public void Flatten()
     {
-        if (!GetComponent<Animator>())
+        if (!GetComponent<Animator>() || flattening)
             return;
         GetComponent<Animator>().SetTrigger("flatten");
         AudioSource.PlayClipAtPoint(flatten, transform.position);
         StartCoroutine(WaitThenSetCleared());
     }
 
+    public void Unflatten()
+    {
+        if (!GetComponent<Animator>() || !flattening)
+            return;
+        StopAllCoroutines();
+        GetComponent<Animator>().SetTrigger("unflatten");
+        if (!flattening)
+            AudioSource.PlayClipAtPoint(flatten, transform.position);
+        flattening = false;
+        Clear = false;
+    }
+
+
     IEnumerator WaitThenSetCleared()
     {
+        flattening = true;
         yield return new WaitForSeconds(2);
+        flattening = false;
         Clear = true;
     }
 

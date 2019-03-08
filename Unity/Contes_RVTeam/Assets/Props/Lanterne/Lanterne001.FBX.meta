@@ -17,7 +17,17 @@ ModelImporter:
     3300002: Cylinder004
     4300000: Cylinder001
     4300002: Cylinder004
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lanterne
+    second: {fileID: 2100000, guid: 5413b3b0879c38c4e85f333b040e0e7d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Verre
+    second: {fileID: 2100000, guid: 1131fcc52992f284d92c51b74bc43b41, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
