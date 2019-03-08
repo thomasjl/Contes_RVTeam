@@ -18,19 +18,15 @@ public class Chaperon : MonoBehaviour {
     float clothHeight = 2;
 
 
-    private void Awake()
+    private void Start()
     {
         // React to grabbing the grabbable.
         grabbable.Interactable.onAttachedToHand += delegate { OnGrabbed(); };
         grabbable.Interactable.onDetachedFromHand += delegate { OnUngrabbed(); };
         grabbable.Detached += PlayGroundCorrection;
-    }
-
-    private void Start()
-    {
+        // Hide wearable.
         wearable.gameObject.SetActive(false);
     }
-
 
     public void AttachToDwell()
     {
