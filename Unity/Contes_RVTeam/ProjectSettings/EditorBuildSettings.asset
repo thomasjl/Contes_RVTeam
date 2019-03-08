@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestScene.unity
+    path: Assets/Scenes/TestSimon.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Alice.unity
+    guid: e67bd14a9e056c846ae96bbb95b94274
+  - enabled: 1
+    path: Assets/Scenes/BlancheNeige.unity
+    guid: 774f11d8497a33e49bd9797e8847c1ac
+  - enabled: 1
+    path: Assets/Scenes/ChaperonRouge.unity
+    guid: 941e2eca5d22e3d458438f98f5b8dde5
   m_configObjects: {}

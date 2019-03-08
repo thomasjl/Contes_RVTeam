@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 54725766731727480}
   - component: {fileID: 114374489056111696}
   - component: {fileID: 114157525018085486}
+  - component: {fileID: 114879602366042082}
   m_Layer: 0
   m_Name: Hache
   m_TagString: Untagged
@@ -40,7 +41,6 @@ GameObject:
   - component: {fileID: 4727159943760608}
   - component: {fileID: 33600208472404248}
   - component: {fileID: 23223073960187114}
-  - component: {fileID: 65274866322106534}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219556499204916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.047, y: 0, z: -0.817}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4473302923573488}
@@ -206,18 +206,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65274866322106534
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1714770869244054}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &65362172913395400
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -323,3 +311,14 @@ MonoBehaviour:
   velocityAverageFrames: 5
   angularVelocityAverageFrames: 11
   estimateOnAwake: 0
+--- !u!114 &114879602366042082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1219556499204916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3bae44b8e1ed24ca4c8a47b3ed9763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
