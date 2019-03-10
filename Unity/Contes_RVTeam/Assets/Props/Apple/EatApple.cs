@@ -9,7 +9,7 @@ public class EatApple : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "HeadCollider")
+        if (collision.gameObject.CompareTag("HeadCollider"))
         {
             GetComponent<MeshFilter>().mesh = eatenApple.GetComponent<MeshFilter>().sharedMesh;
             GetComponent<MeshRenderer>().material = eatenApple.GetComponent<MeshRenderer>().sharedMaterial;

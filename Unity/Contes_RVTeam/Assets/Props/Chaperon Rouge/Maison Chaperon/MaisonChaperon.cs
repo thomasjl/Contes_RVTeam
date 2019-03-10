@@ -26,11 +26,6 @@ public class MaisonChaperon : MonoBehaviour {
         objectAnimator.gameObject.SetActive(false);
     }
 
-    public void debugGive()
-    {
-        GiveItem(ObjectDropper.ObjectType.Medaillon);
-    }
-
     public void GiveItem(ObjectDropper.ObjectType itemType)
     {
         doorAnimator.SetTrigger("open");

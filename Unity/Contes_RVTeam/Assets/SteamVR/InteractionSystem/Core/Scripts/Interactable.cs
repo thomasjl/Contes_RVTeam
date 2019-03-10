@@ -60,7 +60,7 @@ namespace Valve.VR.InteractionSystem
 
         [Tooltip("Set whether or not you want this interactible to highlight when hovering over it")]
         public bool highlightOnHover = true;
-        protected MeshRenderer[] highlightRenderers;
+        public MeshRenderer[] highlightRenderers;
         protected MeshRenderer[] existingRenderers;
         protected GameObject highlightHolder;
         protected SkinnedMeshRenderer[] highlightSkinnedRenderers;

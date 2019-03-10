@@ -14,13 +14,17 @@ public static class Utilities {
     }
 
     #region ProgressionAnim -------------------------------
-    public static void MakeProgressionAnim(this MonoBehaviour caller, float duration, System.Action<float> progressionHandler)
+    public static IEnumerator MakeProgressionAnim(this MonoBehaviour caller, float duration, System.Action<float> progressionHandler)
     {
-        caller.StartCoroutine(ProgressionRoutine(duration, progressionHandler, delegate { }));
+        IEnumerator routine = ProgressionRoutine(duration, progressionHandler, delegate { });
+        caller.StartCoroutine(routine);
+        return routine;
     }
-    public static void MakeProgressionAnim(this MonoBehaviour caller, float duration, System.Action<float> progressionHandler, System.Action endActionHandler)
+    public static IEnumerator MakeProgressionAnim(this MonoBehaviour caller, float duration, System.Action<float> progressionHandler, System.Action endActionHandler)
     {
-        caller.StartCoroutine(ProgressionRoutine(duration, progressionHandler, endActionHandler));
+        IEnumerator routine = ProgressionRoutine(duration, progressionHandler, endActionHandler);
+        caller.StartCoroutine(routine);
+        return routine;
     }
 
     static IEnumerator ProgressionRoutine(float duration, System.Action<float> progressionHandler, System.Action endActionHandler)
@@ -156,4 +160,9 @@ public static class Utilities {
         return go.AddComponent<T>().GetCopyOf(toAdd) as T;
     }
     #endregion ------------------------------------------------------
+
+    public static float Remap(this float value, float from1, float to1, float from2, float to2)
+    {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
 }
