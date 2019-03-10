@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 114058725180172016}
   m_Layer: 0
   m_Name: Lanterne
-  m_TagString: Untagged
+  m_TagString: Lanterne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -499,6 +499,7 @@ GameObject:
   - component: {fileID: 124144128191220802}
   - component: {fileID: 114252383013662914}
   - component: {fileID: 114459386427348806}
+  - component: {fileID: 114107606890503440}
   m_Layer: 0
   m_Name: VRCamera
   m_TagString: MainCamera
@@ -899,7 +900,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1457561386772484}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.04, z: -0.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -908,7 +909,7 @@ Transform:
   - {fileID: 4726445608289246}
   m_Father: {fileID: 4453656413023038}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4575995018702032
 Transform:
   m_ObjectHideFlags: 1
@@ -1040,7 +1041,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1881677389781718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.508, y: 0, z: 1.275}
+  m_LocalPosition: {x: 1.508, y: -0.039, z: 1.275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4903943173495280}
@@ -1545,6 +1546,17 @@ MonoBehaviour:
   showDebugText: 0
   spewDebugText: 0
   showDebugInteractables: 0
+--- !u!114 &114107606890503440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801396892319728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27940773f06f1454a95a7cc91eb761b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114129257576340512
 MonoBehaviour:
   m_ObjectHideFlags: 1

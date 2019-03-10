@@ -9,7 +9,7 @@ public class RabbitHole : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("HeadCollider") && (!Thorns.instance || Thorns.instance.Cleared))
-            ToNextScene();
+            ToNextScene();  
     }
 
     void ToNextScene()
