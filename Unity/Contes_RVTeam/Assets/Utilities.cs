@@ -14,13 +14,13 @@ public static class Utilities {
     }
 
     #region ProgressionAnim -------------------------------
-    public static IEnumerator MakeProgressionAnim(this MonoBehaviour caller, float duration, System.Action<float> progressionHandler)
+    public static IEnumerator ProgressionAnim(this MonoBehaviour caller, float duration, System.Action<float> progressionHandler)
     {
         IEnumerator routine = ProgressionRoutine(duration, progressionHandler, delegate { });
         caller.StartCoroutine(routine);
         return routine;
     }
-    public static IEnumerator MakeProgressionAnim(this MonoBehaviour caller, float duration, System.Action<float> progressionHandler, System.Action endActionHandler)
+    public static IEnumerator ProgressionAnim(this MonoBehaviour caller, float duration, System.Action<float> progressionHandler, System.Action endActionHandler)
     {
         IEnumerator routine = ProgressionRoutine(duration, progressionHandler, endActionHandler);
         caller.StartCoroutine(routine);

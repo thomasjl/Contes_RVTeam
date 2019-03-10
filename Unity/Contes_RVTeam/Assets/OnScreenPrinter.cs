@@ -34,6 +34,10 @@ public class OnScreenPrinter : ScriptableObject {
     /// <summary>
     /// Spawn a textMesh with a message in front of the main camera
     /// </summary>
+    public static void Print(object input)
+    {
+        OnScreenPrinter.Print(input, null);
+    }
     public static void Print(object input, Object caller)
     {
         // Add pending debug message if no camera exists.

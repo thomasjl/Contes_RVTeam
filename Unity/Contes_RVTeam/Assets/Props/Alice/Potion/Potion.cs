@@ -2,6 +2,7 @@
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
+[RequireComponent(typeof(Comestible))]
 public class Potion : MonoBehaviour {
 
     [SerializeField]
@@ -9,23 +10,20 @@ public class Potion : MonoBehaviour {
     [SerializeField]
     float timer = 30;
     [SerializeField]
-    AudioClip sfx;
-    [SerializeField]
-    float sfxVolume = 1;
 
-    private void OnCollisionEnter(Collision collision)
+    private void Awake()
     {
-        if (collision.gameObject.CompareTag("HeadCollider"))
-        {
-            Player.instance.transform.localScale = Vector3.one * newPlayerScale;
-            if (sfx)
-                AudioSource.PlayClipAtPoint(sfx, transform.position, sfxVolume);
-            Player.instance.StartCoroutine(Timer());
-            Destroy(gameObject);
-        }
+        GetComponent<Comestible>().Consumed += PlayEffect;
     }
 
-    IEnumerator Timer(){
+    void PlayEffect()
+    {
+        Player.instance.transform.localScale = Vector3.one * newPlayerScale;
+        Player.instance.StartCoroutine(Timer());
+    }
+
+    IEnumerator Timer()
+    {
         yield return new WaitForSeconds(timer);
         Player.instance.transform.localScale = Vector3.one;
     }

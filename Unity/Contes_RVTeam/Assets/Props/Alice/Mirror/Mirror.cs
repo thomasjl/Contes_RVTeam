@@ -31,7 +31,7 @@ public class Mirror : MonoBehaviour {
             SetChildrenHiddenFromCamera(mirrorObjects, false);
             // Fade in then update the mirror.
             StopAllCoroutines();
-            this.MakeProgressionAnim(1, delegate (float progression)
+            this.ProgressionAnim(1, delegate (float progression)
             {
                 SetAlpha(Mathf.Lerp(GetAlpha(), AlphaFromDirection, progression));
             }, delegate
@@ -49,7 +49,7 @@ public class Mirror : MonoBehaviour {
         if (other.gameObject.CompareTag("HeadCollider"))
         {
             StopAllCoroutines();
-            this.MakeProgressionAnim(.2f, delegate (float progression)
+            this.ProgressionAnim(.2f, delegate (float progression)
             {
                 SetAlpha(Mathf.Lerp(AlphaFromDirection, 1, progression));
             },
