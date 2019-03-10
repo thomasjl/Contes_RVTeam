@@ -8,15 +8,18 @@ public class RabbitHole : MonoBehaviour {
     SceneAsset nextScene;
     private void OnTriggerEnter(Collider other)
     {
-        OnScreenPrinter.Print("enter", this);
-        if (other.CompareTag("HeadCollider") && Thorns.instance.Cleared)
+        if (other.CompareTag("HeadCollider") && (!Thorns.instance || Thorns.instance.Cleared))
             ToNextScene();
-        else
-            OnScreenPrinter.Print("no", this);
     }
 
     void ToNextScene()
     {
-        SceneManager.LoadSceneAsync(nextScene.name);
+        this.ProgressionAnim(3, delegate (float progression)
+        {
+            PlayerPostProcess.Instance.VignetteStrength = Mathf.Pow(progression*2, 2);
+        }, delegate
+        {
+            SceneManager.LoadSceneAsync(nextScene.name);
+        });
     }
 }
