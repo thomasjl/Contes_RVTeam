@@ -4,10 +4,11 @@ using Valve.VR.InteractionSystem;
 public class Scepter : MonoBehaviour {
 
     Interactable interactable;
+    public bool ScaledDown { get; private set; }
 
     private void Awake()
     {
-        GetComponent<MirrorInteractable>().Detached += ListenToPotions;
+        GetComponent<PaintingInteractable>().Detached += ListenToPotions;
         interactable = GetComponent<Interactable>();
     }
 
@@ -26,6 +27,7 @@ public class Scepter : MonoBehaviour {
             this.Timer(1, delegate
             {
                 transform.localScale = Player.instance.transform.localScale;
+                ScaledDown = true;
             });
     }
 
@@ -38,6 +40,14 @@ public class Scepter : MonoBehaviour {
             this.Timer(1, delegate
             {
                 transform.localScale = Vector3.one;
+                ScaledDown = false;
             });
+    }
+
+    public void UseAsKey()
+    {
+        Destroy(GetComponent<Throwable>());
+        Destroy(interactable);
+        GetComponent<Rigidbody>().isKinematic = true;
     }
 }

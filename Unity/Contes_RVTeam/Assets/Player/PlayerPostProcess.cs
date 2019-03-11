@@ -7,6 +7,7 @@ public class PlayerPostProcess : MonoBehaviour {
     ColorGrading colorGrading;
     Vignette vignette;
 
+    public float StartHueshift { get; private set; }
     public float HueShift { get { return colorGrading.hueShift.value; } set { colorGrading.hueShift.value = value; } }
     public float VignetteStrength { get { return vignette.intensity.value; } set { vignette.intensity.value = value; } }
 
@@ -17,6 +18,7 @@ public class PlayerPostProcess : MonoBehaviour {
         profile = GetComponent<PostProcessVolume>().profile;
         profile.TryGetSettings(out colorGrading);
         profile.TryGetSettings(out vignette);
+        StartHueshift = HueShift;
         Instance = this;
     }
 }

@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-public class MirrorInteractable : MonoBehaviour {
+public class PaintingInteractable : MonoBehaviour {
 
     Interactable interactable;
     Throwable throwable;
     Hand.AttachmentFlags attachmentFlags;
     ReleaseStyle releaseStyle;
-    Mirror mirror;
+    Painting painting;
     Rigidbody rb;
 
     [SerializeField]
@@ -15,8 +15,8 @@ public class MirrorInteractable : MonoBehaviour {
 
     public bool isGrabbable = true;
 
-    public delegate void MirrorInteractableEventHandler();
-    public event MirrorInteractableEventHandler Detached;
+    public delegate void PaintingInteractableEH();
+    public event PaintingInteractableEH Detached;
 
 
     private void Awake()
@@ -30,27 +30,38 @@ public class MirrorInteractable : MonoBehaviour {
         SetGrabEnabled(false);
     }
 
-    public void SetMirror(Mirror _mirror)
+    public void SetPainting(Painting _painting)
     {
-        mirror = _mirror;
-        mirror.Shown += EnableGrab;
-        mirror.Hidden += DisableGrab;
+        painting = _painting;
+        painting.Shown += EnableGrab;
+        painting.Hidden += DisableGrab;
     }
 
     private void OnGrabbed(Hand hand)
     {
+        if (!interactable.highlightOnHover)
+            return;
         transform.parent = null;
+        ResetLayer(transform);
         rb.isKinematic = false;
-        gameObject.layer = 0;
         SetGrabEnabled(true);
         Destroy(this);
     }
 
-    public void SetGrabbableInMirror(bool state)
+    void ResetLayer(Transform transformToReset)
     {
-        if (!GetComponent<MirrorInteractable>())
+        foreach (Transform tr in transformToReset)
+        {
+            tr.gameObject.layer = 0;
+            ResetLayer(tr);
+        }
+    }
+
+    public void SetGrabbableInPainting(bool state)
+    {
+        if (!GetComponent<PaintingInteractable>())
             return;
-        GetComponent<MirrorInteractable>().isGrabbable = state;
+        GetComponent<PaintingInteractable>().isGrabbable = state;
         if (!state)
             foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                 rend.material = rockMaterial;
@@ -89,8 +100,8 @@ public class MirrorInteractable : MonoBehaviour {
     private void OnDestroy()
     {
         interactable.onAttachedToHand -= OnGrabbed;
-        mirror.Shown -= EnableGrab;
-        mirror.Hidden -= DisableGrab;
+        painting.Shown -= EnableGrab;
+        painting.Hidden -= DisableGrab;
         // Call event.
         if (Detached != null)
             Detached();

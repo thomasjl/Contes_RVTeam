@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 65594866913559808}
   - component: {fileID: 114059067010894744}
   m_Layer: 0
-  m_Name: Mirror
+  m_Name: Painting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4797791498424898}
   m_Layer: 0
-  m_Name: Mirror objects
+  m_Name: Painting objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4688578525526208}
   m_Layer: 0
-  m_Name: Mirror
+  m_Name: Painting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -422,7 +422,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1374868918360256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.0830078, z: 0.05}
+  m_LocalPosition: {x: 0, y: 2.137, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4628608669885520}
@@ -1071,7 +1071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deefb9fa51d1d6f479671dbe14831c1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mirrorObjects: {fileID: 4797791498424898}
+  paintingObjects: {fileID: 4797791498424898}
 --- !u!114 &114197233191312186
 MonoBehaviour:
   m_ObjectHideFlags: 1

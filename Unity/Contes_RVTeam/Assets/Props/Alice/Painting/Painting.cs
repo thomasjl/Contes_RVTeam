@@ -3,43 +3,43 @@ using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 /// <summary>
-/// Handles the mirror render texture and the grab on the mirror objects.
+/// Handles the painting render texture and the grab on the painting objects.
 /// </summary>
-public class Mirror : MonoBehaviour {
+public class Painting : MonoBehaviour {
 
     Renderer rend;
     [SerializeField]
-    Transform mirrorObjects;
+    Transform paintingObjects;
     float AlphaFromDirection { get { return 1 - Vector3.Dot(transform.forward, Player.instance.headCollider.transform.forward).Remap(.8f, 1, 0, 1); } }
 
-    public delegate void MirrorEventHandler();
-    public event MirrorEventHandler Shown;
-    public event MirrorEventHandler Hidden;
+    public delegate void PaintingEventHandler();
+    public event PaintingEventHandler Shown;
+    public event PaintingEventHandler Hidden;
 
     private void Awake()
     {
         rend = GetComponent<Renderer>();
-        SetChildrenHiddenFromCamera(mirrorObjects, true);
+        SetChildrenHiddenFromCamera(paintingObjects, true);
 
         // Setup interactables.
-        Interactable[] interactables = mirrorObjects.GetComponentsInChildren<Interactable>();
+        Interactable[] interactables = paintingObjects.GetComponentsInChildren<Interactable>();
         foreach (Interactable interactable in interactables)
-            interactable.GetOrAddComponent<MirrorInteractable>().SetMirror(this);
+            interactable.GetOrAddComponent<PaintingInteractable>().SetPainting(this);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("HeadCollider"))
         {
-            SetChildrenHiddenFromCamera(mirrorObjects, false);
-            // Fade in then update the mirror.
+            SetChildrenHiddenFromCamera(paintingObjects, false);
+            // Fade in then update the painting.
             StopAllCoroutines();
             this.ProgressionAnim(1, delegate (float progression)
             {
                 SetAlpha(Mathf.Lerp(GetAlpha(), AlphaFromDirection, progression));
             }, delegate
             {
-                StartCoroutine(UpdateMirror());
+                StartCoroutine(UpdatePainting());
             });
             // Call event.
             if (Shown != null)
@@ -58,7 +58,7 @@ public class Mirror : MonoBehaviour {
             },
             delegate
             {
-                SetChildrenHiddenFromCamera(mirrorObjects, true);
+                SetChildrenHiddenFromCamera(paintingObjects, true);
                 // Call event.
                 if (Hidden != null)
                     Hidden();
@@ -66,7 +66,7 @@ public class Mirror : MonoBehaviour {
         }
     }
 
-    IEnumerator UpdateMirror()
+    IEnumerator UpdatePainting()
     {
         while (true)
         {
