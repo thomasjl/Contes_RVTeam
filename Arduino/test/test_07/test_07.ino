@@ -89,6 +89,27 @@ void loop()
     digitalWrite(BUTTON_10,DEFAULT_STATE_10);
     digitalWrite(BUTTON_12,DEFAULT_STATE_12); 
   }
+  else if(strcmp(bufferArray,"2")==0)
+  {
+    DEFAULT_STATE_2=1;
+    DEFAULT_STATE_4=0;
+    digitalWrite(BUTTON_2,DEFAULT_STATE_2);
+    digitalWrite(BUTTON_4,DEFAULT_STATE_4);
+  }
+  else if(strcmp(bufferArray,"6")==0)
+  {
+    DEFAULT_STATE_6=1;
+    DEFAULT_STATE_8=0;
+    digitalWrite(BUTTON_6,DEFAULT_STATE_6);
+    digitalWrite(BUTTON_8,DEFAULT_STATE_8);
+  }
+  else if(strcmp(bufferArray,"9")==0)
+  {
+    DEFAULT_STATE_10=1;
+    DEFAULT_STATE_12=0;
+    digitalWrite(BUTTON_10,DEFAULT_STATE_10);
+    digitalWrite(BUTTON_12,DEFAULT_STATE_12);
+  }
   
   int change_2=0;
   int change_6=0;

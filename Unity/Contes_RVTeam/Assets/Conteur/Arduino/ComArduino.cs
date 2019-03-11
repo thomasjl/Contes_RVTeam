@@ -16,7 +16,7 @@ public class ComArduino : MonoBehaviour {
     private SerialPort sp = new SerialPort("\\\\.\\COM12", 9600);
 
 
-    private void Start()
+    private void Awake()
     {
         sp.Open();
         sp.ReadTimeout = 25;
@@ -124,6 +124,58 @@ public class ComArduino : MonoBehaviour {
         sp.Write("D");
     }
 
+    public List<int> GetChoices()
+    {
+        Debug.Log("get choices");
+        List<int> result = new List<int>();
+
+        if(button2)
+        {
+            result.Add(2);
+        }
+        else if(button4)
+        {
+            result.Add(4);
+        }
+        else
+        {
+            //default value
+            result.Add(2);
+            sp.Write("2");
+        }        
+
+        if (button6)
+        {
+            result.Add(6);
+        }
+        else if (button8)
+        {
+            result.Add(8);
+        }
+        else
+        {
+            //default value
+            result.Add(6);
+            sp.Write("6");
+        }
+
+        if (button10)
+        {
+            result.Add(10);
+        }
+        else if (button12)
+        {
+            result.Add(12);
+        }
+        else
+        {
+            //default value
+            result.Add(10);
+            sp.Write("9");
+        }
+
+        return result;
+    }
 
 
 }
