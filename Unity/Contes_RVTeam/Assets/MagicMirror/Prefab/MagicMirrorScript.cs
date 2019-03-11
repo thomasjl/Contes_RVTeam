@@ -86,6 +86,8 @@ namespace DigitalRuby.MagicMirror
         [Tooltip("Render texture format for reflection")]
         public RenderTextureFormat RenderTextureFormat = RenderTextureFormat.ARGB32;
 
+        public Camera currentReflectingCamera;
+
         /// <summary>
         /// The current recursion level of mirrors being rendered
         /// </summary>
@@ -152,6 +154,7 @@ namespace DigitalRuby.MagicMirror
             }
             ReflectionCameraInfo cam = CreateReflectionCamera(sourceCamera, isReflection);
             RenderReflectionCamera(cam);
+            currentReflectingCamera = cam.ReflectionCamera;
             return cam;
         }
 
@@ -336,7 +339,9 @@ namespace DigitalRuby.MagicMirror
 
             )
             {
-                DestroyImmediate(info.ReflectionCamera.gameObject);
+                Destroy(info.ReflectionCamera.gameObject);
+                //uncomment
+               // DestroyImmediate();
             }
         }
 
