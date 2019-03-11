@@ -4,18 +4,18 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
-    100002: burrow_uv001
+    100002: burrow
     100004: root_uv001
     400000: //RootNode
-    400002: burrow_uv001
+    400002: burrow
     400004: root_uv001
     2100000: default
-    2300000: burrow_uv001
+    2300000: burrow
     2300002: root_uv001
-    3300000: burrow_uv001
+    3300000: burrow
     3300002: root_uv001
-    4300000: burrow_uv001
-    4300002: root_uv001
+    4300000: root_uv001
+    4300002: burrow
   externalObjects: {}
   materials:
     importMaterials: 1
