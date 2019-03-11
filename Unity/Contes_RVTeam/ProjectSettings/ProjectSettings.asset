@@ -659,13 +659,13 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
-    Collab: 0
+    Collab: 1
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 7317d890-27e2-4bc2-917c-25449a42a81c
+  cloudProjectId: dd384e31-d4c4-40a6-a96f-f2e18239729d
   projectName: Contes_RVTeam
-  organizationId: spl1nt3r
+  organizationId: simon-pasi-organization
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

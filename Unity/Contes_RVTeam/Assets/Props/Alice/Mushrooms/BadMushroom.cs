@@ -1,20 +1,13 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Comestible))]
-public class BadMushroom : MonoBehaviour {
+public class BadMushroom : Mushroom {
 
     [SerializeField]
     float minHueChange = 30;
-    [SerializeField]
-    float duration = 10;
 
-    public void Awake()
-    {
-        GetComponent<Comestible>().Consumed += OnConsumed;
-    }
 
-    private void OnConsumed()
+    protected override void OnConsumed()
     {
         if (BadMushroomsManager.instance)
             switch (BadMushroomsManager.instance.action)
@@ -46,18 +39,13 @@ public class BadMushroom : MonoBehaviour {
             PlayerPostProcess.Instance.HueShift = Mathf.Lerp(PlayerPostProcess.Instance.HueShift, targetHueShift, progression);
         }, delegate
         {
-            PlayerPostProcess.Instance.StartCoroutine(Timer());
+            PlayerPostProcess.Instance.Timer(duration, delegate
+            {
+                PlayerPostProcess.Instance.ProgressionAnim(5, delegate (float progression)
+                {
+                    PlayerPostProcess.Instance.HueShift = Mathf.Lerp(PlayerPostProcess.Instance.HueShift, 0, progression);
+                });
+            });
         });
-    }
-
-    IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(duration);
-        PlayerPostProcess.Instance.HueShift = 0;
-    }
-
-    private void Reset()
-    {
-        GetComponent<Comestible>().destroyInTheEnd = false;
     }
 }

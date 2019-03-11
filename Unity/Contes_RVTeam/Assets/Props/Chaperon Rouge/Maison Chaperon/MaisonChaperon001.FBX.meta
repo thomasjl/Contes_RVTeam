@@ -9,12 +9,14 @@ ModelImporter:
     100006: Cylinder005
     100008: Cylinder006
     100010: //RootNode
+    100012: Object001
     400000: Box001
     400002: Box005
     400004: Cylinder002
     400006: Cylinder005
     400008: Cylinder006
     400010: //RootNode
+    400012: Object001
     2100000: Facade
     2100002: porte
     2100004: toit
@@ -24,16 +26,19 @@ ModelImporter:
     2300004: Cylinder002
     2300006: Cylinder005
     2300008: Cylinder006
+    2300010: Object001
     3300000: Box001
     3300002: Box005
     3300004: Cylinder002
     3300006: Cylinder005
     3300008: Cylinder006
+    3300010: Object001
     4300000: Box001
     4300002: Cylinder002
     4300004: Box005
     4300006: Cylinder005
     4300008: Cylinder006
+    4300010: Object001
   externalObjects:
   - first:
       type: UnityEngine:Material

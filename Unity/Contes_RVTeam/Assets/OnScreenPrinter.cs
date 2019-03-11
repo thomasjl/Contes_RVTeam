@@ -53,6 +53,8 @@ public class OnScreenPrinter : ScriptableObject {
         AddToDisplay("[" + Time.time.ToString("00.0") + "]" + lineIndic + " " + input.ToString());
         if (caller != null)
             Debug.Log(input + " (" + caller.GetType() + " - " + caller.name + ")", caller);
+        else
+            Debug.Log(input);
     }
 
     /// <summary>

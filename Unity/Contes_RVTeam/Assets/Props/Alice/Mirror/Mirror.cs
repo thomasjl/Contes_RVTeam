@@ -2,6 +2,9 @@
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
+/// <summary>
+/// Handles the mirror render texture and the grab on the mirror objects.
+/// </summary>
 public class Mirror : MonoBehaviour {
 
     Renderer rend;
@@ -89,11 +92,5 @@ public class Mirror : MonoBehaviour {
     float GetAlpha()
     {
         return rend.material.GetColor("_Color").a;
-    }
-
-
-    void Detach()
-    {
-
     }
 }

@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroy: {fileID: 1064752533524598}
   activate: {fileID: 0}
+  delayBetweenBites: 0.5
   sfx: {fileID: 8300000, guid: 3fc0424677f72b845b2ff38fc6d34653, type: 3}
   volume: 1
   destroyInTheEnd: 1
@@ -369,4 +370,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newPlayerScale: 0.3
-  timer: 30
+  timer: 15

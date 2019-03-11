@@ -40,6 +40,19 @@ public static class Utilities {
     }
     #endregion --------------------------------------------
 
+    public static IEnumerator Timer(this MonoBehaviour caller, float duration, System.Action endActionHandler)
+    {
+        IEnumerator routine = TimerRoutine(duration, endActionHandler);
+        caller.StartCoroutine(routine);
+        return routine;
+    }
+
+    static IEnumerator TimerRoutine(float duration, System.Action endActionHandler)
+    {
+        yield return new WaitForSeconds(duration);
+        endActionHandler();
+    }
+
 
     #region Show/hide gameObjects ------------------
     /// <summary>

@@ -10,6 +10,15 @@ public class MirrorInteractable : MonoBehaviour {
     Mirror mirror;
     Rigidbody rb;
 
+    [SerializeField]
+    Material rockMaterial;
+
+    public bool isGrabbable = true;
+
+    public delegate void MirrorInteractableEventHandler();
+    public event MirrorInteractableEventHandler Detached;
+
+
     private void Awake()
     {
         interactable = GetComponent<Interactable>();
@@ -18,6 +27,7 @@ public class MirrorInteractable : MonoBehaviour {
         attachmentFlags = throwable.attachmentFlags;
         releaseStyle = throwable.releaseVelocityStyle;
         rb = GetComponent<Rigidbody>();
+        SetGrabEnabled(false);
     }
 
     public void SetMirror(Mirror _mirror)
@@ -36,15 +46,26 @@ public class MirrorInteractable : MonoBehaviour {
         Destroy(this);
     }
 
-    public void SetGrabEnabled(bool state)
+    public void SetGrabbableInMirror(bool state)
+    {
+        if (!GetComponent<MirrorInteractable>())
+            return;
+        GetComponent<MirrorInteractable>().isGrabbable = state;
+        if (!state)
+            foreach (Renderer rend in GetComponentsInChildren<Renderer>())
+                rend.material = rockMaterial;
+    }
+
+    void SetGrabEnabled(bool state)
     {
         if (!state)
         {
             throwable.attachmentFlags = 0;
             throwable.releaseVelocityStyle = ReleaseStyle.NoChange;
             interactable.highlightOnHover = false;
-            foreach (MeshRenderer highlighter in interactable.highlightRenderers)
-                Destroy(highlighter.gameObject);
+            MeshRenderer[] highlighters = interactable.highlightRenderers;
+            for (int i = 0; i < highlighters.Length; i++)
+                Destroy(highlighters[i].gameObject);
         }
         else
         {
@@ -56,11 +77,13 @@ public class MirrorInteractable : MonoBehaviour {
 
     void EnableGrab()
     {
-        SetGrabEnabled(true);
+        if (isGrabbable)
+            SetGrabEnabled(true);
     }
     void DisableGrab()
     {
-        SetGrabEnabled(false);
+        if (isGrabbable)
+            SetGrabEnabled(false);
     }
 
     private void OnDestroy()
@@ -68,5 +91,8 @@ public class MirrorInteractable : MonoBehaviour {
         interactable.onAttachedToHand -= OnGrabbed;
         mirror.Shown -= EnableGrab;
         mirror.Hidden -= DisableGrab;
+        // Call event.
+        if (Detached != null)
+            Detached();
     }
 }

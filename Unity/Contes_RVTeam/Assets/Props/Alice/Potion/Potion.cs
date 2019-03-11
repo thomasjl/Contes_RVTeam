@@ -6,25 +6,36 @@ using Valve.VR.InteractionSystem;
 public class Potion : MonoBehaviour {
 
     [SerializeField]
-    float newPlayerScale = .3f;
+    float sizeFactor = .3f;
     [SerializeField]
     float timer = 30;
-    [SerializeField]
+
+    public delegate void PotionEH();
+    public static event PotionEH ScaledNormal;
+    public static event PotionEH ScaledDown;
 
     private void Awake()
     {
         GetComponent<Comestible>().Consumed += PlayEffect;
     }
-
-    void PlayEffect()
+    
+    
+    public void PlayEffect()
     {
-        Player.instance.transform.localScale = Vector3.one * newPlayerScale;
-        Player.instance.StartCoroutine(Timer());
-    }
-
-    IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(timer);
-        Player.instance.transform.localScale = Vector3.one;
+        // Play a timed scale effect on the player.
+        Player.instance.transform.position = (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * sizeFactor)).SetY(0);
+        Player.instance.transform.localScale = Vector3.one * sizeFactor;
+        // Call event.
+        if (ScaledDown != null)
+            ScaledDown();
+        Player.instance.Timer(timer, delegate
+        {
+            Player.instance.transform.localScale = Vector3.one;
+            Player.instance.transform.position = Vector3.zero;
+            // Call event.
+            if (ScaledNormal != null)
+                ScaledNormal();
+        });
+        Lanterne.instance.PlayColorAnim(timer, Color.white);
     }
 }

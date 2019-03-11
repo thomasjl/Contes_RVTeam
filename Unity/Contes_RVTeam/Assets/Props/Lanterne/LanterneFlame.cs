@@ -2,22 +2,27 @@
 
 public class LanterneFlame : MonoBehaviour {
 
+    [SerializeField]
+    Color startColor = new Color(.18f, .9f, 1);
     ParticleSystem[] particleSystems;
     new Light light;
+    public Color Color{ get; private set; }
 
     private void Awake()
     {
         particleSystems = GetComponentsInChildren<ParticleSystem>();
         light = GetComponentInChildren<Light>();
+        SetColor(startColor);
     }
 
-    public void SetColor(Color color)
+    public void SetColor(Color newColor)
     {
         foreach (ParticleSystem psys in particleSystems)
         {
             ParticleSystem.MainModule main = psys.main;
-            main.startColor = color;
+            main.startColor = newColor;
         }
-        light.color = color;
+        light.color = newColor;
+        Color = newColor;
     }
 }
