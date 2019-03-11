@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000012506454532}
   - component: {fileID: 114000011075384662}
+  - component: {fileID: 114506646430506924}
   m_Layer: 0
   m_Name: RightRenderModel
   m_TagString: Untagged
@@ -56,3 +57,15 @@ MonoBehaviour:
   controllerPrefab: {fileID: 1000011460529826, guid: e789c2cc0c98a4c4198a4033fb8ccf96,
     type: 2}
   displayControllerByDefault: 0
+--- !u!114 &114506646430506924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012617731570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9472eee09cc88ee489c0dc41b9e27392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mat: {fileID: 2100000, guid: 8b934883c905b064c9275fd964022055, type: 2}
