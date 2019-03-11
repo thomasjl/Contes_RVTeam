@@ -5,10 +5,11 @@ public class CheshireCat : MonoBehaviour {
 
     [SerializeField]
     Transform spawnPointsParent;
+    int previousChoice = 0;
     [SerializeField]
     Transform cat;
 
-    [Space]
+    [Header("Eyes")]
     [SerializeField]
     Transform leftEye;
     [SerializeField]
@@ -20,9 +21,14 @@ public class CheshireCat : MonoBehaviour {
     float rightMinX;
     float rightMaxX;
 
+    [Space]
     [SerializeField]
-    Transform testtarget;
-    int previousChoice = 0;
+    float playerDistance = 2;
+    [SerializeField]
+    new AudioSource audio;
+    bool talked = false;
+
+    Vector3 Target { get { return Player.instance.transform.position; } }
 
     private void Awake()
     {
@@ -46,6 +52,14 @@ public class CheshireCat : MonoBehaviour {
     private void Update()
     {
         LookAt(Player.instance.transform.position);
+        if (!talked && Vector3.Distance(Target, cat.position) > playerDistance)
+            Talk();
+    }
+
+    void Talk()
+    {
+        audio.Play();
+        talked = true;
     }
 
     void LookAt(Vector3 target)
