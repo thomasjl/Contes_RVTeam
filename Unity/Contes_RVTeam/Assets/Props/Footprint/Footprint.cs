@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Footprint : MonoBehaviour {
+public class Footprint : MonoBehaviour
+{
     public Material footPrintClosed;
     public Material footPrintFar;
     public Material outOfRangeFootprint;
@@ -17,19 +20,19 @@ public class Footprint : MonoBehaviour {
 
         rend.material = outOfRangeFootprint;
     }
-
+        
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Lanterne")
+        if(other.gameObject.tag =="Lanterne")
         {
             // set transparacy depending on distance from Lanterne (max distance = radius)
             float distance = Vector3.Distance(transform.position, other.gameObject.transform.position);
-            // Debug.Log("distance " +distance);
+           // Debug.Log("distance " +distance);
             float ratio = distance / maxDist;
             //Debug.Log("ratio "+ratio);
             //lerp material
-            rend.material.Lerp(footPrintClosed, footPrintFar, ratio);
+            rend.material.Lerp(footPrintClosed,footPrintFar,ratio);
 
 
         }
@@ -45,5 +48,5 @@ public class Footprint : MonoBehaviour {
         }
     }
 
-
+   
 }

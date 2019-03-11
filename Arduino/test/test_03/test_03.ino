@@ -1,40 +1,35 @@
-int LED=12;
-int BUTTON=4;
+int LED_3=3;
+int BUTTON_2=2;
+
+int LED_5=5;
+int BUTTON_4=4;
 
 int tmp=0;
 
 void setup()
 {
-  Serial.begin(9600);
-  pinMode(LED,OUTPUT);
-  pinMode(BUTTON,INPUT);
-  digitalWrite(LED,HIGH);
+  //Serial.begin(9600);
+  pinMode(LED_3,OUTPUT);
+  pinMode(BUTTON_2,INPUT);
+  
+  pinMode(LED_5,OUTPUT);
+  pinMode(BUTTON_4,INPUT);
+  
 }
 
 void loop()
 {
   
-  if(digitalRead(BUTTON)==HIGH)
+  if(digitalRead(BUTTON_2)==HIGH)
   {
-    
-    if(tmp==1)
-    {
-      tmp=0;
-    }
-    else
-    {
-      tmp=1;
-    }
+    Serial.println("2");
+        digitalWrite(LED_3,HIGH);
   }
-  
-  if(tmp==1)
+
+  if(digitalRead(BUTTON_4)==HIGH)
   {
-   digitalWrite(LED,HIGH);
+    Serial.println("4");
+        digitalWrite(LED_5,HIGH);
   }
-  else if(tmp==0)
-  {
-    digitalWrite(LED,LOW);
-  }
-  
    
 }
