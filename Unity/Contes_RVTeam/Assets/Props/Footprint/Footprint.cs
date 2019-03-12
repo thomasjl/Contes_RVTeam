@@ -24,8 +24,10 @@ public class Footprint : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag =="Lanterne")
+        Debug.Log("trigger stay");
+        if (other.gameObject.CompareTag("Lanterne"))
         {
+            Debug.Log("lanterne");
             // set transparacy depending on distance from Lanterne (max distance = radius)
             float distance = Vector3.Distance(transform.position, other.gameObject.transform.position);
            // Debug.Log("distance " +distance);
@@ -41,9 +43,8 @@ public class Footprint : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Lanterne")
+        if (other.gameObject.CompareTag("Lanterne"))
         {
-
             rend.material = outOfRangeFootprint;
         }
     }
