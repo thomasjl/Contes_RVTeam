@@ -36,6 +36,7 @@ ModelImporter:
     100060: //RootNode
     100062: vr_glove_left_slim
     100064: wrist_l
+    100066: Armature
     400000: finger_index_0_l
     400002: finger_index_1_l
     400004: finger_index_2_l
@@ -69,6 +70,7 @@ ModelImporter:
     400060: //RootNode
     400062: vr_glove_left_slim
     400064: wrist_l
+    400066: Armature
     2100000: blinn2
     4300000: vr_glove_left_slim
     9500000: //RootNode

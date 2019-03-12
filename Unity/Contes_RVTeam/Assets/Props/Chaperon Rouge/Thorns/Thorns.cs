@@ -10,7 +10,7 @@ public class Thorns : MonoBehaviour {
                 if (!thorn.Clear)
                     cleared = false;
             }
-            return cleared;
+            return cleared; 
         }
     }
     Thorn[] thorns;
