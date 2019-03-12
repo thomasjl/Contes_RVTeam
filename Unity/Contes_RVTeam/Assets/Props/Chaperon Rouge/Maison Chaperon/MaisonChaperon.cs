@@ -30,18 +30,23 @@ public class MaisonChaperon : MonoBehaviour {
         givenObject = 0;
         objectGiven = false;
 
-        GiveItem(ObjectDropper.ObjectType.Medaillon);
+        //GiveItem(ObjectDropper.ObjectType.Medaillon);
     }
 
     public void SetSecondChoice(int choice)
     {
         if(choice==6)
         {
+            //medaillon
             givenObject= 6;
+            ThornSelect.instance.ThornsUsed(0);
         }
         else
         {
             givenObject = 8;
+            //hache
+            ThornSelect.instance.ThornsUsed(1);
+
         }
     }
 
@@ -70,8 +75,6 @@ public class MaisonChaperon : MonoBehaviour {
 
     public void GiveItem(ObjectDropper.ObjectType itemType)
     {
-      
-
         doorAnimator.SetTrigger("open");
         StartCoroutine(WaitAndOpen(itemType));
     }

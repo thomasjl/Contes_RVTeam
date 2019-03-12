@@ -5,6 +5,7 @@ public class Thorns : MonoBehaviour {
     ThornHache[] thornsHache;
     ThornMedaillon[] thornsMedaillon;
 
+
     public bool Cleared {
         get {
             bool cleared = true;
@@ -32,9 +33,6 @@ public class Thorns : MonoBehaviour {
         }
     }
 
-   
-
-
 
     public static Thorns instance;
     private void Awake()
@@ -43,6 +41,10 @@ public class Thorns : MonoBehaviour {
         thornsHache = GetComponentsInChildren<ThornHache>();
         thornsMedaillon = GetComponentsInChildren<ThornMedaillon>();
     }
+
+   
+
+    
 
     public void Flatten()
     {

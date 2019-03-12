@@ -13,8 +13,11 @@ public class MailBox : MonoBehaviour {
 
     public enum PaperType { Poison, JabberWocky }
 
+    public static MailBox instance;
+
     private void Awake()
     {
+        instance = this;
         circularDrive = GetComponentInChildren<CircularDrive>();
     }
 

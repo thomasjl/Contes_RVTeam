@@ -26,7 +26,6 @@ public class ThornHache : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("hacccche");
         Hache hache = collider.GetComponentInParent<Hache>();
         if (hache && hache.IsSlicing)
         {
@@ -36,7 +35,6 @@ public class ThornHache : MonoBehaviour {
     }
     void Cut()
     {
-        Debug.Log("cut");
         if (childrenToRemove <= 0)
             return;
         RemoveChild(transform.childCount - 1 - childrenToRemove);

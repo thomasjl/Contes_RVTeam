@@ -9,9 +9,13 @@ public class ConteurManager : MonoBehaviour {
     public ComArduino arduino;
     public Slider timer;
 
+    [HideInInspector]
     public Chaperon chaperon;
+
     private MaisonChaperon maisonChaperon;
     public static ConteurManager instance;
+    public GameObject footprintArbre;
+    public GameObject footprintPuit;
 
 
     void Awake()
@@ -26,7 +30,7 @@ public class ConteurManager : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
 
         chaperon = GameObject.Find("Chaperon").GetComponent<Chaperon>();
-        maisonChaperon = GameObject.Find("MaisonChaperon").GetComponent<MaisonChaperon>();
+        maisonChaperon = MaisonChaperon.instance;
 
     }
 
@@ -56,17 +60,21 @@ public class ConteurManager : MonoBehaviour {
         else
         {
             choices.Add(4);
-            choices.Add(6);
-            choices.Add(10);
+            choices.Add(8);
+            choices.Add(12);
         }
 
         if (choices[0] == 2)
         {
             chaperon.SetFirstChoice(2);
+            footprintArbre.SetActive(true);
+            footprintPuit.SetActive(false);
         }
         else if (choices[0] == 4)
         {
             chaperon.SetFirstChoice(4);
+            footprintArbre.SetActive(false);
+            footprintPuit.SetActive(true);
         }
         else
         {
@@ -86,16 +94,17 @@ public class ConteurManager : MonoBehaviour {
             maisonChaperon.SetSecondChoice(6);
         }
 
-        if (choices[1] == 10)
+        if (choices[2] == 10)
         {
-
+            MailBox.instance.SetPaperMaterial(MailBox.PaperType.JabberWocky);
         }
-        else if(choices[1] == 12)
+        else if(choices[2] == 12)
         {
-
+            MailBox.instance.SetPaperMaterial(MailBox.PaperType.Poison);
         }
         else
         {
+            MailBox.instance.SetPaperMaterial(MailBox.PaperType.JabberWocky);
 
         }
 
