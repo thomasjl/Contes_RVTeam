@@ -18,12 +18,6 @@ public class MailBox : MonoBehaviour {
         circularDrive = GetComponentInChildren<CircularDrive>();
     }
 
-    private void Start()
-    {
-
-        SetPaperMaterial(PaperType.JabberWocky);
-    }
-
     public void SetPaperMaterial(PaperType type)
     {
         switch (type)
