@@ -16,7 +16,7 @@ Shader "Unlit/SpecialFX/Liquid"
  
     SubShader
     {
-        Tags {"Queue"="Geometry"  "DisableBatching" = "True" }
+        Tags {"Queue"="Geometry"  /*"DisableBatching" = "True"*/ }
   
                 Pass
         {

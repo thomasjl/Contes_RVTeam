@@ -43,7 +43,7 @@ public class BadMushroom : Mushroom {
             {
                 PlayerPostProcess.Instance.ProgressionAnim(5, delegate (float progression)
                 {
-                    PlayerPostProcess.Instance.HueShift = Mathf.Lerp(PlayerPostProcess.Instance.HueShift, 0, progression);
+                    PlayerPostProcess.Instance.HueShift = Mathf.Lerp(PlayerPostProcess.Instance.HueShift, PlayerPostProcess.Instance.StartHueshift, progression);
                 });
             });
         });
