@@ -2,36 +2,57 @@
 
 public class Thorns : MonoBehaviour {
 
+    ThornHache[] thornsHache;
+    ThornMedaillon[] thornsMedaillon;
+
     public bool Cleared {
         get {
             bool cleared = true;
-            foreach (Thorn thorn in thorns)
+            if(thornsHache!=null)
             {
-                if (!thorn.Clear)
-                    cleared = false;
+                foreach (ThornHache thorn in thornsHache)
+                {
+                    if (!thorn.Clear)
+                        cleared = false;
+                }
+                return cleared;
             }
-            return cleared; 
+            else if(thornsMedaillon!=null)
+            {
+                foreach (ThornMedaillon thorn in thornsMedaillon)
+                {
+                    if (!thorn.Clear)
+                        cleared = false;
+                }
+                return cleared;
+            }
+
+            return false;
+           
         }
     }
-    Thorn[] thorns;
+
+   
+
 
 
     public static Thorns instance;
     private void Awake()
     {
         instance = this;
-        thorns = GetComponentsInChildren<Thorn>();
+        thornsHache = GetComponentsInChildren<ThornHache>();
+        thornsMedaillon = GetComponentsInChildren<ThornMedaillon>();
     }
 
     public void Flatten()
     {
-        foreach (Thorn thorn in thorns)
-            thorn.Flatten();
+        foreach (ThornMedaillon thornMed in thornsMedaillon)
+            thornMed.Flatten();
     }
 
     internal void Unflatten()
     {
-        foreach (Thorn thorn in thorns)
-            thorn.Unflatten();
+        foreach (ThornMedaillon thornMed in thornsMedaillon)
+            thornMed.Unflatten();
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-
 public class Thorn : MonoBehaviour {
 
     Hache currenthache;
@@ -17,12 +16,16 @@ public class Thorn : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider)
     {
-        Hache hache = collider.GetComponentInParent<Hache>();
-        if (hache && hache.IsSlicing)
+        if(collider.gameObject.CompareTag("Hache"))
         {
-            currenthache = hache;
-            Cut();
+            Hache hache = collider.GetComponentInParent<Hache>();
+            if (hache && hache.IsSlicing)
+            {
+                currenthache = hache;
+                Cut();
+            }
         }
+       
     }
 
     void Cut()
@@ -67,6 +70,7 @@ public class Thorn : MonoBehaviour {
     void RemoveChild(int index)
     {
         Rigidbody newSlice = transform.GetChild(index).gameObject.AddComponent<Rigidbody>();
+        Debug.Log("add trhowable");
         newSlice.AddForce(currenthache.SliceDirection * 5);
         transform.GetChild(index).parent = null;
         if (childrenToRemove <= 0)

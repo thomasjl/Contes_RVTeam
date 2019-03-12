@@ -15,6 +15,9 @@ public class MaisonChaperon : MonoBehaviour {
     UnityEvent ObjectGrabbed;
 
     public static MaisonChaperon instance;
+
+    private int givenObject;
+    private bool objectGiven;
     private void Awake()
     {
         instance = this;
@@ -24,10 +27,51 @@ public class MaisonChaperon : MonoBehaviour {
     {
         dropper = objectAnimator.GetComponent<ObjectDropper>();
         objectAnimator.gameObject.SetActive(false);
+        givenObject = 0;
+        objectGiven = false;
+
+        GiveItem(ObjectDropper.ObjectType.Medaillon);
     }
+
+    public void SetSecondChoice(int choice)
+    {
+        if(choice==6)
+        {
+            givenObject= 6;
+        }
+        else
+        {
+            givenObject = 8;
+        }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {       
+        if (other.gameObject.CompareTag("HeadCollider") && givenObject != 0 && !objectGiven && ConteurManager.instance.chaperon.isEquiped)
+        {           
+            if (givenObject == 6)
+            {
+                GiveItem(ObjectDropper.ObjectType.Medaillon);
+                Debug.Log("medaillon");
+            }
+            else
+            {
+                GiveItem(ObjectDropper.ObjectType.Hache);
+
+                Debug.Log("hache");
+            }
+            objectGiven = true;
+            
+        }
+    }
+
+  
 
     public void GiveItem(ObjectDropper.ObjectType itemType)
     {
+      
+
         doorAnimator.SetTrigger("open");
         StartCoroutine(WaitAndOpen(itemType));
     }

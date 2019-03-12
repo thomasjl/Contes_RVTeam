@@ -17,6 +17,9 @@ public class Chaperon : MonoBehaviour {
     [SerializeField]
     float clothHeight = 2;
 
+    public bool isEquiped;
+
+   
 
     private void Start()
     {
@@ -26,6 +29,19 @@ public class Chaperon : MonoBehaviour {
         grabbable.Detached += PlayGroundCorrection;
         // Hide wearable.
         wearable.gameObject.SetActive(false);
+        isEquiped = false;
+    }
+
+    public void SetFirstChoice(int choice)
+    {
+        if (choice == 2)
+        {
+            AttachToTree();
+        }
+        else
+        {
+            AttachToDwell();
+        }
     }
 
     public void AttachToDwell()
@@ -52,8 +68,14 @@ public class Chaperon : MonoBehaviour {
             return;
         PlayGroundCorrection();
         if (GrabbableIsClose)
+        {
             // Validate equip.
             grabbable.gameObject.SetActive(false);
+            isEquiped = true;
+
+
+        }
+
     }
 
     IEnumerator TryEquiping()

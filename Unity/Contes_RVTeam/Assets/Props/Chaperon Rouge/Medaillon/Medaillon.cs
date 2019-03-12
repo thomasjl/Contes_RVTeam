@@ -69,9 +69,15 @@ public class Medaillon : MonoBehaviour {
         if (!Thorns.instance)
             return;
         if (Vector3.Distance(transform.position, Thorns.instance.transform.position) < distanceFromThorns)
+        {
+            Debug.Log("proche medaillon");
             Thorns.instance.Flatten();
+        }
         else
+        {
+            Debug.Log("loin medaillon");
             Thorns.instance.Unflatten();
+        }
     }
 
     void UpdateSound()

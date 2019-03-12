@@ -13,24 +13,36 @@ public class ComArduino : MonoBehaviour {
     public bool button10;
     public bool button12;
 
-    private SerialPort sp = new SerialPort("\\\\.\\COM12", 9600);
+    private SerialPort sp;
+
+    public bool arduinoEnable = true;
 
 
     private void Awake()
     {
-        sp.Open();
-        sp.ReadTimeout = 25;
-
-        if (sp.IsOpen)
+        try
         {
-            Debug.Log("Port is openned");
-        }
-        else
-        {
-            Debug.Log("Port is closed");
-        }
+            sp = new SerialPort("\\\\.\\COM12", 9600);
+            sp.Open();
+            sp.ReadTimeout = 25;
 
-        EnableLed();
+            if (sp.IsOpen)
+            {
+                Debug.Log("Port is openned");
+            }
+            else
+            {
+                Debug.Log("Port is closed");
+            }
+
+            EnableLed();
+        }
+        catch (Exception)
+        {
+            arduinoEnable = false;
+
+        }
+        
 
     }
 

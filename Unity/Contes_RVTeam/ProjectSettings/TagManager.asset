@@ -8,6 +8,7 @@ TagManager:
   - projectile
   - FxTemporaire
   - HeadCollider
+  - Hache
   layers:
   - Default
   - TransparentFX
