@@ -6,7 +6,6 @@ public class BadMushroom : Mushroom {
     [SerializeField]
     float minHueChange = 30;
 
-
     protected override void OnConsumed()
     {
         if (BadMushroomsManager.instance)
@@ -27,7 +26,9 @@ public class BadMushroom : Mushroom {
 
     void Levitation()
     {
-
+        if (!MushroomGravityManager.Instance)
+            new GameObject().AddComponent<MushroomGravityManager>();
+        MushroomGravityManager.Instance.PlayGravityAnim(2);
     }
 
     void Colors()
