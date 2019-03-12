@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
-using System.Linq;
-using System;
 
 public class Thorns : MonoBehaviour {
 
@@ -16,14 +13,14 @@ public class Thorns : MonoBehaviour {
             return cleared;
         }
     }
-    List<Thorn> thorns = new List<Thorn>();
+    Thorn[] thorns;
 
 
     public static Thorns instance;
     private void Awake()
     {
         instance = this;
-        thorns = GetComponentsInChildren<Thorn>().ToList();
+        thorns = GetComponentsInChildren<Thorn>();
     }
 
     public void Flatten()
