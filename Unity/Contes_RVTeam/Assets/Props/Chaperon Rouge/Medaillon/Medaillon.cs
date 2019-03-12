@@ -78,7 +78,7 @@ public class Medaillon : MonoBehaviour {
     {
         if (!audio.isPlaying)
             audio.Play();
-        float progression = 1 - (Vector3.Distance(transform.position, Lanterne.instance.transform.position) / (maxLanterneDistance - minLanterneDistance));
+        float progression = 1 - (Vector3.Distance(transform.position, Lanterne.instance.FlamePosition) / (maxLanterneDistance - minLanterneDistance));
         audio.volume = Mathf.Lerp(minAudioVolume, 1, progression);
     }
 

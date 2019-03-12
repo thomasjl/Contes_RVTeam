@@ -663,9 +663,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 7317d890-27e2-4bc2-917c-25449a42a81c
-  projectName: Contes_RVTeam
-  organizationId: spl1nt3r
+  cloudProjectId: ec626788-a5ff-45c0-b70c-30b773f28c7e
+  projectName: Contes_RVTeam (1)
+  organizationId: simon-pasi-organization
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

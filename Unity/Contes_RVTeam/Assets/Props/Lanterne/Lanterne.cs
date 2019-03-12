@@ -5,6 +5,7 @@ using UnityEngine;
 public class Lanterne : MonoBehaviour {
 
     LanterneFlame flame;
+    public Vector3 FlamePosition{ get{ return flame.transform.position; } }
 
     public static Lanterne instance;
     private void Awake()
