@@ -16,7 +16,7 @@ public class RabbitHole : MonoBehaviour {
     {
         this.ProgressionAnim(3, delegate (float progression)
         {
-            PlayerPostProcess.Instance.VignetteStrength = Mathf.Pow(progression*2, 2);
+            PlayerPostProcess.Instance.VignetteStrength = PlayerPostProcess.Instance.StartVignetteStrength + progression * 2;
         }, delegate
         {
             SceneManager.LoadSceneAsync(nextScene.name);

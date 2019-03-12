@@ -20,13 +20,15 @@ public class SmallDoor : MonoBehaviour {
     [SerializeField]
     float delayBeforeTransition = 4;
     float openTime = 0;
-
+    
     bool open = false;
 
+    public static SmallDoor instance;
     private void Awake()
     {
         animator = GetComponent<Animator>();
         playerTrigger.enabled = false;
+        instance = this;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,7 +54,7 @@ public class SmallDoor : MonoBehaviour {
             NextScene();
     }
 
-    void Open()
+    public void Open()
     {
         animator.SetTrigger("open");
         playerTrigger.enabled = true;
@@ -62,6 +64,12 @@ public class SmallDoor : MonoBehaviour {
 
     void NextScene()
     {
-        SceneManager.LoadSceneAsync(sceneToLoad.name);
+        this.ProgressionAnim(3, delegate (float progression)
+        {
+            PlayerPostProcess.Instance.VignetteStrength = PlayerPostProcess.Instance.StartVignetteStrength + progression * 2;
+        }, delegate
+        {
+            SceneManager.LoadSceneAsync(sceneToLoad.name);
+        });
     }
 }
