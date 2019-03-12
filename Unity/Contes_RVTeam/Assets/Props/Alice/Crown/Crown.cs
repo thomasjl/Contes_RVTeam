@@ -19,6 +19,7 @@ public class Crown : MonoBehaviour {
         {
             // Detach from the hand and attach to the head.
             GetComponent<Interactable>().attachedToHand = null;
+            GetComponent<Interactable>().SetGrabEnabled(false);
             GetComponent<Rigidbody>().isKinematic = true;
             transform.parent = collision.transform;
             transform.localPosition = Vector3.up * headYOffset;

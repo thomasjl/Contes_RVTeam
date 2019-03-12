@@ -4,9 +4,6 @@ using Valve.VR.InteractionSystem;
 public class PaintingInteractable : MonoBehaviour {
 
     Interactable interactable;
-    Throwable throwable;
-    Hand.AttachmentFlags attachmentFlags;
-    ReleaseStyle releaseStyle;
     Painting painting;
     Rigidbody rb;
 
@@ -23,11 +20,8 @@ public class PaintingInteractable : MonoBehaviour {
     {
         interactable = GetComponent<Interactable>();
         interactable.onAttachedToHand += OnGrabbed;
-        throwable = GetComponent<Throwable>();
-        attachmentFlags = throwable.attachmentFlags;
-        releaseStyle = throwable.releaseVelocityStyle;
         rb = GetComponent<Rigidbody>();
-        SetGrabEnabled(false);
+        interactable.SetGrabEnabled(false);
     }
 
     public void SetPainting(Painting _painting)
@@ -44,7 +38,7 @@ public class PaintingInteractable : MonoBehaviour {
         transform.parent = null;
         ResetLayer(transform);
         rb.isKinematic = false;
-        SetGrabEnabled(true);
+        interactable.SetGrabEnabled(true);
         Destroy(this);
     }
 
@@ -67,34 +61,15 @@ public class PaintingInteractable : MonoBehaviour {
                 rend.material = rockMaterial;
     }
 
-    void SetGrabEnabled(bool state)
-    {
-        if (!state)
-        {
-            throwable.attachmentFlags = 0;
-            throwable.releaseVelocityStyle = ReleaseStyle.NoChange;
-            interactable.highlightOnHover = false;
-            MeshRenderer[] highlighters = interactable.highlightRenderers;
-            for (int i = 0; i < highlighters.Length; i++)
-                Destroy(highlighters[i].gameObject);
-        }
-        else
-        {
-            throwable.attachmentFlags = attachmentFlags;
-            throwable.releaseVelocityStyle = releaseStyle;
-            interactable.highlightOnHover = true;
-        }
-    }
-
     void EnableGrab()
     {
         if (isGrabbable)
-            SetGrabEnabled(true);
+            interactable.SetGrabEnabled(true);
     }
     void DisableGrab()
     {
         if (isGrabbable)
-            SetGrabEnabled(false);
+            interactable.SetGrabEnabled(false);
     }
 
     private void OnDestroy()

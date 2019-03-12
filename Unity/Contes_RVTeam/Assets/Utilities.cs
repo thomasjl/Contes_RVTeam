@@ -178,4 +178,9 @@ public static class Utilities {
     {
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
     }
+
+    public static bool IsBetween(this float number, float a, float b)
+    {
+        return (number >= a && number <= b) || (number <= a && number >= b);
+    }
 }
