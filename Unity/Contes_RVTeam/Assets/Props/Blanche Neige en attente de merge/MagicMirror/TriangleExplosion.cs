@@ -4,6 +4,10 @@ using System.Collections;
 
 public class TriangleExplosion : MonoBehaviour {
 
+    [SerializeField]
+    AudioClip sfx;
+    [SerializeField]
+    float sfxVolume = .8f;
 
     public void Explode(bool destroy)
     {
@@ -12,41 +16,30 @@ public class TriangleExplosion : MonoBehaviour {
 
     IEnumerator SplittingMesh(bool destroy)
     {
-
         if (GetComponent<MeshFilter>() == null || GetComponent<SkinnedMeshRenderer>() == null)
-        {
-            yield return null;
-        }
+            yield break;
 
+        // Deactivate collider.
         if (GetComponent<Collider>())
-        {
             GetComponent<Collider>().enabled = false;
-        }
 
+        // Get mesh.
         Mesh M = new Mesh();
         if (GetComponent<MeshFilter>())
-        {
             M = GetComponent<MeshFilter>().mesh;
-        }
         else if (GetComponent<SkinnedMeshRenderer>())
-        {
             M = GetComponent<SkinnedMeshRenderer>().sharedMesh;
-        }
 
+        // Get materials.
         Material[] materials = new Material[0];
         if (GetComponent<MeshRenderer>())
-        {
             materials = GetComponent<MeshRenderer>().materials;
-        }
         else if (GetComponent<SkinnedMeshRenderer>())
-        {
             materials = GetComponent<SkinnedMeshRenderer>().materials;
-        }
 
         Vector3[] verts = M.vertices;
         Vector3[] normals = M.normals;
         Vector2[] uvs = M.uv;
-
 
         for (int submesh = 0; submesh < M.subMeshCount; submesh++)
         {
@@ -87,26 +80,17 @@ public class TriangleExplosion : MonoBehaviour {
 
                 GO.AddComponent<Rigidbody>();
                 GO.GetComponent<Rigidbody>().AddForce(Vector3.forward * Random.Range(50f, 1000f));
-                // GO.GetComponent<Rigidbody>().useGravity = true;
-                //GO.GetComponent<Rigidbody>().AddForce(Vector3.forward*2);
 
-                //GO.AddComponent<Rigidbody>().AddForce(Vector3.forward*25, ForceMode.Force);
-                // GO.AddComponent<Rigidbody>().AddExplosionForce(5f, transform.position, 1f);
                 Destroy(GO, Random.Range(1f, 2f));
-
-
-
             }
-
         }
-
 
         GetComponent<Renderer>().enabled = false;
+        if (sfx)
+            AudioSource.PlayClipAtPoint(sfx, transform.position, sfxVolume);
 
         yield return new WaitForSeconds(1.0f);
-        if (destroy == true)
-        {
+        if (destroy)
             Destroy(gameObject);
-        }
     }
 }
