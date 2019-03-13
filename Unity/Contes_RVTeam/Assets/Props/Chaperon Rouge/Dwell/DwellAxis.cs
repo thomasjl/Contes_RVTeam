@@ -15,6 +15,8 @@ public class DwellAxis : MonoBehaviour {
     public float Progression { get { return (bucket.position.y - bucketUpDownLimits.y) / (bucketUpDownLimits.x - bucketUpDownLimits.y); } }
     Crank crank;
 
+    public AudioSource well;
+
     public delegate void DwellEventHandler();
     public event DwellEventHandler HasCrank;
 
@@ -41,6 +43,8 @@ public class DwellAxis : MonoBehaviour {
 
     IEnumerator UpdateProgression()
     {
+
+        
         float previousDrive = crank.LinearMapping;
         bool clockwise = true;
         while (true)
@@ -58,7 +62,21 @@ public class DwellAxis : MonoBehaviour {
                     clockwise = !clockwise;
                 }
             }
+
+            if(previousDrive == crank.LinearMapping)
+            {
+                if(well.volume>0)
+                {
+                    AudioController.FadeOut(well, 0.5f);
+                }
+            }
+            else
+            {
+                AudioController.FadeIn(well, 0.5f);
+            }
+
             previousDrive = crank.LinearMapping;
+
             yield return null;
         }
     }
