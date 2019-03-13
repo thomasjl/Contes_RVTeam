@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 8f1303382ed99544aa5d4b3b6793a69d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Norican
+  fontNames:
+  - Norican
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 876671f749c6e7e4fa0d0e7eca7dc546, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -11,8 +11,11 @@ public class PlayerPostProcess : MonoBehaviour {
 
     public float StartHueshift { get; private set; }
     public float HueShift { get { return colorGrading.hueShift.value; } set { colorGrading.hueShift.value = value; } }
+    public Color StartColorFilter { get; private set; }
+    public Color ColorFilter { get { return colorGrading.colorFilter.value; } set { colorGrading.colorFilter.value = value; } }
     public float StartVignetteStrength { get; private set; }
     public float VignetteStrength { get { return vignette.intensity.value; } set { vignette.intensity.value = value; } }
+    public float Blink { get { return blink.time; } set { blink.time = value; } }
 
     public static PlayerPostProcess Instance { get; private set; }
 
@@ -22,6 +25,7 @@ public class PlayerPostProcess : MonoBehaviour {
         profile.TryGetSettings(out colorGrading);
         profile.TryGetSettings(out vignette);
         StartHueshift = HueShift;
+        StartColorFilter = colorGrading.colorFilter.value;
         StartVignetteStrength = vignette.intensity;
         blink = GetComponent<BlinkEffect>();
         Instance = this;
@@ -33,5 +37,13 @@ public class PlayerPostProcess : MonoBehaviour {
         {
             blink.time = progression;
         }, endAction);
+    }
+
+    public void PlayPoison(float transitionDuration, Color targetColor)
+    {
+        this.ProgressionAnim(transitionDuration, delegate (float progression)
+        {
+            ColorFilter = Color.Lerp(StartColorFilter, targetColor, progression);
+        });
     }
 }
