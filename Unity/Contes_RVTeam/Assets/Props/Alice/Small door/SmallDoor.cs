@@ -64,12 +64,6 @@ public class SmallDoor : MonoBehaviour {
 
     void NextScene()
     {
-        this.ProgressionAnim(3, delegate (float progression)
-        {
-            PlayerPostProcess.Instance.VignetteStrength = PlayerPostProcess.Instance.StartVignetteStrength + progression * 2;
-        }, delegate
-        {
-            SceneManager.LoadSceneAsync(sceneToLoad.name);
-        });
+        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(sceneToLoad.name); }); });
     }
 }
