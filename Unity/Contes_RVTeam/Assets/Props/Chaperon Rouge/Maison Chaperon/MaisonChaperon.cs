@@ -30,7 +30,7 @@ public class MaisonChaperon : MonoBehaviour {
         givenObject = 0;
         objectGiven = false;
 
-        //GiveItem(ObjectDropper.ObjectType.Medaillon);
+        GiveItem(ObjectDropper.ObjectType.Hache);
     }
 
     public void SetSecondChoice(int choice)
