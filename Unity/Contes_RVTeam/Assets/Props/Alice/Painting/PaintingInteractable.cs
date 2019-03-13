@@ -24,6 +24,10 @@ public class PaintingInteractable : MonoBehaviour {
         interactable.SetGrabEnabled(false);
     }
 
+    /// <summary>
+    /// Set which painting this belongs to.
+    /// </summary>
+    /// <param name="_painting"></param>
     public void SetPainting(Painting _painting)
     {
         painting = _painting;
@@ -51,6 +55,10 @@ public class PaintingInteractable : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Set this item to be a frozen rock item.
+    /// </summary>
+    /// <param name="state"></param>
     public void SetGrabbableInPainting(bool state)
     {
         if (!GetComponent<PaintingInteractable>())
@@ -63,11 +71,13 @@ public class PaintingInteractable : MonoBehaviour {
 
     void EnableGrab()
     {
+        print("enabe");
         if (isGrabbable)
             interactable.SetGrabEnabled(true);
     }
     void DisableGrab()
     {
+        print("disab");
         if (isGrabbable)
             interactable.SetGrabEnabled(false);
     }
