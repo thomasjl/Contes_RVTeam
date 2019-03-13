@@ -14,6 +14,7 @@ public class Lanterne : MonoBehaviour {
         flame = GetComponentInChildren<LanterneFlame>();
     }
 
+   
     internal void SetFlameColor(object color)
     {
         throw new NotImplementedException();

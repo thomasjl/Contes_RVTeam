@@ -20,8 +20,18 @@ public class Footprint : MonoBehaviour
 
         rend.material = outOfRangeFootprint;
     }
-        
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Lanterne"))
+        {
+            StartCoroutine(SetFootprintMaterial());
+        }
+    }
+
+   
+    /*
     private void OnTriggerStay(Collider other)
     {
         Debug.Log("trigger stay");
@@ -40,12 +50,31 @@ public class Footprint : MonoBehaviour
         }
 
     }
+    */
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Lanterne"))
         {
+            Debug.Log("trigger exit");
             rend.material = outOfRangeFootprint;
+            StopAllCoroutines();
+        }
+    }
+
+    IEnumerator SetFootprintMaterial()
+    {
+        while(true)
+        {
+            //Debug.Log("lanterne");
+            // set transparacy depending on distance from Lanterne (max distance = radius)
+            float distance = Vector3.Distance(transform.position, lanterne.transform.position);
+            // Debug.Log("distance " +distance);
+            float ratio = distance / maxDist;
+            //Debug.Log("ratio "+ratio);
+            //lerp material
+            rend.material.Lerp(footPrintClosed, footPrintFar, ratio);
+            yield return null;
         }
     }
 

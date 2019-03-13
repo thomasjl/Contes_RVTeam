@@ -61,7 +61,7 @@ public class ConteurManager : MonoBehaviour {
         {
             choices.Add(4);
             choices.Add(8);
-            choices.Add(12);
+            choices.Add(10);
         }
 
         if (choices[0] == 2)

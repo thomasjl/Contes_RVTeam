@@ -70,6 +70,10 @@ public class ChaperonGrabbable : MonoBehaviour {
         // Snap to the tree and be ready to be grabbed.
         AttachTo(OnTreeTransform);
         SetGrabEnabled(false);
+
+        //play sound
+        StartCoroutine(AudioController.FadeIn(GetComponent<AudioSource>(), 1f));
+
     }
 
     void AttachTo(Transform attachPoint)
@@ -98,10 +102,15 @@ public class ChaperonGrabbable : MonoBehaviour {
         SetGrabEnabled(true);
         Interactable.onAttachedToHand += DetachFromSceneElement;
         ResetCloth();
+
+        //stop sound
+        StartCoroutine(AudioController.FadeOut(GetComponent<AudioSource>(), 1f));
+
         // Call event.
         if (Detached != null)
             Detached();
     }
+
 
     void DetachFromSceneElement(Hand hand)
     {
