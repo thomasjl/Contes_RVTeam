@@ -7,6 +7,8 @@ public class ThornMedaillon : MonoBehaviour {
     public bool Clear { get; private set; }
     [SerializeField]
     AudioClip flatten;
+    [SerializeField]
+    AudioClip unflatten;
     public bool flattening = false;
 
     public void Flatten()
@@ -27,9 +29,11 @@ public class ThornMedaillon : MonoBehaviour {
             return;
         //StopAllCoroutines();
         Debug.Log("unflattent");
+
+        AudioSource.PlayClipAtPoint(unflatten, transform.position);
+
         GetComponent<Animator>().SetTrigger("unflatten");
-        if (!flattening)
-            AudioSource.PlayClipAtPoint(flatten, transform.position);
+       
         flattening = false;
         Clear = false;
     }
