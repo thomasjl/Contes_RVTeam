@@ -149,7 +149,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1108393873815432}
-  m_LocalRotation: {x: -0, y: -0, z: -0.70709574, w: 0.70711786}
+  m_LocalRotation: {x: -0.49999133, y: 0.5000087, z: -0.49999133, w: 0.5000087}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -158,7 +158,7 @@ Transform:
   - {fileID: 4504355359306022}
   m_Father: {fileID: 4300576193891738}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.998}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -89.998}
 --- !u!4 &4504355359306022
 Transform:
   m_ObjectHideFlags: 1
@@ -442,7 +442,7 @@ MonoBehaviour:
   hideControllerOnAttach: 0
   handAnimationOnPickup: 0
   setRangeOfMotionOnPickup: -1
-  useHandObjectAttachmentPoint: 1
+  useHandObjectAttachmentPoint: 0
   attachEaseIn: 0
   snapAttachEaseInCurve:
     serializedVersion: 2
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffefbea063cab884ca33e5a449e5c22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentFlags: 80
+  attachmentFlags: 81
   attachmentOffset: {fileID: 0}
   catchingSpeedThreshold: -1
   releaseVelocityStyle: 3
@@ -579,8 +579,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.022921085, y: 0.023385407, z: 0.000000010822234}
-    m_Extent: {x: 0.35254592, y: 0.09212239, z: 0.001163368}
+    m_Center: {x: -0.022921085, y: 0.023385415, z: -0.000000013551308}
+    m_Extent: {x: 0.35254598, y: 0.09212245, z: 0.0011657776}
   m_DirtyAABB: 0
 --- !u!183 &183854206254259392
 Cloth:
