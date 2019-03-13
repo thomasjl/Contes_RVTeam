@@ -39,7 +39,7 @@ public class Medaillon : MonoBehaviour {
 
     private void OnGrab(Hand hand)
     {
-        StartCoroutine(UpdateOnGrab());
+        StartCoroutine(UpdateOnGrab(hand));
         // Enable cloth.
         if (!cloth.enabled)
             cloth.enabled = true;
@@ -52,13 +52,13 @@ public class Medaillon : MonoBehaviour {
         canOpen = true;
     }
 
-    IEnumerator UpdateOnGrab()
+    IEnumerator UpdateOnGrab(Hand hand)
     {
         while (true)
         {
             UpdateThorns();
             UpdateSound();
-            if (Mathf.Abs(GetComponent<Rigidbody>().angularVelocity.x) > 6)
+            if (Mathf.Abs(GetComponent<Rigidbody>().angularVelocity.x) > 6 || hand.GetGrabStarting() == GrabTypes.Grip)
                 ToggleOpen();
             yield return null;
         }
@@ -104,6 +104,10 @@ public class Medaillon : MonoBehaviour {
         }, delegate
         {
             this.Timer(.5f, delegate { canOpen = true; });
+            if (!open)
+                cache.localEulerAngles = Vector3.zero;
+            else
+                cache.localEulerAngles = openRotation;
         });
         canOpen = false;
     }

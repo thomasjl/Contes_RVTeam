@@ -1,12 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 
-public class TriangleExplosion : MonoBehaviour
-{
+public class TriangleExplosion : MonoBehaviour {
 
-    public IEnumerator SplitMesh(bool destroy)
+
+    public void Explode(bool destroy)
+    {
+        StartCoroutine(SplittingMesh(destroy));
+    }
+
+    IEnumerator SplittingMesh(bool destroy)
     {
 
         if (GetComponent<MeshFilter>() == null || GetComponent<SkinnedMeshRenderer>() == null)
@@ -42,14 +46,13 @@ public class TriangleExplosion : MonoBehaviour
         Vector3[] verts = M.vertices;
         Vector3[] normals = M.normals;
         Vector2[] uvs = M.uv;
-      
-         
+
+
         for (int submesh = 0; submesh < M.subMeshCount; submesh++)
         {
-            
             int[] indices = M.GetTriangles(submesh);
             Debug.Log("nombre de triangles " + indices.Length);
-           
+
             for (int i = 0; i < indices.Length; i += 3)
             {
                 Vector3[] newVerts = new Vector3[3];
@@ -84,8 +87,8 @@ public class TriangleExplosion : MonoBehaviour
                 // GO.AddComponent<Rigidbody>().AddExplosionForce(Random.Range(5f, 10f), explosionPos, 0.5f);
 
                 GO.AddComponent<Rigidbody>();
-                GO.GetComponent<Rigidbody>().AddForce(Vector3.forward*Random.Range(50f,1000f));
-               // GO.GetComponent<Rigidbody>().useGravity = true;
+                GO.GetComponent<Rigidbody>().AddForce(Vector3.forward * Random.Range(50f, 1000f));
+                // GO.GetComponent<Rigidbody>().useGravity = true;
                 //GO.GetComponent<Rigidbody>().AddForce(Vector3.forward*2);
 
                 //GO.AddComponent<Rigidbody>().AddForce(Vector3.forward*25, ForceMode.Force);
@@ -95,9 +98,9 @@ public class TriangleExplosion : MonoBehaviour
 
 
             }
-            
+
         }
-        
+
 
         GetComponent<Renderer>().enabled = false;
 
@@ -106,8 +109,5 @@ public class TriangleExplosion : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
-
-
 }

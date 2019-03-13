@@ -234,4 +234,5 @@ MonoBehaviour:
   RecursionLimit: 5
   RecursionRenderTextureSizeReducerPower: 0.9
   RenderTextureFormat: 0
+  currentReflectingCamera: {fileID: 0}
   singlePassStereo: 0

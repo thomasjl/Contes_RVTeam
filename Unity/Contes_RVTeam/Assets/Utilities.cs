@@ -183,4 +183,14 @@ public static class Utilities {
     {
         return (number >= a && number <= b) || (number <= a && number >= b);
     }
+
+    /// <summary>
+    /// Maps a value going from -1 to 1 to a value going from 0 to 1.
+    /// </summary>
+    /// <param name="value">Value to remap</param>
+    /// <returns></returns>
+    public static float To01(this float value)
+    {
+        return (value + 1) * .5f;
+    }
 }
