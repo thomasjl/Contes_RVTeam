@@ -25,8 +25,6 @@ GameObject:
   - component: {fileID: 114157525018085486}
   - component: {fileID: 114879602366042082}
   - component: {fileID: 33047757792246796}
-  - component: {fileID: 65004579589502450}
-  - component: {fileID: 65049158992985480}
   m_Layer: 0
   m_Name: Hache
   m_TagString: Hache
@@ -44,6 +42,8 @@ GameObject:
   - component: {fileID: 4716201906037090}
   - component: {fileID: 33644902864875446}
   - component: {fileID: 23715694102044428}
+  - component: {fileID: 65848276059307102}
+  - component: {fileID: 65326080243727280}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1219556499204916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.86, y: 0, z: 2.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4716201906037090}
@@ -71,13 +71,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1683197037201702}
-  m_LocalRotation: {x: 0.00000008146034, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.33525112, y: -0.6184462, z: -0.33870932, w: 0.62482566}
+  m_LocalPosition: {x: -0.022, y: 0.036, z: -0.035}
   m_LocalScale: {x: 0.26975, y: 0.26975, z: 0.26975}
   m_Children: []
   m_Father: {fileID: 4126103722826864}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270.588, z: 303.077}
 --- !u!23 &23715694102044428
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -142,30 +142,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65004579589502450
+--- !u!65 &65326080243727280
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1219556499204916}
+  m_GameObject: {fileID: 1683197037201702}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.64, z: 0.09}
-  m_Center: {x: 0.01, y: 0.09, z: 0}
---- !u!65 &65049158992985480
+  m_Size: {x: 0.32386366, y: 2.1272585, z: 0.28797224}
+  m_Center: {x: -0.018042447, y: 0.30498064, z: 0.0055336743}
+--- !u!65 &65848276059307102
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1219556499204916}
+  m_GameObject: {fileID: 1683197037201702}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.17, y: 0.2, z: 0.09}
-  m_Center: {x: 0.17, y: 0.29, z: 0}
+  m_Size: {x: 0.7634262, y: 0.718397, z: 0.28797224}
+  m_Center: {x: 0.5150077, y: 1.0857466, z: 0.005533212}
 --- !u!114 &114157525018085486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,13 +177,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffefbea063cab884ca33e5a449e5c22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attachmentFlags: 80
+  attachmentFlags: 81
   attachmentOffset: {fileID: 0}
   catchingSpeedThreshold: -1
   releaseVelocityStyle: 3
   releaseVelocityTimeOffset: -0.011
   scaleReleaseVelocity: 1.1
-  restoreOriginalParent: 0
+  restoreOriginalParent: 1
   onPickUp:
     m_PersistentCalls:
       m_Calls: []
@@ -213,7 +213,7 @@ MonoBehaviour:
   hideControllerOnAttach: 0
   handAnimationOnPickup: 0
   setRangeOfMotionOnPickup: -1
-  useHandObjectAttachmentPoint: 1
+  useHandObjectAttachmentPoint: 0
   attachEaseIn: 0
   snapAttachEaseInCurve:
     serializedVersion: 2
