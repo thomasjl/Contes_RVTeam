@@ -1,18 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using PostProcess;
 
 public class PlayerPostProcess : MonoBehaviour {
 
     PostProcessProfile profile;
     ColorGrading colorGrading;
     Vignette vignette;
+    BlinkEffect blink;
 
     public float StartHueshift { get; private set; }
     public float HueShift { get { return colorGrading.hueShift.value; } set { colorGrading.hueShift.value = value; } }
     public float StartVignetteStrength { get; private set; }
     public float VignetteStrength { get { return vignette.intensity.value; } set { vignette.intensity.value = value; } }
 
-    public static PlayerPostProcess Instance{ get; private set; }
+    public static PlayerPostProcess Instance { get; private set; }
 
     private void Awake()
     {
@@ -21,6 +23,15 @@ public class PlayerPostProcess : MonoBehaviour {
         profile.TryGetSettings(out vignette);
         StartHueshift = HueShift;
         StartVignetteStrength = vignette.intensity;
+        blink = GetComponent<BlinkEffect>();
         Instance = this;
+    }
+
+    public void PlayBlinkFadeOut(float time, System.Action endAction)
+    {
+        this.ProgressionAnim(time, delegate (float progression)
+        {
+            blink.time = progression;
+        }, endAction);
     }
 }
