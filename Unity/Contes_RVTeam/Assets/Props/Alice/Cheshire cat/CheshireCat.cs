@@ -74,14 +74,6 @@ public class CheshireCat : MonoBehaviour {
     {
         Teleport();
 
-        // Start the video at the first frame.
-        playerA.clip = startVideos[0];
-        startVideos.RemoveAt(0);
-        playerA.Play();
-        playerA.Pause();
-        playerA.frame = 1;
-        playerA.Prepare();
-
         Potion.ScaledNormal += Talk;
         cat.gameObject.SetActive(false);
     }
@@ -90,6 +82,14 @@ public class CheshireCat : MonoBehaviour {
     {
         spawned = true;
         cat.gameObject.SetActive(true);
+
+        // Start the video at the first frame.
+        playerA.clip = startVideos[0];
+        startVideos.RemoveAt(0);
+        playerA.Play();
+        playerA.Pause();
+        playerA.frame = 1;
+        playerA.Prepare();
     }
 
     public void Teleport()
