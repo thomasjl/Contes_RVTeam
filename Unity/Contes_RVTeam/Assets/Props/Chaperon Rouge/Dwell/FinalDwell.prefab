@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1258551932429454
 GameObject:
   m_ObjectHideFlags: 1
@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 4946922050217770}
   - component: {fileID: 135472707118683404}
   - component: {fileID: 114506311545196860}
+  - component: {fileID: 82987451466745344}
   m_Layer: 0
   m_Name: Dwell axis
   m_TagString: Untagged
@@ -341,23 +342,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1369059804340000}
-  m_LocalRotation: {x: 1.5390368e-15, y: 0.00000003774895, z: 1, w: 0.00000004371139}
-  m_LocalPosition: {x: -0.207, y: 0.087, z: -0.623}
+  m_LocalRotation: {x: 0.11099846, y: 0.000000029802326, z: 0.9938206, w: 0.000000029802326}
+  m_LocalPosition: {x: 0.153, y: 0.087, z: -0.558}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4723816064589602}
   m_Father: {fileID: 4414502650584222}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 12.746, z: -179.99998}
 --- !u!4 &4414502650584222
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1023571885629494}
-  m_LocalRotation: {x: 0.56496096, y: 0.42522833, z: 0.42522833, w: 0.56496096}
-  m_LocalPosition: {x: -0.329, y: -1.8, z: -0.92}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.56719, y: 0.42225072, z: 0.4222507, w: 0.5671899}
+  m_LocalPosition: {x: -0.092, y: -2.214, z: -0.957}
+  m_LocalScale: {x: 1.5279, y: 1.5279, z: 1.5279}
   m_Children:
   - {fileID: 4395756922636312}
   - {fileID: 4946922050217770}
@@ -368,7 +369,7 @@ Transform:
   - {fileID: 4304502023283304}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 16.668001, y: 90.00001, z: 90.00001}
 --- !u!4 &4502120861871838
 Transform:
   m_ObjectHideFlags: 1
@@ -404,7 +405,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1958151528776486}
   m_LocalRotation: {x: 0.7071067, y: 9.4913735e-15, z: 6.017164e-15, w: 0.70710695}
-  m_LocalPosition: {x: -0, y: 0.901, z: -0}
+  m_LocalPosition: {x: -0, y: 0.977, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4550186223084714}
@@ -429,13 +430,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1258551932429454}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.06986173, y: -0.78848857, z: 0.0026893043, w: 0.6110629}
+  m_LocalPosition: {x: -0.0888, y: 0.025, z: -0.0452}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4395756922636312}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.142, y: -104.727005, z: -6.1610003}
 --- !u!4 &4762477425216238
 Transform:
   m_ObjectHideFlags: 1
@@ -457,7 +458,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1739391995349474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.873, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4762477425216238}
@@ -936,6 +937,101 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 2.7118676, z: 0.1}
   m_Center: {x: 0, y: -0.40138662, z: 0}
+--- !u!82 &82987451466745344
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1544418464725282}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b984051f952797e41a5f98e0c81a4522, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0.5
+  MaxDistance: 2
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.62459564
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.3333334
+      outSlope: -1.3333334
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114076807129982334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1027,6 +1123,7 @@ MonoBehaviour:
   attachCollider: {fileID: 135472707118683404}
   bucket: {fileID: 4888237881915056}
   bucketLimit: {fileID: 65496216507346410}
+  well: {fileID: 82987451466745344}
 --- !u!114 &114770001904514664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1102,5 +1199,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.32
   m_Center: {x: 0, y: 0, z: -0.48}
