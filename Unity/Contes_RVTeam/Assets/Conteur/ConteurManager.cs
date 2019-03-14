@@ -9,13 +9,8 @@ public class ConteurManager : MonoBehaviour {
     public ComArduino arduino;
     public Slider timer;
 
-    [HideInInspector]
-    public Chaperon chaperon;
 
-    private MaisonChaperon maisonChaperon;
     public static ConteurManager instance;
-    public GameObject footprintArbre;
-    public GameObject footprintPuit;
 
 
     void Awake()
@@ -29,21 +24,18 @@ public class ConteurManager : MonoBehaviour {
 
         DontDestroyOnLoad(this.gameObject);
 
-        chaperon = GameObject.Find("Chaperon").GetComponent<Chaperon>();
-        maisonChaperon = MaisonChaperon.instance;
-
     }
 
     private void LaunchChoicesRoom1()
     {
-        StartCoroutine(LaunchTimer( 3f, GetChoicesRoom1));
+        StartCoroutine(LaunchTimer( 1f, GetChoicesRoom1));
     }
-    private void LaunchChoicesRoom2()
+    public void LaunchChoicesRoom2()
     {
         StartCoroutine(LaunchTimer(30f, GetChoicesRoom2));
     }
 
-    private void LaunchChoicesRoom3()
+    public void LaunchChoicesRoom3()
     {
         StartCoroutine(LaunchTimer(30f, GetChoicesRoom3));
     }
@@ -60,66 +52,62 @@ public class ConteurManager : MonoBehaviour {
         else
         {
             choices.Add(4);
-            choices.Add(8);
-            choices.Add(12);
+            choices.Add(6);
+            choices.Add(10);
         }
 
-        if (choices[0] == 2)
-        {
-            chaperon.SetFirstChoice(2);
-            footprintArbre.SetActive(true);
-            footprintPuit.SetActive(false);
-        }
-        else if (choices[0] == 4)
-        {
-            chaperon.SetFirstChoice(4);
-            footprintArbre.SetActive(false);
-            footprintPuit.SetActive(true);
-        }
-        else
-        {
-            chaperon.SetFirstChoice(2);
-        }
-
-        if (choices[1] == 6)
-        {
-            maisonChaperon.SetSecondChoice(6);
-        }
-        else if (choices[1] == 8)
-        {
-            maisonChaperon.SetSecondChoice(8);
-        }
-        else
-        {
-            maisonChaperon.SetSecondChoice(6);
-        }
-
-        if (choices[2] == 10)
-        {
-            MailBox.instance.SetPaperMaterial(MailBox.PaperType.JabberWocky);
-        }
-        else if(choices[2] == 12)
-        {
-            MailBox.instance.SetPaperMaterial(MailBox.PaperType.Poison);
-        }
-        else
-        {
-            MailBox.instance.SetPaperMaterial(MailBox.PaperType.JabberWocky);
-
-        }
+        InterractionManager.instance.setChoicesRoom(choices);
 
     }
 
+    
     void GetChoicesRoom2()
     {
         List<int> choices = arduino.GetChoices();
+
+        if (arduino.arduinoEnable)
+        {
+            choices = arduino.GetChoices();
+
+        }
+        else
+        {
+            choices.Add(2);
+            choices.Add(6);
+            choices.Add(10);
+        }
+
+        //change scene
+        InterractionManager.instance.LaunchNextScene();
         
+        //set interactions room2
+        InterractionManager.instance.setChoicesRoom(choices);
+
     }
 
     void GetChoicesRoom3()
     {
         List<int> choices = arduino.GetChoices();
+
+        if (arduino.arduinoEnable)
+        {
+            choices = arduino.GetChoices();
+
+        }
+        else
+        {
+            choices.Add(2);
+            choices.Add(6);
+            choices.Add(10);
+        }
+
+        //change scene
+        InterractionManager.instance.LaunchNextScene();
+
+        //set interactions room2
+        InterractionManager.instance.setChoicesRoom(choices);
     }
+    
 
     IEnumerator LaunchTimer(float secondesRemaining, System.Action methode)
     {

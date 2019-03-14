@@ -8,8 +8,12 @@ public class LanterneFlame : MonoBehaviour {
     new Light light;
     public Color Color{ get; private set; }
 
+
+    public static LanterneFlame instance;
+
     private void Awake()
     {
+        instance = this;
         particleSystems = GetComponentsInChildren<ParticleSystem>();
         light = GetComponentInChildren<Light>();
         SetColor(startColor);

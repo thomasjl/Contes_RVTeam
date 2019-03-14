@@ -12,6 +12,7 @@ public class Footprint : MonoBehaviour
     private float maxDist;
     private Renderer rend;
 
+
     private void Start()
     {
         lanterne = GameObject.FindGameObjectWithTag("Lanterne");
@@ -19,6 +20,7 @@ public class Footprint : MonoBehaviour
         rend = GetComponent<Renderer>();
 
         rend.material = outOfRangeFootprint;
+
     }
 
 

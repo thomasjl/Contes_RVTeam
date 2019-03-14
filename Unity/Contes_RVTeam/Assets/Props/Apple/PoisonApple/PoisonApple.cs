@@ -15,7 +15,7 @@ public class PoisonApple : MonoBehaviour {
     [SerializeField]
     float blinkValue = .5f;
     [SerializeField]
-    SceneAsset sceneToLoad;
+    string sceneToLoad="Waiting room introOutro";
 
 
     private void Awake()
@@ -36,8 +36,8 @@ public class PoisonApple : MonoBehaviour {
     {
         // Make the poison effect and load the next scene.
         PlayerPostProcess.Instance.PlayPoison(3, colorFilter);
-        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.Blink = progression * blinkValue; });
-        this.Timer(5, delegate { SceneManager.LoadSceneAsync(sceneToLoad.name); });
+        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.Blink = Mathf.Lerp(0,blinkValue,progression); });
+        this.Timer(5, delegate { SceneManager.LoadSceneAsync(sceneToLoad); });
     }
 
     private void Update()

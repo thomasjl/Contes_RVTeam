@@ -11,23 +11,23 @@ public class Wolf : MonoBehaviour {
     public void Start()
     {
         Invoke("LaunchGrognement1", 30f);
-        Invoke("LaunchGrognement1", 70f);
-        Invoke("LaunchGrognement1", 120f);
+        Invoke("LaunchHurlement", 70f);
+        Invoke("LaunchGrognement2", 120f);
     }
 
     private void LaunchGrognement1()
     {
-        grognement1.Play();
+        StartCoroutine(AudioController.FadeIn(grognement1, 0.5f));
     }
 
     private void LaunchHurlement()
     {
-        hurlement.Play();
+        StartCoroutine(AudioController.FadeIn(hurlement, 2f));
     }
 
     private void LaunchGrognement2()
     {
-        grognement2.Play();
+        StartCoroutine(AudioController.FadeIn(grognement2, 0.5f));
     }
 
 

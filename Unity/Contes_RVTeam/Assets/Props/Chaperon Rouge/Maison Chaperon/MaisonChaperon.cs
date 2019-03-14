@@ -30,7 +30,7 @@ public class MaisonChaperon : MonoBehaviour {
         givenObject = 0;
         objectGiven = false;
 
-        GiveItem(ObjectDropper.ObjectType.Hache);
+        //GiveItem(ObjectDropper.ObjectType.Hache);
     }
 
     public void SetSecondChoice(int choice)
@@ -53,7 +53,7 @@ public class MaisonChaperon : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {       
-        if (other.gameObject.CompareTag("HeadCollider") && givenObject != 0 && !objectGiven && ConteurManager.instance.chaperon.isEquiped)
+        if (other.gameObject.CompareTag("HeadCollider") && givenObject != 0 && !objectGiven && Chaperon.instance.isEquiped)
         {           
             if (givenObject == 6)
             {
