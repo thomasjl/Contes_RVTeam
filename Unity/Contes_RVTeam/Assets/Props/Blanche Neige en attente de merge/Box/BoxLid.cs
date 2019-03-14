@@ -22,6 +22,7 @@ public class BoxLid : MonoBehaviour {
     {
         if (circularDrive.outAngle.IsBetween(minMaxOpened.x, minMaxOpened.y))
         {
+            OnScreenPrinter.Print("open");
             if (Opened != null)
                 Opened();
         }

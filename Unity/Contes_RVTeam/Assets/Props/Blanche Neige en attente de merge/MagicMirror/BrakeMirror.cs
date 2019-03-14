@@ -11,11 +11,11 @@ public class BrakeMirror : MonoBehaviour {
     public Texture2D screenShot;
     public GameObject mirrorBroken;
     private Camera mirrorCamera;
-    private GameObject mirror;
+   // private GameObject mirror;
 
     private MagicMirrorScript mirrorScript;
 
-    public RawImage rawimage;
+  
 
     [SerializeField]
     bool canBreak = true;
@@ -31,7 +31,8 @@ public class BrakeMirror : MonoBehaviour {
     private void Awake()
     {
         mirrorScript = GetComponent<MagicMirrorScript>();
-        mirror = transform.parent.GetChild(1).gameObject;
+        //mirror = transform.parent.GetChild(1).gameObject;
+        
         rend = GetComponent<Renderer>();
         startSpecArea = rend.material.GetFloat("_SpecularArea");
         startSpecIntensity = rend.material.GetFloat("_SpecularIntensity");
@@ -42,6 +43,7 @@ public class BrakeMirror : MonoBehaviour {
         if (broken)
             return;
 
+        /*
         mirrorCamera = mirrorScript.currentReflectingCamera;
 
         RenderTexture rt = new RenderTexture(resWidth, resHeight, 24);
@@ -57,18 +59,21 @@ public class BrakeMirror : MonoBehaviour {
         Destroy(rt);
 
         mirrorBroken.GetComponent<Renderer>().material.SetTexture("_MainTex", screenShot);
-        mirror.GetComponent<Renderer>().enabled = false;
+        //mirror.GetComponent<Renderer>().enabled = false;
+
+    */
         mirrorScript.enabled = false;
 
         mirrorBroken.GetComponent<TriangleExplosion>().Explode(true);
         GetComponent<Renderer>().enabled = false;
 
-        ShowWebcamMirror();
-        //Invoke("ShowWebcamMirror", 0.5f);
+        MagicMirrorInteraction.instance.ShowWebcamMirror();
+
+      //  ShowWebcamMirror();
+       // Invoke("ShowWebcamMirror", 0.5f);
 
         broken = true;
     }
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -101,13 +106,5 @@ public class BrakeMirror : MonoBehaviour {
         rend.material.SetFloat("_SpecularIntensity", Mathf.Lerp(startSpecIntensity, 2, intensity));
     }
 
-    WebCamTexture webcamTexture;
-    public void ShowWebcamMirror()
-    {
-        rawimage.enabled = true;
-        webcamTexture = new WebCamTexture();
-        rawimage.texture = webcamTexture;
-        rawimage.material.mainTexture = webcamTexture;
-        webcamTexture.Play();
-    }
+   
 }

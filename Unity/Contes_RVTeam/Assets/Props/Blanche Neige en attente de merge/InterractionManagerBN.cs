@@ -13,6 +13,7 @@ public class InterractionManagerBN : InterractionManager
     [SerializeField]
     string badOutro = "BadOutro";
 
+
     private List<int> choicesBN;
 
     public override void LaunchGoodOutro()
@@ -21,9 +22,11 @@ public class InterractionManagerBN : InterractionManager
 
     }
 
+
+
     private void Start()
     {
-        setChoicesRoom(new List<int> { 2, 6, 10 });
+        setChoicesRoom(new List<int> { 4, 8,12 });
     }
 
     public override void setChoicesRoom(List<int> choices)
@@ -34,15 +37,26 @@ public class InterractionManagerBN : InterractionManager
         {
             //table ecrivain
             TableScenery.Instance.SetScenery(TableScenery.SceneryType.Writer);
+
+            //pomme sur table
+            AppleInteraction.Instance.SetPoisonAppleInteraction(AppleInteraction.AppleInterraction.PoisonApple);
+
+
         }
         else if (choices[0] == 4)
         {
             //table sorciere
             TableScenery.Instance.SetScenery(TableScenery.SceneryType.Witch);
+
+            //pomme dans boite
+            AppleInteraction.Instance.SetPoisonAppleInteraction(AppleInteraction.AppleInterraction.BoxApple);
+
         }
         else
         {
             TableScenery.Instance.SetScenery(TableScenery.SceneryType.Writer);
+            AppleInteraction.Instance.SetPoisonAppleInteraction(AppleInteraction.AppleInterraction.PoisonApple);
+
         }
 
         if (choices[1] == 6)
@@ -55,6 +69,7 @@ public class InterractionManagerBN : InterractionManager
         {
             //Casser le mirroir
             MagicMirrorInteraction.instance.SetMirror(MagicMirrorInteraction.MirrorType.ToBrake);
+            Debug.Log("to brake");
         }
         else
         {

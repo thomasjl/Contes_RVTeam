@@ -41,15 +41,17 @@ public class PlayerPostProcess : MonoBehaviour {
 
     public void PlayPoison(float transitionDuration, Color targetColor)
     {
-        Debug.Log("transisition");
+        
         this.ProgressionAnim(transitionDuration, delegate (float progression)
         {
+            //Debug.Log("progression "+ progression);
             ColorFilter = Color.Lerp(StartColorFilter, targetColor, progression);
         });
     }
 
     public void PlayRemede(float transitionDuration)
     {
+        Debug.Log("remede");
         StopAllCoroutines();
         Color currentColorVignette = ColorFilter;
         this.ProgressionAnim(transitionDuration, delegate (float progression)
