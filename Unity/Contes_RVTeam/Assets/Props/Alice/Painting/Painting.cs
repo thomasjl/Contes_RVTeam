@@ -23,7 +23,7 @@ public class Painting : MonoBehaviour {
             return rend.material.GetColor("_Color").a;
         }
         set {
-            //rend.material.SetColor("_Color", new Color(1, 1, 1, value));
+            rend.material.SetColor("_Color", new Color(1, 1, 1, value));
         }
     }
 

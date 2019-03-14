@@ -58,7 +58,6 @@ public class Footprint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Lanterne"))
         {
-            Debug.Log("trigger exit");
             rend.material = outOfRangeFootprint;
             StopAllCoroutines();
         }

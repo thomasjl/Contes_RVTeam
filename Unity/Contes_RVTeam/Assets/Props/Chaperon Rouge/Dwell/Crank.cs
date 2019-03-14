@@ -60,8 +60,11 @@ public class Crank : MonoBehaviour {
 
     public void UseAsCrank(CircularDrive.Axis_t axis)
     {
-        leaf.GetComponent<Leaves>().showParticle = false;
-        Destroy(leaf,1.5f);
+        if (leaf.GetComponent<Leaves>())
+        {
+            leaf.GetComponent<Leaves>().showParticle = false;
+            Destroy(leaf, 1.5f);
+        }
         // Remove the throwable behaviour and setup the crank behaviour.
         if (IsGrabbed)
             Interactable.attachedToHand.DetachObject(gameObject);

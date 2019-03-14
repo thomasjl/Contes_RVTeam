@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using Valve.VR.InteractionSystem;
@@ -28,7 +27,8 @@ public class CheshireCat : MonoBehaviour {
     [SerializeField]
     float playerDistance = 2;
     [SerializeField]
-    List<VideoClip> startVideos = new List<VideoClip>();
+    VideoClip startVideo;
+    bool playedStart;
     [SerializeField]
     VideoClip[] randomVideos;
 
@@ -84,8 +84,7 @@ public class CheshireCat : MonoBehaviour {
         cat.gameObject.SetActive(true);
 
         // Start the video at the first frame.
-        playerA.clip = startVideos[0];
-        startVideos.RemoveAt(0);
+        playerA.clip = startVideo;
         playerA.Play();
         playerA.Pause();
         playerA.frame = 1;
@@ -103,13 +102,8 @@ public class CheshireCat : MonoBehaviour {
         if (!spawned)
             return;
         LookAt(Player.instance.headCollider.transform.position);
-        if (startVideos.Count > 1 && Vector3.Distance(Target, cat.position) < playerDistance)
-            SayStartSentence();
-    }
-
-    void SayStartSentence()
-    {
-        StartCoroutine(PlayStartVideos());
+        if (!playedStart && Vector3.Distance(Target, cat.position) < playerDistance)
+            PlayStartVideo();
     }
 
     void Talk()
@@ -132,29 +126,13 @@ public class CheshireCat : MonoBehaviour {
         rightEye.localPosition = rightEye.localPosition.SetX(newRightX);
     }
 
-    IEnumerator PlayStartVideos()
+    void PlayStartVideo()
     {
         PlayPreparedClip();
-        PrepareClip(startVideos[0]);
-        startVideos.RemoveAt(0);
-        while (aPlays || bPlays || !aPrepared || !bPrepared)
-            yield return null;
-        yield return new WaitForSeconds(1);
-
-        PlayPreparedClip();
-        PrepareClip(startVideos[0]);
-        startVideos.RemoveAt(0);
-        while (aPlays || bPlays || !aPrepared || !bPrepared)
-            yield return null;
-        yield return new WaitForSeconds(1);
-
-        PlayPreparedClip();
-        while (aPlays || bPlays)
-            yield return null;
-
         lastVideo = Utilities.ExclusiveRange(0, randomVideos.Length, lastVideo);
         PrepareClip(randomVideos[lastVideo]);
     }
+
 
     IEnumerator PlayRandomVideo()
     {

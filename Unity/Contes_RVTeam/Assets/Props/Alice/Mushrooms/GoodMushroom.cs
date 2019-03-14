@@ -1,10 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 public class GoodMushroom : Mushroom {
 
     [SerializeField]
     float sizeFactor = 3;
+
+    public static List<GoodMushroom> mushrooms = new List<GoodMushroom>();
+
+    protected override void Awake()
+    {
+        base.Awake();
+        mushrooms.Add(this);
+    }
 
     protected override void OnConsumed()
     {
@@ -19,5 +28,16 @@ public class GoodMushroom : Mushroom {
                 CheshireCat.Instance.Spawn();
         });
         Lanterne.instance.PlayColorAnim(duration, Color.white);
+    }
+
+    private void OnDestroy()
+    {
+        mushrooms.Remove(this);
+        if (mushrooms.Count < 1)
+        {
+            GameObject newMush = Instantiate(gameObject);
+            newMush.transform.position = Vector3.up * .3f;
+            newMush.SetActive(true);
+        }
     }
 }

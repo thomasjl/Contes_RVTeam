@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.contes_rvteam.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\Charlotte\\Desktop\\Conte_RVTeam\\Contes_RVTeam\\Unity\\Contes_RVTeam\\actions.json",
+      "action_manifest_path": "C:\\Users\\simon\\Documents\\Projet RVTeam\\Contes_RVTeam\\Unity\\Contes_RVTeam\\actions.json",
       "strings": {
         "en_us": {
           "name": "Contes_RVTeam [Testing]"

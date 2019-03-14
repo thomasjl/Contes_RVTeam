@@ -48,16 +48,27 @@ public class ComArduino : MonoBehaviour {
             arduinoEnable = false;
 
         }
-        
+
 
     }
 
     private void Start()
     {
         choiceDone = false;
+
+        StartCoroutine(UpdateLoop());
     }
 
-    private void Update()
+    IEnumerator UpdateLoop()
+    {
+        while (true)
+        {
+            MakeUpdate();
+            yield return new WaitForSeconds(.5f);
+        }
+    }
+
+    private void MakeUpdate()
     {
 
         if (sp.IsOpen)
@@ -119,9 +130,9 @@ public class ComArduino : MonoBehaviour {
             }
         }
 
-        if(!choiceDone && (button2 || button4) && (button6 || button6) && (button10|| button12))
+        if (!choiceDone && (button2 || button4) && (button6 || button6) && (button10 || button12))
         {
-            if(onConteurHasChoose!=null)
+            if (onConteurHasChoose != null)
             {
                 onConteurHasChoose();
             }
@@ -161,11 +172,11 @@ public class ComArduino : MonoBehaviour {
         Debug.Log("get choices");
         List<int> result = new List<int>();
 
-        if(button2)
+        if (button2)
         {
             result.Add(2);
         }
-        else if(button4)
+        else if (button4)
         {
             result.Add(4);
         }
@@ -174,7 +185,7 @@ public class ComArduino : MonoBehaviour {
             //default value
             result.Add(2);
             sp.Write("2");
-        }        
+        }
 
         if (button6)
         {

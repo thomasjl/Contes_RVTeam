@@ -71,13 +71,11 @@ public class PaintingInteractable : MonoBehaviour {
 
     void EnableGrab()
     {
-        print("enabe");
         if (isGrabbable)
             interactable.SetGrabEnabled(true);
     }
     void DisableGrab()
     {
-        print("disab");
         if (isGrabbable)
             interactable.SetGrabEnabled(false);
     }

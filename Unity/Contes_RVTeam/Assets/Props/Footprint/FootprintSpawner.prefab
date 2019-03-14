@@ -1500,9 +1500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7a920cfdbae2f458bb8e05a28e083e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftFoot: {fileID: 1372302523621326, guid: c281c8ecc56d0214b964866611786fa6, type: 2}
-  rightFoot: {fileID: 1524053396309836, guid: cfb0a2514f25f7d4094ccff76ed99778, type: 2}
-  amount: 12
 --- !u!114 &114220391620963198
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1626,10 +1623,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b154883273c2845f39445c8015d81639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points:
-  - {x: 1, y: 0, z: 0}
-  - {x: 2, y: 0, z: 0}
-  - {x: 3, y: 0, z: 1.0274092}
-  - {x: 4, y: 0, z: 0.0069499016}
-  modes: 0000000000000000
-  loop: 0
