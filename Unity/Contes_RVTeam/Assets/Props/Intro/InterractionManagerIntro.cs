@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class InterractionManagerIntro : InterractionManager {
@@ -28,5 +26,4 @@ public class InterractionManagerIntro : InterractionManager {
     {
         PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(nextScene); }); });
     }
-
 }
