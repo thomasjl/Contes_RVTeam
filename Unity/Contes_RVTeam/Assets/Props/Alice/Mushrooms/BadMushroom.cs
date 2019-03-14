@@ -6,6 +6,10 @@ public class BadMushroom : Mushroom {
     [SerializeField]
     float minHueChange = 30;
 
+    public enum Action { Colors, Levitation }
+    public static Action action;
+
+
     protected override void OnConsumed()
     {
         if (BadMushroomsManager.instance)

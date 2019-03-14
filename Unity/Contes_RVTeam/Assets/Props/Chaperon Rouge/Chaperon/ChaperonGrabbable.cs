@@ -28,6 +28,7 @@ public class ChaperonGrabbable : MonoBehaviour {
     private void Awake()
     {
         Rb = GetComponent<Rigidbody>();
+        Rb.isKinematic = true;  
         Interactable = GetComponent<Interactable>();
         throwable = GetComponent<Throwable>();
         cloth = GetComponentInChildren<Cloth>();

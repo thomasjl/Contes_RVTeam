@@ -3,12 +3,21 @@ using Valve.VR.InteractionSystem;
 
 public class Respawner : MonoBehaviour {
 
+    bool canRespaw = false;
+    private void Start()
+    {
+        this.Timer(5, delegate { canRespaw = true; });
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
+        if (!canRespaw)
+            return;
         Interactable interactable = other.GetComponent<Interactable>();
         if (!interactable)
             interactable = other.GetComponentInParent<Interactable>();
-        if (interactable)
+        if (interactable && !interactable.IsGrabbed())
             this.Timer(4, delegate { Respawn(interactable); });
     }
 
