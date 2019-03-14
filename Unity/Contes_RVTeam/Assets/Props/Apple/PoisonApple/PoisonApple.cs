@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PoisonApple : MonoBehaviour {
 
@@ -14,30 +15,57 @@ public class PoisonApple : MonoBehaviour {
     Color colorFilter = new Color(.5f, 1, .5f);
     [SerializeField]
     float blinkValue = .5f;
-    [SerializeField]
-    string sceneToLoad="Waiting room introOutro";
+
+    public static PoisonApple instance;
+
+    public bool remedPresent;
 
 
     private void Awake()
     {
+        instance = this;
         GetComponent<Comestible>().Consumed += OnConsumed;
         SetAlpha(0);
+        remedPresent = false;
     }
 
-    void Start()
-    {
-        this.Timer(2, delegate
-        {
-            OnConsumed();
-        });
-    }
-
+    
     void OnConsumed()
+    {        
+        // Make the poison effect
+        PlayerPostProcess.Instance.PlayPoison(8, colorFilter);        
+
+        //Wait for remede
+        StartCoroutine(WaitForRemede());
+        //this.Timer(5, delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
+    }
+
+    IEnumerator WaitForRemede()
     {
-        // Make the poison effect and load the next scene.
-        PlayerPostProcess.Instance.PlayPoison(3, colorFilter);
-        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.Blink = Mathf.Lerp(0,blinkValue,progression); });
-        this.Timer(5, delegate { SceneManager.LoadSceneAsync(sceneToLoad); });
+        int timer = 9;
+        if(remedPresent)
+        {
+            while (timer > 0)
+            {
+                yield return new WaitForSeconds(1);
+                timer--;
+            }
+        }
+       
+
+        //remede not found
+        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression); });
+        InterractionManagerBN.instance.LaunchBadOutro();
+
+    }
+
+    public void RemedeFound()
+    {
+        //found Remede
+        StopAllCoroutines();
+        
+        //reset normal vignette
+        PlayerPostProcess.Instance.PlayRemede(3);
     }
 
     private void Update()

@@ -18,6 +18,12 @@ public class ComArduino : MonoBehaviour {
     public bool arduinoEnable = true;
 
 
+    public bool choiceDone;
+
+    public delegate void OnConteurHasChoose();
+    public static event OnConteurHasChoose onConteurHasChoose;
+
+
     private void Awake()
     {
         try
@@ -46,6 +52,10 @@ public class ComArduino : MonoBehaviour {
 
     }
 
+    private void Start()
+    {
+        choiceDone = false;
+    }
 
     private void Update()
     {
@@ -108,6 +118,15 @@ public class ComArduino : MonoBehaviour {
                 //Debug.LogException(e, this);
             }
         }
+
+        if(!choiceDone && (button2 || button4) && (button6 || button6) && (button10|| button12))
+        {
+            if(onConteurHasChoose!=null)
+            {
+                onConteurHasChoose();
+            }
+            choiceDone = true;
+        }
     }
 
     public void ErraseLed()
@@ -128,6 +147,7 @@ public class ComArduino : MonoBehaviour {
     {
         Debug.Log("enableChoices");
         sp.Write("E");
+        choiceDone = false;
     }
 
     public void DisableLed()

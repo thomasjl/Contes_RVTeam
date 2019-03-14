@@ -14,7 +14,7 @@ public class InterractionManagerAttente1 : InterractionManager
     {
         StartCoroutine(AudioController.FadeIn(ambianceSound, 1f));
 
-        ConteurManager.instance.LaunchChoicesRoom2();
+        ConteurManager.instance.LaunchChoices();
     }
 
     public override void LaunchNextScene()

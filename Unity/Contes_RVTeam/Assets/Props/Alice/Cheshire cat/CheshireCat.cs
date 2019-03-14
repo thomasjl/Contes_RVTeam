@@ -42,7 +42,9 @@ public class CheshireCat : MonoBehaviour {
     bool bPrepared;
 
     Vector3 Target { get { return Player.instance.headCollider.transform.position; } }
+    bool spawned;
 
+    public static CheshireCat Instance { get; private set; }
 
     private void Awake()
     {
@@ -64,11 +66,22 @@ public class CheshireCat : MonoBehaviour {
         {
             bPrepared = true;
         };
+
+        Instance = this;
     }
 
     private void Start()
     {
         Teleport();
+
+        Potion.ScaledNormal += Talk;
+        cat.gameObject.SetActive(false);
+    }
+
+    public void Spawn()
+    {
+        spawned = true;
+        cat.gameObject.SetActive(true);
 
         // Start the video at the first frame.
         playerA.clip = startVideos[0];
@@ -77,8 +90,6 @@ public class CheshireCat : MonoBehaviour {
         playerA.Pause();
         playerA.frame = 1;
         playerA.Prepare();
-
-        Potion.ScaledNormal += Talk;
     }
 
     public void Teleport()
@@ -89,6 +100,8 @@ public class CheshireCat : MonoBehaviour {
 
     private void Update()
     {
+        if (!spawned)
+            return;
         LookAt(Player.instance.headCollider.transform.position);
         if (startVideos.Count > 1 && Vector3.Distance(Target, cat.position) < playerDistance)
             SayStartSentence();
