@@ -17,4 +17,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Final/Room3.unity
     guid: b0dbdce6a683fbd44887cc4871c65390
+  - enabled: 1
+    path: Assets/Final/Attente1.unity
+    guid: cbffa6aff60091241abe12eab2b92795
+  - enabled: 1
+    path: Assets/Final/Attente2.unity
+    guid: 03fb7baa7b08e7148a3557e0f7085924
+  - enabled: 1
+    path: Assets/Final/BadOutro.unity
+    guid: 73840f0fe80294c4bb883882db646dd2
+  - enabled: 1
+    path: Assets/Final/Credit.unity
+    guid: cf044f271025e1e4fa02042aa10435af
+  - enabled: 1
+    path: Assets/Final/GoodOutro.unity
+    guid: c82cbb7432e6a5444910297d733d9449
   m_configObjects: {}
