@@ -36,7 +36,7 @@ public class PoisonApple : MonoBehaviour {
     {
         // Make the poison effect and load the next scene.
         PlayerPostProcess.Instance.PlayPoison(3, colorFilter);
-        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.Blink = Mathf.Lerp(0,blinkValue,progression); });
+        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0,blinkValue,progression); });
         this.Timer(5, delegate { SceneManager.LoadSceneAsync(sceneToLoad); });
     }
 

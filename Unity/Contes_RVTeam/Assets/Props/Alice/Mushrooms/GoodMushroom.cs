@@ -14,6 +14,9 @@ public class GoodMushroom : Mushroom {
         {
             Player.instance.transform.localScale = Vector3.one;
             Player.instance.transform.position = Vector3.zero;
+
+            if (Crown.Instance.IsEquipped || Scepter.Instance.IsEquipped)
+                CheshireCat.Instance.Spawn();
         });
         Lanterne.instance.PlayColorAnim(duration, Color.white);
     }

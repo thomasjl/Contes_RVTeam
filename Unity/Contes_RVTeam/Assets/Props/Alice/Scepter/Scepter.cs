@@ -5,11 +5,22 @@ public class Scepter : MonoBehaviour {
 
     Interactable interactable;
     public bool ScaledDown { get; private set; }
+    public bool IsEquipped { get; private set; }
+
+
+    public static Scepter Instance { get; private set; }
 
     private void Awake()
     {
-        GetComponent<PaintingInteractable>().Detached += ListenToPotions;
+        GetComponent<PaintingInteractable>().Detached += OnDetached;
         interactable = GetComponent<Interactable>();
+        Instance = this;
+    }
+
+    void OnDetached()
+    {
+        ListenToPotions();
+        IsEquipped = true;
     }
 
     void ListenToPotions()

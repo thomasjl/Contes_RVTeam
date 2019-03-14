@@ -1,8 +1,7 @@
-﻿Shader "Custom/ChatMasked" {
+﻿Shader "Custom/NewSurfaceShader" {
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
-		_MaskTex ("Albedo (RGB)", 2D) = "white" {}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 	}
@@ -16,13 +15,11 @@
 
 		// Use shader model 3.0 target, to get nicer looking lighting
 		#pragma target 3.0
-		
+
 		sampler2D _MainTex;
-		sampler2D _MaskTex;
 
 		struct Input {
 			float2 uv_MainTex;
-			float2 uv_MaskTex;
 		};
 
 		half _Glossiness;
@@ -43,8 +40,7 @@
 			// Metallic and smoothness come from slider variables
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
-			fixed4 a = tex2D (_MaskTex, IN.uv_MaskTex);
-			o.Alpha = 0;
+			o.Alpha = c.a;
 		}
 		ENDCG
 	}
