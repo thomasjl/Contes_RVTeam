@@ -10,11 +10,22 @@ public class Painting : MonoBehaviour {
     Renderer rend;
     [SerializeField]
     Transform paintingObjects;
+    float DistanceFromHeadset { get { return Vector3.Distance(transform.position, Player.instance.headCollider.transform.position); } }
     float AlphaFromDirection { get { return 1 - Vector3.Dot(transform.forward, Player.instance.headCollider.transform.forward).Remap(.8f, 1, 0, 1); } }
+    float AlphaFromDirectionCompensated { get { return DistanceFromHeadset < .3f ? 0 : AlphaFromDirection; } }
 
     public delegate void PaintingEventHandler();
     public event PaintingEventHandler Shown;
     public event PaintingEventHandler Hidden;
+
+    float PaintingAlpha {
+        get {
+            return rend.material.GetColor("_Color").a;
+        }
+        set {
+            //rend.material.SetColor("_Color", new Color(1, 1, 1, value));
+        }
+    }
 
     private void Awake()
     {
@@ -36,7 +47,7 @@ public class Painting : MonoBehaviour {
             StopAllCoroutines();
             this.ProgressionAnim(1, delegate (float progression)
             {
-                SetAlpha(Mathf.Lerp(GetAlpha(), AlphaFromDirection, progression));
+                PaintingAlpha = Mathf.Lerp(PaintingAlpha, AlphaFromDirectionCompensated, progression);
             }, delegate
             {
                 StartCoroutine(UpdatePainting());
@@ -52,9 +63,9 @@ public class Painting : MonoBehaviour {
         if (other.gameObject.CompareTag("HeadCollider"))
         {
             StopAllCoroutines();
-            this.ProgressionAnim(.2f, delegate (float progression)
+            this.ProgressionAnim(.1f, delegate (float progression)
             {
-                SetAlpha(Mathf.Lerp(AlphaFromDirection, 1, progression));
+                PaintingAlpha = Mathf.Lerp(AlphaFromDirectionCompensated, 1, progression);
             },
             delegate
             {
@@ -70,7 +81,7 @@ public class Painting : MonoBehaviour {
     {
         while (true)
         {
-            SetAlpha(AlphaFromDirection);
+            PaintingAlpha = AlphaFromDirectionCompensated;
             yield return null;
         }
     }
@@ -82,15 +93,5 @@ public class Painting : MonoBehaviour {
             parent.GetChild(i).gameObject.layer = state ? LayerMask.NameToLayer("Hidden") : 0;
             SetChildrenHiddenFromCamera(parent.GetChild(i), state);
         }
-    }
-
-    void SetAlpha(float alpha)
-    {
-        rend.material.SetColor("_Color", new Color(1, 1, 1, alpha));
-    }
-
-    float GetAlpha()
-    {
-        return rend.material.GetColor("_Color").a;
     }
 }

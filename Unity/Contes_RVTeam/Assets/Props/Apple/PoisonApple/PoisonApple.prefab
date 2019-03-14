@@ -350,6 +350,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minLanterneDistance: 0.4
   deathSymbol: {fileID: 23124656035649562}
+  colorFilter: {r: 0.5, g: 1, b: 0.5, a: 1}
+  blinkValue: 0.3
+  sceneToLoad: {fileID: 102900000, guid: f2189a57f6de3034da206320ff003afb, type: 3}
 --- !u!114 &114375010266132916
 MonoBehaviour:
   m_ObjectHideFlags: 1

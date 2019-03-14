@@ -315,8 +315,9 @@ GameObject:
   - component: {fileID: 4607834799682762}
   - component: {fileID: 114956019789379356}
   - component: {fileID: 114058456796696458}
-  - component: {fileID: 54663488744568512}
   - component: {fileID: 135989701322540656}
+  - component: {fileID: 54913822123820630}
+  - component: {fileID: 135161692481418996}
   m_Layer: 0
   m_Name: Lanterne
   m_TagString: Lanterne
@@ -370,8 +371,6 @@ GameObject:
   - component: {fileID: 114257768925159350}
   - component: {fileID: 124847870237892538}
   - component: {fileID: 114423196464439380}
-  - component: {fileID: 114514532353640276}
-  - component: {fileID: 114446918947538246}
   m_Layer: 0
   m_Name: VRCamera
   m_TagString: MainCamera
@@ -618,8 +617,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364319207805668}
-  m_LocalRotation: {x: -0, y: -0.2347534, z: -0, w: 0.97205496}
-  m_LocalPosition: {x: 0, y: -0.059, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 1.122, y: -0.059, z: -0.055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4944045481267146}
@@ -631,7 +630,7 @@ Transform:
   - {fileID: 4607834799682762}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4165029628857190
 Transform:
   m_ObjectHideFlags: 1
@@ -1330,21 +1329,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1790308177559026}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54663488744568512
-Rigidbody:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1462602620066152}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!54 &54796200771274950
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -1355,6 +1339,21 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54913822123820630
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462602620066152}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -1771,33 +1770,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &114446918947538246
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570792935490656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27940773f06f1454a95a7cc91eb761b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114514532353640276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1570792935490656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 12afcb1c3053f784ebbca37a6b2f410f, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!114 &114576462359270002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1857,7 +1829,6 @@ MonoBehaviour:
   - {fileID: 4583479248634720}
   hands:
   - {fileID: 114334653645002006}
-  - {fileID: 114226798104866234}
   headCollider: {fileID: 135246171541841002}
   rigSteamVR: {fileID: 1449582206976136}
   rig2DFallback: {fileID: 1928823977381786}
@@ -2034,6 +2005,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1570792935490656}
   m_Enabled: 1
+--- !u!135 &135161692481418996
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1462602620066152}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135246171541841002
 SphereCollider:
   m_ObjectHideFlags: 1

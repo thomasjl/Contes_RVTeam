@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class SmallDoor : MonoBehaviour {
 
     [SerializeField]
-    SceneAsset sceneToLoad;
+    string sceneToLoad= "Waiting room introOutro";
 
     [SerializeField]
     Transform scepterParent;
@@ -64,6 +64,6 @@ public class SmallDoor : MonoBehaviour {
 
     void NextScene()
     {
-        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(sceneToLoad.name); }); });
+        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(sceneToLoad); }); });
     }
 }

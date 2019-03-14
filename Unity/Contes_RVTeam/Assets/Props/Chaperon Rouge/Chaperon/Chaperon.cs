@@ -19,7 +19,16 @@ public class Chaperon : MonoBehaviour {
 
     public bool isEquiped;
 
-   
+
+    public static Chaperon instance;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+
 
     private void Start()
     {

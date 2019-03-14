@@ -5,6 +5,8 @@ public class Crown : MonoBehaviour {
 
     [SerializeField]
     float headYOffset = .05f;
+    [SerializeField]
+    float scaleOnHead = .8f;
     public bool IsEquipped { get; private set; }
 
     public static Crown Instance { get; private set; }
@@ -24,6 +26,7 @@ public class Crown : MonoBehaviour {
             transform.parent = collision.transform;
             transform.localPosition = Vector3.up * headYOffset;
             transform.localRotation = Quaternion.identity;
+            transform.localScale = Vector3.one * scaleOnHead;
             IsEquipped = true;
         }
     }
