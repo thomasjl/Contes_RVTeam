@@ -25,5 +25,8 @@ public class Lift : MonoBehaviour {
 
         transform.Translate(Vector3.up * velocity * Time.deltaTime);
         Player.instance.transform.position = Player.instance.transform.position.SetY(transform.position.y);
+
+        if (transform.position.y >= targetY)
+            this.enabled = false;
     }
 }
