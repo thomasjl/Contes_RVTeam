@@ -47,8 +47,7 @@ public class Comestible : MonoBehaviour {
             {
                 if (destroyInTheEnd)
                     Destroy(gameObject);
-                else
-                    activate.SetActive(false);
+                
             }
             lastConsume = Time.time;
         }

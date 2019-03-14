@@ -7,7 +7,7 @@ public class PlayerPostProcess : MonoBehaviour {
     PostProcessProfile profile;
     ColorGrading colorGrading;
     Vignette vignette;
-    BlinkEffect Blink{ get{ return BlinkEffect.Instance; } }
+    BlinkEffect Blink { get { return BlinkEffect.Instance; } }
 
     public float StartHueshift { get; private set; }
     public float HueShift { get { return colorGrading.hueShift.value; } set { colorGrading.hueShift.value = value; } }
@@ -18,6 +18,7 @@ public class PlayerPostProcess : MonoBehaviour {
     public float BlinkTime { get { return Blink.time; } set { Blink.time = value; } }
 
     public static PlayerPostProcess Instance { get; private set; }
+
 
     private void Awake()
     {
@@ -40,9 +41,20 @@ public class PlayerPostProcess : MonoBehaviour {
 
     public void PlayPoison(float transitionDuration, Color targetColor)
     {
+        Debug.Log("transisition");
         this.ProgressionAnim(transitionDuration, delegate (float progression)
         {
             ColorFilter = Color.Lerp(StartColorFilter, targetColor, progression);
+        });
+    }
+
+    public void PlayRemede(float transitionDuration)
+    {
+        StopAllCoroutines();
+        Color currentColorVignette = ColorFilter;
+        this.ProgressionAnim(transitionDuration, delegate (float progression)
+        {
+            ColorFilter = Color.Lerp(currentColorVignette, StartColorFilter, progression);
         });
     }
 }

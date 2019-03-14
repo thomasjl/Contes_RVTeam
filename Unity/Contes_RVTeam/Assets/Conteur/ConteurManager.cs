@@ -12,6 +12,8 @@ public class ConteurManager : MonoBehaviour {
 
     public static ConteurManager instance;
 
+    public int idRoom;
+
 
     void Awake()
     {
@@ -20,12 +22,36 @@ public class ConteurManager : MonoBehaviour {
 
     private void Start()
     {
-        LaunchChoicesRoom1();
+        //LaunchChoicesRoom1();
 
         DontDestroyOnLoad(this.gameObject);
+        idRoom = 1;
 
+        ComArduino.onConteurHasChoose += FinishChoice;
+
+        LaunchChoices();
     }
 
+    private void FinishChoice()
+    {
+        if(idRoom==1)
+        {
+            StartCoroutine(LaunchTimer(5f, GetChoicesRoom1));
+        }
+        else if(idRoom==2)
+        {
+            StartCoroutine(LaunchTimer(5f, GetChoicesRoom2));
+        }
+        else if(idRoom==3)
+        {
+
+            StartCoroutine(LaunchTimer(1f, GetChoicesRoom3));
+        }
+
+        idRoom++;
+    }
+
+    /*
     private void LaunchChoicesRoom1()
     {
         StartCoroutine(LaunchTimer( 1f, GetChoicesRoom1));
@@ -39,7 +65,7 @@ public class ConteurManager : MonoBehaviour {
     {
         StartCoroutine(LaunchTimer(30f, GetChoicesRoom3));
     }
-
+    */
     void GetChoicesRoom1()
     {
         List<int> choices = new List<int>();
@@ -85,6 +111,15 @@ public class ConteurManager : MonoBehaviour {
 
     }
 
+    public void LaunchChoices()
+    {
+        if (arduino.arduinoEnable)
+        {
+            arduino.ErraseLed();
+            arduino.EnableLed();
+        }
+    }
+
     void GetChoicesRoom3()
     {
         List<int> choices = arduino.GetChoices();
@@ -114,13 +149,14 @@ public class ConteurManager : MonoBehaviour {
         timer.gameObject.SetActive(true);
         timer.value = 1f;
         float startTimer = secondesRemaining;
-
+        /*
         if(arduino.arduinoEnable)
         {
 
             arduino.ErraseLed();
             arduino.EnableLed();
         }
+        */
 
         while (secondesRemaining>0)
         {

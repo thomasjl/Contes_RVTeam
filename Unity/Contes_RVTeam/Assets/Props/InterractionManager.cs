@@ -39,5 +39,15 @@ public class InterractionManager : MonoBehaviour {
         return null;
     }
 
+    public virtual void LaunchGoodOutro()
+    {
+
+    }
+
+    public virtual void LaunchBadOutro()
+    {
+
+    }
+
 
 }
