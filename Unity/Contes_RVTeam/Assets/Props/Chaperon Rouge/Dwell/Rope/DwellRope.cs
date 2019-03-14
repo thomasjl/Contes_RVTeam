@@ -45,7 +45,7 @@ public class DwellRope : MonoBehaviour {
         // Animate the rope.
         rope.position = dwellAxis.Bucket.position;
         rope.rotation = ropeStartRot;
-        rope.localScale = Vector3.one.SetZ(Vector3.Distance(rope.position, transform.position)/ rope.lossyScale.x);
+        rope.localScale = Vector3.one.SetZ(Vector3.Distance(rope.position, transform.position) / rope.lossyScale.x);
         ropeRend.material.SetTextureScale("_MainTex", new Vector2(ropeStartTiling, ropeStartTiling * rope.localScale.z));
         // Animate the winding rope.
         ropeWinding.localScale = ropeWinding.localScale.SetY(Mathf.Lerp(windingRopeMinScale, windingRopeStartScale, dwellAxis.Progression));
