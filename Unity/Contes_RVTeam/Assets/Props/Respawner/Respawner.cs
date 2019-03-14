@@ -7,7 +7,7 @@ public class Respawner : MonoBehaviour {
     {
         Interactable interactable = other.GetComponent<Interactable>();
         if (!interactable)
-            interactable = GetComponentInParent<Interactable>();
+            interactable = other.GetComponentInParent<Interactable>();
         if (interactable)
             this.Timer(4, delegate { Respawn(interactable); });
     }
