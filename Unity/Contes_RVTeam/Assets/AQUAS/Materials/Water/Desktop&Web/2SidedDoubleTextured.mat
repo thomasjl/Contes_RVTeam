@@ -4,7 +4,7 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 2SidedDoubleTextured
   m_Shader: {fileID: 4800000, guid: 1b0823c1bf94a994fa77a8d001b740f7, type: 3}

@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Unlit_SpecialFX_Liquid
+  m_Name: but
   m_Shader: {fileID: 4800000, guid: 2214f83bd5415674a933f46e68e23e1b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -29,7 +29,7 @@ Material:
     - _WobbleX: 0
     - _WobbleZ: 0
     m_Colors:
-    - _FoamColor: {r: 0, g: 1, b: 0.9896784, a: 1}
-    - _RimColor: {r: 0.504717, g: 0.94981474, b: 1, a: 1}
-    - _Tint: {r: 0, g: 0.97121596, b: 1, a: 0.5372549}
-    - _TopColor: {r: 0, g: 1, b: 0.8462274, a: 1}
+    - _FoamColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+    - _RimColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 1}
+    - _Tint: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0.5372549}
+    - _TopColor: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}

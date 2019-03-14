@@ -4,13 +4,14 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: River
   m_Shader: {fileID: 4800000, guid: 4ad3a40692e960b4bbd3671032b4845e, type: 3}
   m_ShaderKeywords: _ENABLEREFLECTIONS_ON
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -39,7 +40,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _FlowMap:
         m_Texture: {fileID: 2800000, guid: 28e63d2f1fe331d44b01555f4176afb8, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.1, y: 0.1}
         m_Offset: {x: 0, y: 0}
     - _FoamTexture:
         m_Texture: {fileID: 2800000, guid: 199d83fd2aca7214481411272c61f368, type: 3}
@@ -84,7 +85,7 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _Density: 4.23
+    - _Density: 7.17
     - _DepthTransparency: 4.26
     - _DetailNormalMapScale: 1
     - _DistanceTilingFade: 1.2
@@ -121,7 +122,7 @@ Material:
     - _NormalTiling: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ReflectionIntensity: 0.301
+    - _ReflectionIntensity: 0.119
     - _Refraction: 0.67
     - _RefractionDistance: 0
     - _RefractionFalloff: 0
@@ -129,7 +130,7 @@ Material:
     - _ShoreTransparency: 0.5
     - _SmallWaveRrefraction: 1.38
     - _SmallWavesSpeed: -60
-    - _SmallWavesTiling: 1500
+    - _SmallWavesTiling: 1
     - _Specular: 1
     - _SrcBlend: 1
     - _UVSec: 0
@@ -144,7 +145,7 @@ Material:
     - _node_8159: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepWaterColor: {r: 0, g: 0.095892414, b: 0.22794116, a: 1}
+    - _DeepWaterColor: {r: 0.08810966, g: 0.22341365, b: 0.41509432, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 0.3823529, g: 0.3879758, b: 0.3879758, a: 1}
     - _FogColor: {r: 0.8014706, g: 0.8014706, b: 0.8014706, a: 1}
