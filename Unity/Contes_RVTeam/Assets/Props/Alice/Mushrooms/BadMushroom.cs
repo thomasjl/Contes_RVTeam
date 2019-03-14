@@ -12,20 +12,18 @@ public class BadMushroom : Mushroom {
 
     protected override void OnConsumed()
     {
-        if (BadMushroomsManager.instance)
-            switch (BadMushroomsManager.instance.action)
-            {
-                case BadMushroomsManager.Action.Colors:
-                    Colors();
-                    break;
-                case BadMushroomsManager.Action.Levitation:
-                    Levitation();
-                    break;
-                default:
-                    break;
-            }
-        else
-            Colors();
+        
+        switch (action)
+        {
+            case Action.Colors:
+                Colors();
+                break;
+            case Action.Levitation:
+                Levitation();
+                break;
+            default:
+                break;
+        }
     }
 
     void Levitation()
