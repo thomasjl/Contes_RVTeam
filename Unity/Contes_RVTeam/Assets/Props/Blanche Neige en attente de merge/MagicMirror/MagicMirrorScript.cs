@@ -152,10 +152,22 @@ namespace DigitalRuby.MagicMirror
             {
                 return null;
             }
+
             ReflectionCameraInfo cam = CreateReflectionCamera(sourceCamera, isReflection);
+
+            
             RenderReflectionCamera(cam);
+            if(cam==null)
+            {
+                return null;
+            }
+                
             currentReflectingCamera = cam.ReflectionCamera;
             return cam;
+           
+
+
+
         }
 
         public Camera CameraRenderingReflection(Camera sourceCamera)

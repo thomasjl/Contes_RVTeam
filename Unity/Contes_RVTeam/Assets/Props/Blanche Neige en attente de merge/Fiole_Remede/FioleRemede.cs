@@ -2,15 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class FioleRemede : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public static FioleRemede instance;
+
+    private void Start()
+    {
+        instance = this;
+        transform.GetChild(0).gameObject.SetActive(false);
+
+        transform.GetChild(0).gameObject.GetComponent<Comestible>().Consumed += FioleUsed;
+    }
+
+    public void SpawnFiole()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void FioleUsed()
+    {
+        PoisonApple.instance.RemedeFound();
+    }
+
 }

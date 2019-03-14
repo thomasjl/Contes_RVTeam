@@ -23,8 +23,19 @@ public class MirrorMissingPiece : MonoBehaviour {
             missingPiece.GetComponent<Rigidbody>().isKinematic = true;
             missingPiece.transform.localPosition = Vector3.zero;
             missingPiece.transform.localRotation = Quaternion.identity;
+
+           // GetComponent<Renderer>().enabled = false;
+            /*
             foreach (GameObject objectToHide in objectsToHide)
+            {
                 objectToHide.SetActive(true);
+            }
+            */
+
+            MagicMirrorInteraction.instance.ShowWebcamMirror();
+
         }
     }
+
+
 }

@@ -20,6 +20,7 @@ public class PoisonApple : MonoBehaviour {
 
     public bool remedPresent;
 
+    private bool hasEatenApple;
 
     private void Awake()
     {
@@ -27,40 +28,51 @@ public class PoisonApple : MonoBehaviour {
         GetComponent<Comestible>().Consumed += OnConsumed;
         SetAlpha(0);
         remedPresent = false;
+        hasEatenApple = false;
     }
 
     
     void OnConsumed()
     {        
-        // Make the poison effect
-        PlayerPostProcess.Instance.PlayPoison(8, colorFilter);        
+        if(!hasEatenApple)
+        {
+            hasEatenApple = true;
 
-        //Wait for remede
-        StartCoroutine(WaitForRemede());
-        //this.Timer(5, delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
+            // Make the poison effect
+            PlayerPostProcess.Instance.PlayPoison(8, colorFilter);
+
+            //Wait for remede
+            StartCoroutine(WaitForRemede());
+
+
+            //this.Timer(5, delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
+
+        }
     }
 
+    
     IEnumerator WaitForRemede()
     {
+        //spawn remede
+        FioleRemede.instance.SpawnFiole();
+
         int timer = 9;
-        if(remedPresent)
-        {
-            while (timer > 0)
-            {
-                yield return new WaitForSeconds(1);
-                timer--;
-            }
-        }
        
+        while (timer > 0)
+        {
+            yield return new WaitForSeconds(1);
+            timer--;
+        }       
 
         //remede not found
-        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression); });
-        InterractionManagerBN.instance.LaunchBadOutro();
-
+        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression); },delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
+        
     }
+    
 
     public void RemedeFound()
     {
+        Debug.Log("remde found");
         //found Remede
         StopAllCoroutines();
         

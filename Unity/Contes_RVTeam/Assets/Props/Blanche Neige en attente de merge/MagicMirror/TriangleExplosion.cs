@@ -16,8 +16,9 @@ public class TriangleExplosion : MonoBehaviour {
 
     IEnumerator SplittingMesh(bool destroy)
     {
-        if (GetComponent<MeshFilter>() == null || GetComponent<SkinnedMeshRenderer>() == null)
-            yield break;
+
+        Debug.Log("splitt");
+      
 
         // Deactivate collider.
         if (GetComponent<Collider>())
@@ -41,12 +42,16 @@ public class TriangleExplosion : MonoBehaviour {
         Vector3[] normals = M.normals;
         Vector2[] uvs = M.uv;
 
+        Debug.Log("nbr triangle "+ M.subMeshCount);
+
         for (int submesh = 0; submesh < M.subMeshCount; submesh++)
         {
             int[] indices = M.GetTriangles(submesh);
 
             for (int i = 0; i < indices.Length; i += 3)
             {
+                
+
                 Vector3[] newVerts = new Vector3[3];
                 Vector3[] newNormals = new Vector3[3];
                 Vector2[] newUvs = new Vector2[3];
