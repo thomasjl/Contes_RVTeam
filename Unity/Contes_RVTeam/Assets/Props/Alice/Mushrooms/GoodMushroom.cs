@@ -33,11 +33,14 @@ public class GoodMushroom : Mushroom {
     private void OnDestroy()
     {
         mushrooms.Remove(this);
-        if (mushrooms.Count < 1)
-        {
-            GameObject newMush = Instantiate(gameObject);
-            newMush.transform.position = Vector3.up * .3f;
-            newMush.SetActive(true);
-        }
+#if  UNITY_EDITOR
+        if (Application.isPlaying)
+            if (mushrooms.Count < 1)
+            {
+                GameObject newMush = Instantiate(gameObject);
+                newMush.transform.position = Vector3.up * .3f;
+                newMush.SetActive(true);
+            }
+#endif
     }
 }
