@@ -35,12 +35,12 @@ public class GoodMushroom : Mushroom {
         mushrooms.Remove(this);
 #if  UNITY_EDITOR
         if (Application.isPlaying)
+#endif
             if (mushrooms.Count < 1)
             {
                 GameObject newMush = Instantiate(gameObject);
                 newMush.transform.position = Vector3.up * .3f;
                 newMush.SetActive(true);
             }
-#endif
     }
 }
