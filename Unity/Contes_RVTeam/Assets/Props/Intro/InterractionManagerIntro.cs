@@ -12,8 +12,8 @@ public class InterractionManagerIntro : InterractionManager {
         Camera.main.backgroundColor = Color.black;
         AudioManager.instance.audioSource.clip = soundR1;
 
-        Invoke("PlaySound", 2f);
-        Invoke("ToNextScene", 5f);
+        Invoke("PlaySound", 10f);
+        Invoke("ToNextScene", 12f);
     }
 
     void PlaySound()

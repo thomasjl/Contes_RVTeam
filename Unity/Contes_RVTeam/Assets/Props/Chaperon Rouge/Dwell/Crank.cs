@@ -60,7 +60,7 @@ public class Crank : MonoBehaviour {
 
     public void UseAsCrank(CircularDrive.Axis_t axis)
     {
-        if (leaf.GetComponent<Leaves>())
+        if (leaf)
         {
             leaf.GetComponent<Leaves>().showParticle = false;
             Destroy(leaf, 1.5f);

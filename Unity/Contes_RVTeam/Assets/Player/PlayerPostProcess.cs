@@ -28,6 +28,7 @@ public class PlayerPostProcess : MonoBehaviour {
         StartHueshift = HueShift;
         StartColorFilter = colorGrading.colorFilter.value;
         StartVignetteStrength = vignette.intensity;
+        BlinkTime = 0;
         Instance = this;
     }
 
