@@ -54,7 +54,6 @@ public class SignsEmissive : MonoBehaviour {
             float ratio = distance / maxDist;
             //Debug.Log("ratio "+ratio);
             //lerp material
-            Debug.Log(gameObject.name +"ratio " + ratio);
 
             rend.material.Lerp(signClosed, signFar, ratio);
 
