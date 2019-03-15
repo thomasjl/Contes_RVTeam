@@ -19,6 +19,7 @@ public class SmallDoor : MonoBehaviour {
     float delayBeforeTransition = 4;
     float openTime = 0;
 
+    public AudioSource audioSource;
 
     public Transform Spawnpoint;
 
@@ -62,6 +63,7 @@ public class SmallDoor : MonoBehaviour {
     {
         animator.SetTrigger("open");
         playerTrigger.enabled = true;
+        audioSource.Play();
         open = true;
         openTime = Time.time;
     }
