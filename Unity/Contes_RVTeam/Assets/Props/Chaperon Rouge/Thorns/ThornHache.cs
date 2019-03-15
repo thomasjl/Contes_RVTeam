@@ -53,8 +53,10 @@ public class ThornHache : MonoBehaviour {
         //transform.GetChild(index).gameObject.AddComponent<Throwable>();
         newSlice.AddForce(currenthache.SliceDirection * 5);
         transform.GetChild(index).parent = null;
-        if (childrenToRemove <= 0)
+        if (childrenToRemove <= 0 || transform.childCount<=1)
+        {
             Clear = true;
+        }
     }
 
 

@@ -10,11 +10,20 @@ public class InterractionManagerAttente1 : InterractionManager
     [SerializeField]
     string nextScene = "Room2";
 
+    public GameObject particle;
+
     private void Start()
     {
+        StartCoroutine(AudioController.FadeOut(AudioManager.instance.audioSource, 1));
         StartCoroutine(AudioController.FadeIn(ambianceSound, 1f));
 
         ConteurManager.instance.LaunchChoices();
+        
+    }
+
+    private void Update()
+    {
+        particle.transform.position = Lanterne.instance.gameObject.transform.position;
     }
 
     public override void LaunchNextScene()

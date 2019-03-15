@@ -2,13 +2,18 @@ using UnityEngine;
 using System.Collections;
 
 
-namespace TMPro.Examples {
+namespace TMPro.Examples
+{
+    
+    public class TeleType : MonoBehaviour
+    {
 
-    public class TeleType : MonoBehaviour {
 
-        new AudioSource audio;
+        //[Range(0, 100)]
+        //public int RevealSpeed = 50;
 
-        TMP_Text m_textMeshPro;
+        private TMP_Text m_textMeshPro;
+
 
         void Awake()
         {
@@ -16,27 +21,20 @@ namespace TMPro.Examples {
             m_textMeshPro = gameObject.GetComponent<TMP_Text>();
             m_textMeshPro.enableWordWrapping = true;
             m_textMeshPro.alignment = TextAlignmentOptions.Top;
-
-            audio = GetComponent<AudioSource>();
         }
 
-        void OnEnable()
-        {
-            StartCoroutine(Animating());
-        }
 
-        IEnumerator Animating()
+        IEnumerator Start()
         {
+
             // Force and update of the mesh to get valid information.
             m_textMeshPro.ForceMeshUpdate();
+
 
             int totalVisibleCharacters = m_textMeshPro.textInfo.characterCount; // Get # of Visible Character in text object
             int counter = 0;
 
-            yield return null;
-            audio.Play();
-
-            while (counter <= totalVisibleCharacters)
+            while (counter<=totalVisibleCharacters)
             {
                 int visibleCount = counter % (totalVisibleCharacters + 1);
 
@@ -50,7 +48,7 @@ namespace TMPro.Examples {
 
                 counter += 1;
 
-                yield return new WaitForSeconds(0.06f);
+                yield return new WaitForSeconds(0.08f);
             }
 
             //Debug.Log("Done revealing the text.");

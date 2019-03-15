@@ -8,34 +8,58 @@ public class Potion : MonoBehaviour {
     [SerializeField]
     float sizeFactor = .3f;
     [SerializeField]
-    float timer = 30;
+    float timer = 10;
 
-    public delegate void PotionEH();
-    public static event PotionEH ScaledNormal;
-    public static event PotionEH ScaledDown;
+    Vector3 ScaleCompensatedPosition { get { return (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * sizeFactor)).SetY(0); } }
+
+    public delegate void EventHandler();
+    public static event EventHandler ScaledNormal;
+    public static event EventHandler ScaledDown;
 
     private void Awake()
     {
         GetComponent<Comestible>().Consumed += PlayEffect;
     }
-    
-    
+
     public void PlayEffect()
     {
-        // Play a timed scale effect on the player.
-        Player.instance.transform.position = (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * sizeFactor)).SetY(0);
-        Player.instance.transform.localScale = Vector3.one * sizeFactor;
-        // Call event.
-        if (ScaledDown != null)
-            ScaledDown();
-        Player.instance.Timer(timer, delegate
+        Vector3 startPosition = Player.instance.transform.position;
+        Player.instance.ProgressionAnim(2, delegate (float progression)
         {
-            Player.instance.transform.localScale = Vector3.one;
-            Player.instance.transform.position = Vector3.zero;
+            // Animate in.
+            Player.instance.transform.position = Vector3.Lerp(startPosition, SmallDoor.instance.Spawnpoint.position, progression);
+            Player.instance.transform.localScale = Mathf.Lerp(1, sizeFactor, progression) * Vector3.one;
+
+        }, delegate
+        {
             // Call event.
-            if (ScaledNormal != null)
-                ScaledNormal();
+            if (ScaledDown != null)
+                ScaledDown();
+            Lanterne.instance.PlayColorAnim(timer, Color.white);
+            Player.instance.Timer(timer, delegate
+            {
+                Player.instance.ProgressionAnim(2, delegate (float progression)
+                {
+                    Player.instance.transform.localScale = Mathf.Lerp(sizeFactor, 1, progression) * Vector3.one;
+                    Player.instance.transform.position = Vector3.Lerp(SmallDoor.instance.Spawnpoint.position, startPosition, progression);
+                }, delegate
+                {
+                    // Call event.
+                    if (ScaledNormal != null)
+                        ScaledNormal();
+                });
+            });
         });
-        Lanterne.instance.PlayColorAnim(timer, Color.white);
+
+
+
+
+        StartCoroutine(SpawnNewPotion());
+    }
+
+    IEnumerator SpawnNewPotion()
+    {
+        yield return new WaitForSeconds(10);
+        Table.Instance.AddPotion();
     }
 }

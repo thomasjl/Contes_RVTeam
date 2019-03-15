@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InterractionManagerAlice : InterractionManager
 {
     public AudioSource ambianceSound;
+    public string nextScene = "Attente2";
 
     [SerializeField]
     Color newColor = new Color(0, 0.4251068f, 1f);
@@ -16,7 +18,10 @@ public class InterractionManagerAlice : InterractionManager
         //change lanternFlame color
         LanterneFlame.instance.SetColor(newColor);
 
-        setChoicesRoom(new List<int> { 4, 6, 10 });
+
+        setChoicesRoom(ConteurManager.instance.choices);
+
+        //setChoicesRoom(new List<int> { 2, 6, 10 });
     }
 
     public override void setChoicesRoom(List<int> choices)
@@ -26,20 +31,25 @@ public class InterractionManagerAlice : InterractionManager
         if (choices[0] == 2)
         {
             //scepter appear
-            Crown.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(true);
-            Scepter.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(false);
+            Crown.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(false);
+            Scepter.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(true);
+
+            SoldatDeCarte.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
         }
         else if(choices[0] == 4)
         {
             //couronne appear
-            Crown.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(false);
-            Scepter.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(true);
+            Crown.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(true);
+            Scepter.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(false);
         }
         else
         {
-            Crown.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(true);
-            Scepter.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(false);
+            Crown.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(false);
+            Scepter.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(true);
+
+            SoldatDeCarte.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+
         }
 
         if (choices[1] == 6)
@@ -75,5 +85,10 @@ public class InterractionManagerAlice : InterractionManager
         }
 
 
+    }
+
+    public override void LaunchNextScene()
+    {
+        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(nextScene); }); });
     }
 }

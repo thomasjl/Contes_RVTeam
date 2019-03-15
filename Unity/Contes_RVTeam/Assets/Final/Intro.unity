@@ -695,3 +695,54 @@ MonoBehaviour:
   actorIsInScene: 0
   soundR1: {fileID: 8300000, guid: e8b8f439c0593b24992ccc99c8cb404c, type: 3}
   nextScene: Room1
+--- !u!1001 &1622639002
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 224404692343066432, guid: aa1dcd7270906e440a6430cb45e80c38,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613016033391694, guid: aa1dcd7270906e440a6430cb45e80c38, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 547.34766
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613016033391694, guid: aa1dcd7270906e440a6430cb45e80c38, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 383.82703
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613016033391694, guid: aa1dcd7270906e440a6430cb45e80c38, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -58.33492
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613016033391694, guid: aa1dcd7270906e440a6430cb45e80c38, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613016033391694, guid: aa1dcd7270906e440a6430cb45e80c38, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613016033391694, guid: aa1dcd7270906e440a6430cb45e80c38, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613016033391694, guid: aa1dcd7270906e440a6430cb45e80c38, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613016033391694, guid: aa1dcd7270906e440a6430cb45e80c38, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254271090418542, guid: aa1dcd7270906e440a6430cb45e80c38, type: 2}
+      propertyPath: m_Name
+      value: ConteurManager (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa1dcd7270906e440a6430cb45e80c38, type: 2}
+  m_IsPrefabAsset: 0

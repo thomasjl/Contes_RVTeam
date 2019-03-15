@@ -13,7 +13,6 @@ public class InterractionManagerIntro : InterractionManager {
         AudioManager.instance.audioSource.clip = soundR1;
 
         Invoke("PlaySound", 10f);
-        Invoke("ToNextScene", 12f);
     }
 
     void PlaySound()
@@ -21,9 +20,10 @@ public class InterractionManagerIntro : InterractionManager {
         StartCoroutine(AudioController.FadeIn(AudioManager.instance.audioSource, 20f));
 
     }
-
-    void ToNextScene()
+    public override void LaunchNextScene()
     {
         PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(nextScene); }); });
+
     }
+   
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
@@ -9,25 +10,54 @@ public class GoodMushroom : Mushroom {
 
     public static List<GoodMushroom> mushrooms = new List<GoodMushroom>();
 
+    private bool FirstEat;
+
     protected override void Awake()
     {
         base.Awake();
         mushrooms.Add(this);
     }
 
+    private void Start()
+    {
+        FirstEat = true;
+    }
+
     protected override void OnConsumed()
     {
-        Player.instance.transform.position = (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * sizeFactor)).SetY(0);
-        Player.instance.transform.localScale = Vector3.one * sizeFactor;
-        Player.instance.Timer(duration, delegate
+        Vector3 startPosition = Player.instance.trackingOriginTransform.position;
+        Vector3 targetPosition = (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * sizeFactor)).SetY(0);
+        Player.instance.ProgressionAnim(2, delegate (float progression)
         {
-            Player.instance.transform.localScale = Vector3.one;
-            Player.instance.transform.position = Vector3.zero;
+            // Animate in.
+            Player.instance.transform.position = Vector3.Lerp(startPosition, targetPosition, progression);
+            Player.instance.transform.localScale = Mathf.Lerp(1, sizeFactor, progression) * Vector3.one;
+        }, delegate
+        {
+            Lanterne.instance.PlayColorAnim(duration, Color.white);
+            Player.instance.Timer(duration, delegate
+            {
+                Player.instance.ProgressionAnim(2, delegate (float progression)
+                {
+                    // Animate out.
+                    Player.instance.transform.localScale = Mathf.Lerp(sizeFactor, 1, progression) * Vector3.one;
+                    Player.instance.transform.position = Vector3.Lerp(targetPosition, startPosition, progression);
 
-            if (Crown.Instance.IsEquipped || Scepter.Instance.IsEquipped)
-                CheshireCat.Instance.Spawn();
+                }, delegate
+                {
+                    if (Crown.Instance.IsEquipped || Scepter.Instance.IsEquipped)
+                        CheshireCat.Instance.Spawn();
+                    Table.Instance.AddPotion();
+                });
+            });
         });
-        Lanterne.instance.PlayColorAnim(duration, Color.white);
+    }
+
+    IEnumerator SpawnFirstPotion()
+    {
+        yield return new WaitForSeconds(2);
+        Debug.Log("passe");
+        Table.Instance.AddPotion();
     }
 
     private void OnDestroy()

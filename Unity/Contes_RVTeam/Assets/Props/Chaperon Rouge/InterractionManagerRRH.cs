@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InterractionManagerRRH : InterractionManager
 {
@@ -11,9 +12,14 @@ public class InterractionManagerRRH : InterractionManager
     
     private List<int> choicesRRH;
 
+
+    public string nextScene = "Attente1";
+
     private void Start()
     {
         actorIsInScene = false;
+        setChoicesRoom(ConteurManager.instance.choices);
+
     }
 
     public override void setChoicesRoom(List<int> choices)
@@ -77,6 +83,11 @@ public class InterractionManagerRRH : InterractionManager
     {
         Debug.Log("passe rrh");
         return choicesRRH;
+    }
+
+    public override void LaunchNextScene()
+    {
+        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(nextScene); }); });
     }
 
 }

@@ -56,9 +56,10 @@ public class ComArduino : MonoBehaviour {
     {
         choiceDone = false;
 
-        StartCoroutine(UpdateLoop());
+        //StartCoroutine(UpdateLoop());
     }
 
+    /*
     IEnumerator UpdateLoop()
     {
         while (true)
@@ -67,10 +68,16 @@ public class ComArduino : MonoBehaviour {
             yield return new WaitForSeconds(.5f);
         }
     }
+    */
 
-    private void MakeUpdate()
+    /*
+private void MakeUpdate()
+{
+    */
+    private void Update()
     {
-
+        
+    
         if (sp.IsOpen)
         {
             try
@@ -130,8 +137,9 @@ public class ComArduino : MonoBehaviour {
             }
         }
 
-        if (!choiceDone && (button2 || button4) && (button6 || button6) && (button10 || button12))
+        if (!choiceDone && (button2 || button4) && (button6 || button8) && (button10 || button12))
         {
+            Debug.Log("conteur a choisi");
             if (onConteurHasChoose != null)
             {
                 onConteurHasChoose();

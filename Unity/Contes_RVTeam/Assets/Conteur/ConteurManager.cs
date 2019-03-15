@@ -9,6 +9,7 @@ public class ConteurManager : MonoBehaviour {
     public ComArduino arduino;
     public Slider timer;
 
+    public List<int> choices;
 
     public static ConteurManager instance;
 
@@ -34,6 +35,7 @@ public class ConteurManager : MonoBehaviour {
 
     private void FinishChoice()
     {
+        Debug.Log("GetChoices "+idRoom);
         if(idRoom==1)
         {
             StartCoroutine(LaunchTimer(5f, GetChoicesRoom1));
@@ -68,7 +70,7 @@ public class ConteurManager : MonoBehaviour {
     */
     void GetChoicesRoom1()
     {
-        List<int> choices = new List<int>();
+       choices = new List<int>();
 
         if (arduino.arduinoEnable)
         {
@@ -82,14 +84,18 @@ public class ConteurManager : MonoBehaviour {
             choices.Add(10);
         }
 
-        InterractionManager.instance.setChoicesRoom(choices);
+        //InterractionManager.instance.setChoicesRoom(choices);
+        InterractionManager.instance.LaunchNextScene();
+
+        
 
     }
 
     
+    
     void GetChoicesRoom2()
     {
-        List<int> choices = arduino.GetChoices();
+        choices = arduino.GetChoices();
 
         if (arduino.arduinoEnable)
         {
@@ -106,8 +112,6 @@ public class ConteurManager : MonoBehaviour {
         //change scene
         InterractionManager.instance.LaunchNextScene();
         
-        //set interactions room2
-        InterractionManager.instance.setChoicesRoom(choices);
 
     }
 
@@ -122,7 +126,7 @@ public class ConteurManager : MonoBehaviour {
 
     void GetChoicesRoom3()
     {
-        List<int> choices = arduino.GetChoices();
+        choices = arduino.GetChoices();
 
         if (arduino.arduinoEnable)
         {
@@ -149,6 +153,8 @@ public class ConteurManager : MonoBehaviour {
         timer.gameObject.SetActive(true);
         timer.value = 1f;
         float startTimer = secondesRemaining;
+
+
         /*
         if(arduino.arduinoEnable)
         {
