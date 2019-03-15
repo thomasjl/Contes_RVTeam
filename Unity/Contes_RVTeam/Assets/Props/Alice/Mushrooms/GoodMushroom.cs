@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
@@ -9,14 +8,14 @@ public class GoodMushroom : Mushroom {
     float sizeFactor = 3;
 
     public static List<GoodMushroom> mushrooms = new List<GoodMushroom>();
-    
+
 
     protected override void Awake()
     {
         base.Awake();
         mushrooms.Add(this);
     }
-    
+
 
     protected override void OnConsumed()
     {
@@ -46,19 +45,13 @@ public class GoodMushroom : Mushroom {
                 });
             });
         });
-    }
-
-    private void OnDestroy()
-    {
-        mushrooms.Remove(this);
-#if  UNITY_EDITOR
-        if (Application.isPlaying)
-#endif
-            if (mushrooms.Count < 1)
-            {
-                GameObject newMush = Instantiate(gameObject);
-                newMush.transform.position = Vector3.up * .3f;
-                newMush.SetActive(true);
-            }
+        // Create another mushroom.
+        if (mushrooms.Count <= 1)
+        {
+            mushrooms.Remove(this);
+            GameObject newMush = Instantiate(gameObject);
+            newMush.transform.position = Vector3.up * .3f;
+            newMush.SetActive(true);
+        }
     }
 }
