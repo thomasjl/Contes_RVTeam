@@ -2,8 +2,8 @@
 
 public class TableScenery : MonoBehaviour {
 
-    [SerializeField]
-    GameObject writerScenery, witchScenery;
+   
+    public GameObject writerScenery, witchScenery;
     public enum SceneryType { Writer, Witch }
 
     public static TableScenery Instance { get; private set; }

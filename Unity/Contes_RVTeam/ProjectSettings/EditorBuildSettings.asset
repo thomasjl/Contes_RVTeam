@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Final/Room1.unity
     guid: 7c865800a052d23439d85aaf30c1749d
   - enabled: 1
-    path: Assets/Final/Room 2.unity
+    path: Assets/Final/Room2.unity
     guid: 49c9c8e577592da419ee1aed2f397614
   - enabled: 1
     path: Assets/Final/Room3.unity

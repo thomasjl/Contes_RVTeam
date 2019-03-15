@@ -9,7 +9,7 @@ public class Crank : MonoBehaviour {
     Rigidbody rb;
     CircularDrive circularDrive;
 
-    private GameObject leaf;
+    //private GameObject leaf;
 
     public bool IsGrabbed { get { return Interactable.attachedToHand != null; } }
     public float LinearMapping {
@@ -44,9 +44,10 @@ public class Crank : MonoBehaviour {
             }
             yield return null;
         }
-        InstantiateParticles();
+        //InstantiateParticles();
     }
 
+    /*
     private void InstantiateParticles()
     {
         if (InterractionManager.instance.GetChoices()[0] == 4)
@@ -57,14 +58,17 @@ public class Crank : MonoBehaviour {
             leaf.GetComponent<Leaves>().showParticle = true;
         }
     }
-
+    */
     public void UseAsCrank(CircularDrive.Axis_t axis)
     {
+        /*
         if (leaf)
         {
             leaf.GetComponent<Leaves>().showParticle = false;
             Destroy(leaf, 1.5f);
         }
+        */
+        
         // Remove the throwable behaviour and setup the crank behaviour.
         if (IsGrabbed)
             Interactable.attachedToHand.DetachObject(gameObject);

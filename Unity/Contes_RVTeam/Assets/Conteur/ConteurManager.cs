@@ -143,8 +143,10 @@ public class ConteurManager : MonoBehaviour {
         //change scene
         InterractionManager.instance.LaunchNextScene();
 
+        /*
         //set interactions room2
         InterractionManager.instance.setChoicesRoom(choices);
+        */
     }
     
 

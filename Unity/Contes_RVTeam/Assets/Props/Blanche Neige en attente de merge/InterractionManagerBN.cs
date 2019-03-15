@@ -22,12 +22,11 @@ public class InterractionManagerBN : InterractionManager
 
     }
 
-
-
     private void Start()
     {
-        setChoicesRoom(new List<int> { 4, 8,12 });
+        setChoicesRoom(ConteurManager.instance.choices);
     }
+
 
     public override void setChoicesRoom(List<int> choices)
     {
@@ -35,27 +34,40 @@ public class InterractionManagerBN : InterractionManager
 
         if (choices[0] == 2)
         {
+            TableScenery.Instance.writerScenery.SetActive(true);
+            TableScenery.Instance.witchScenery.SetActive(false);
+
+            /*
             //table ecrivain
             TableScenery.Instance.SetScenery(TableScenery.SceneryType.Writer);
 
             //pomme sur table
             AppleInteraction.Instance.SetPoisonAppleInteraction(AppleInteraction.AppleInterraction.PoisonApple);
+            */
 
 
         }
         else if (choices[0] == 4)
         {
+            TableScenery.Instance.writerScenery.SetActive(false);
+            TableScenery.Instance.witchScenery.SetActive(true);
+            /*
             //table sorciere
             TableScenery.Instance.SetScenery(TableScenery.SceneryType.Witch);
 
             //pomme dans boite
             AppleInteraction.Instance.SetPoisonAppleInteraction(AppleInteraction.AppleInterraction.BoxApple);
+            */
 
         }
         else
         {
+            /*
             TableScenery.Instance.SetScenery(TableScenery.SceneryType.Writer);
             AppleInteraction.Instance.SetPoisonAppleInteraction(AppleInteraction.AppleInterraction.PoisonApple);
+            */
+            TableScenery.Instance.writerScenery.SetActive(true);
+            TableScenery.Instance.witchScenery.SetActive(false);
 
         }
 

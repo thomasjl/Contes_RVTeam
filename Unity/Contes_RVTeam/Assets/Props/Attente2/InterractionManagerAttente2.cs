@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR.InteractionSystem;
 
 public class InterractionManagerAttente2 : InterractionManager
 {
@@ -12,9 +13,14 @@ public class InterractionManagerAttente2 : InterractionManager
 
     private void Start()
     {
+        Player.instance.StopAllCoroutines();
+
         StartCoroutine(AudioController.FadeIn(ambianceSound, 1f));
 
         ConteurManager.instance.LaunchChoices();
+
+        Player.instance.transform.localScale = Vector3.one;
+        Player.instance.transform.position = Vector3.zero;
     }
 
     public override void LaunchNextScene()

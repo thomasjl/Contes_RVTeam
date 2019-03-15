@@ -212,12 +212,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1365323714602808, guid: a5b45cd5b91bae54fa222acfcfc73b7c, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114801588220389144, guid: a5b45cd5b91bae54fa222acfcfc73b7c,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114012136513274592, guid: a5b45cd5b91bae54fa222acfcfc73b7c,
         type: 2}
@@ -284,6 +284,11 @@ Prefab:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 82723301829994874, guid: a5b45cd5b91bae54fa222acfcfc73b7c,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5b45cd5b91bae54fa222acfcfc73b7c, type: 2}
   m_IsPrefabAsset: 0
@@ -325,6 +330,11 @@ Prefab:
     - target: {fileID: 4096812828446938, guid: 146b6f15167bf4140993dabbc95c5995, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956019789379356, guid: 146b6f15167bf4140993dabbc95c5995,
+        type: 2}
+      propertyPath: index
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 146b6f15167bf4140993dabbc95c5995, type: 2}

@@ -27,6 +27,7 @@ public class Lift : MonoBehaviour {
         velocity += ((circularDrive.outAngle - previousDrive > 3) ? 1 : -1) * Time.deltaTime * accelerationSpeed;
         velocity = Mathf.Clamp(velocity, 0, maxVelocity);
         previousDrive = circularDrive.outAngle;
+        /*
         if (velocity > .1f)
         {
             if (!audio.isPlaying)
@@ -34,6 +35,7 @@ public class Lift : MonoBehaviour {
         }
         else
             audio.Pause();
+            */
 
         transform.Translate(Vector3.up * velocity * Time.deltaTime);
         Player.instance.transform.position = Player.instance.transform.position.SetY(transform.position.y);

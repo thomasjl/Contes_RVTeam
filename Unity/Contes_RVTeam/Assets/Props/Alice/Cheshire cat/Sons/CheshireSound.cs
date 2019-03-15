@@ -20,7 +20,7 @@ public class CheshireSound : MonoBehaviour {
     public void LaunchFirstAudio()
     {
         audioSource.clip = firstAudio;
-        audioSource.volume = 0.5f;
+        audioSource.volume = 0.25f;
         audioSource.Play();
         
 
