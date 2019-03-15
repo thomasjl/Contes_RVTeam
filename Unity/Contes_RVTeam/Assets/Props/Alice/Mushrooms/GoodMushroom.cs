@@ -34,6 +34,7 @@ public class GoodMushroom : Mushroom {
             Player.instance.transform.localScale = Mathf.Lerp(1, sizeFactor, progression) * Vector3.one;
         }, delegate
         {
+            Lanterne.instance.PlayColorAnim(duration, Color.white);
             Player.instance.Timer(duration, delegate
             {
                 Player.instance.ProgressionAnim(2, delegate (float progression)
@@ -46,7 +47,6 @@ public class GoodMushroom : Mushroom {
                 {
                     if (Crown.Instance.IsEquipped || Scepter.Instance.IsEquipped)
                         CheshireCat.Instance.Spawn();
-                    Lanterne.instance.PlayColorAnim(duration, Color.white);
                     Table.Instance.AddPotion();
                 });
             });
