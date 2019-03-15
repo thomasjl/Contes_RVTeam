@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Tea
+  m_Name: Wonderland 1
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 641b33bfa65f0c9488948575273f6058, type: 3}
+        m_Texture: {fileID: 2800000, guid: da3641859a129d449afd26ed2b8b694c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +35,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 43cf0e95ea7263f4786df28bb9a1d0c7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 659dc2b9666e8db49ae7a70ca11d108c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e205f7b98ce9f154984f9ef3429a93a7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2d87120d277cc074eb4da7ec89009979, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: d9949fd4dd8841a4487cd9ffa857f992, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0c3be43a7671180498f3125a991b86a4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 537d9e8c42a25f44eb661a9dd96f725f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 19c6008a94eca6f4ba91296e4b311f9a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -73,4 +73,4 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.69803923, g: 0.69803923, b: 0.69803923, a: 1}
+    - _EmissionColor: {r: 10.680627, g: 10.680627, b: 10.680627, a: 1}

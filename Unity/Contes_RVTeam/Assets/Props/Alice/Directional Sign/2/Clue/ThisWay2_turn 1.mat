@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Tea
+  m_Name: ThisWay2_turn 1
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 2
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 641b33bfa65f0c9488948575273f6058, type: 3}
+        m_Texture: {fileID: 2800000, guid: 119ae08bf0d8f614b806759d6afa4c69, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +35,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 43cf0e95ea7263f4786df28bb9a1d0c7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 39298ec64ae93b04495e9aadabcca8f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e205f7b98ce9f154984f9ef3429a93a7, type: 3}
+        m_Texture: {fileID: 2800000, guid: c9d6dfe3e24b25b41aa8f8cf54ef4e7b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: d9949fd4dd8841a4487cd9ffa857f992, type: 3}
+        m_Texture: {fileID: 2800000, guid: d837e45b44541df4bb5c06d063858069, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 537d9e8c42a25f44eb661a9dd96f725f, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -73,4 +73,4 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.69803923, g: 0.69803923, b: 0.69803923, a: 1}
+    - _EmissionColor: {r: 2, g: 2, b: 2, a: 1}

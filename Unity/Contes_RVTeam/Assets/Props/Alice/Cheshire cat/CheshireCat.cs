@@ -108,6 +108,7 @@ public class CheshireCat : MonoBehaviour {
 
     void Talk()
     {
+        Table.Instance.AddPotion();
         StartCoroutine(PlayRandomVideo());
     }
 
@@ -131,6 +132,7 @@ public class CheshireCat : MonoBehaviour {
         PlayPreparedClip();
         lastVideo = Utilities.ExclusiveRange(0, randomVideos.Length, lastVideo);
         PrepareClip(randomVideos[lastVideo]);
+        Table.Instance.AddPotion();
     }
 
 
