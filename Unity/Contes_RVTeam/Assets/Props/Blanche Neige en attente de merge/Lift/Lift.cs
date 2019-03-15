@@ -13,6 +13,8 @@ public class Lift : MonoBehaviour {
     float targetY = 2.5f;
 
     new AudioSource audio;
+    [SerializeField]
+    Renderer cordeRend;
 
     private void Awake()
     {
@@ -35,6 +37,7 @@ public class Lift : MonoBehaviour {
 
         transform.Translate(Vector3.up * velocity * Time.deltaTime);
         Player.instance.transform.position = Player.instance.transform.position.SetY(transform.position.y);
+        cordeRend.material.SetTextureOffset("_MainTex", Vector2.up * transform.position.y);
 
         if (transform.position.y >= targetY)
             this.enabled = false;
