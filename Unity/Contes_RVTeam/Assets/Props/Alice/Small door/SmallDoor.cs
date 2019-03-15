@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class SmallDoor : MonoBehaviour {
 
-    [SerializeField]
-    string sceneToLoad= "Waiting room introOutro";
 
     [SerializeField]
     Transform scepterParent;
@@ -20,7 +18,10 @@ public class SmallDoor : MonoBehaviour {
     [SerializeField]
     float delayBeforeTransition = 4;
     float openTime = 0;
-    
+
+
+    public Transform Spawnpoint;
+
     bool open = false;
 
     public static SmallDoor instance;
@@ -51,7 +52,10 @@ public class SmallDoor : MonoBehaviour {
     private void OnTriggerStay(Collider other)
     {
         if (open && other.CompareTag("HeadCollider") && Time.time - openTime > delayBeforeTransition)
-            NextScene();
+        {
+            InterractionManagerAlice.instance.LaunchNextScene();
+        }
+           
     }
 
     public void Open()
@@ -62,8 +66,4 @@ public class SmallDoor : MonoBehaviour {
         openTime = Time.time;
     }
 
-    void NextScene()
-    {
-        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(sceneToLoad); }); });
-    }
 }

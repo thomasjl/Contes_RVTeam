@@ -16,7 +16,7 @@ public class MaisonChaperon : MonoBehaviour {
 
     public static MaisonChaperon instance;
 
-    private int givenObject;
+    public int givenObject;
     private bool objectGiven;
     private void Awake()
     {

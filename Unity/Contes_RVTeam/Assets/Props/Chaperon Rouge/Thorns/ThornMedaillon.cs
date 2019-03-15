@@ -20,6 +20,7 @@ public class ThornMedaillon : MonoBehaviour {
         AudioSource.PlayClipAtPoint(flatten, transform.position);
         //StartCoroutine(WaitThenSetCleared());
         flattening = true;
+        Clear = true;
     }
 
     public void Unflatten()

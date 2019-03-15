@@ -5,12 +5,30 @@ public class ThornSelect : MonoBehaviour {
     public static ThornSelect instance;
     public bool Clear {
         get {
-            foreach (ThornHache thorn in GetComponentsInChildren<ThornHache>())
-                if (!thorn.Clear)
-                    return false;
-            foreach (ThornMedaillon thorn in GetComponentsInChildren<ThornMedaillon>())
-                if (!thorn.Clear)
-                    return false;
+            if(MaisonChaperon.instance.givenObject==8)
+            {
+                foreach (ThornHache thorn in GetComponentsInChildren<ThornHache>())
+                {
+                    if (!thorn.Clear)
+                    {
+                        Debug.Log("thorn hache pas clear " + thorn.name);
+                        return false;
+                    }
+                }                   
+            }
+            else if(MaisonChaperon.instance.givenObject == 6)
+            {
+                foreach (ThornMedaillon thorn in GetComponentsInChildren<ThornMedaillon>())
+                {
+                    if (!thorn.Clear)
+                    {
+                        Debug.Log("thorn medaillon pas clear " + thorn.name);
+
+                        return false;
+                    }
+                }                    
+            }           
+           
             return true;
         }
     }

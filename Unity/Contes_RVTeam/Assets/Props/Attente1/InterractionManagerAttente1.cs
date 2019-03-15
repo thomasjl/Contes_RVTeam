@@ -12,6 +12,7 @@ public class InterractionManagerAttente1 : InterractionManager
 
     private void Start()
     {
+        StartCoroutine(AudioController.FadeOut(AudioManager.instance.audioSource, 1));
         StartCoroutine(AudioController.FadeIn(ambianceSound, 1f));
 
         ConteurManager.instance.LaunchChoices();

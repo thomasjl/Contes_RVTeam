@@ -47,8 +47,6 @@ namespace PostProcess
 		System.Action onFadeInComplete;
 		System.Action onFadeOutComplete;
 
-        public static BlinkEffect Instance{ get; private set; }
-
 		void Awake () 
 		{
 			standard = Shader.Find ("Hidden/Image Effects/Blink");
@@ -62,8 +60,6 @@ namespace PostProcess
 			inAndOut = true;
 			material = new Material (standard);
 			materialCurved = new Material (curved);
-
-            Instance = this;
 		}
 
 		void OnRenderImage (RenderTexture source, RenderTexture destination)

@@ -4,6 +4,13 @@ public class SoldatDeCarte : MonoBehaviour {
 
     bool moved = false;
 
+    public static SoldatDeCarte instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!moved && other.CompareTag("HeadCollider") && Crown.Instance.IsEquipped)

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using Valve.VR.InteractionSystem;
 
@@ -9,10 +10,17 @@ public class GoodMushroom : Mushroom {
 
     public static List<GoodMushroom> mushrooms = new List<GoodMushroom>();
 
+    private bool FirstEat;
+
     protected override void Awake()
     {
         base.Awake();
         mushrooms.Add(this);
+    }
+
+    private void Start()
+    {
+        FirstEat = true;
     }
 
     protected override void OnConsumed()
@@ -24,10 +32,28 @@ public class GoodMushroom : Mushroom {
             Player.instance.transform.localScale = Vector3.one;
             Player.instance.transform.position = Vector3.zero;
 
+            /*
             if (Crown.Instance.IsEquipped || Scepter.Instance.IsEquipped)
                 CheshireCat.Instance.Spawn();
+                */
         });
         Lanterne.instance.PlayColorAnim(duration, Color.white);
+        Table.Instance.AddPotion();
+        /*
+        SpawnFirstPotion();
+        if (FirstEat)
+        {
+            StartCoroutine(SpawnFirstPotion());
+            FirstEat = false;
+        }
+        */
+    }
+
+    IEnumerator SpawnFirstPotion()
+    {
+        yield return new WaitForSeconds(2);
+        Debug.Log("passe");
+        Table.Instance.AddPotion(); 
     }
 
     private void OnDestroy()
