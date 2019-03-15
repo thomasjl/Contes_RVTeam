@@ -32,6 +32,8 @@ public class Potion : MonoBehaviour {
 
         }, delegate
         {
+            // Respawn a bottle.
+            Table.Instance.AddPotion();
             // Call event.
             if (ScaledDown != null)
                 ScaledDown();

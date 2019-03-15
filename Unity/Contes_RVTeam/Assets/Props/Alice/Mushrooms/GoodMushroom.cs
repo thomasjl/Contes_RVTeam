@@ -9,19 +9,14 @@ public class GoodMushroom : Mushroom {
     float sizeFactor = 3;
 
     public static List<GoodMushroom> mushrooms = new List<GoodMushroom>();
-
-    private bool FirstEat;
+    
 
     protected override void Awake()
     {
         base.Awake();
         mushrooms.Add(this);
     }
-
-    private void Start()
-    {
-        FirstEat = true;
-    }
+    
 
     protected override void OnConsumed()
     {
@@ -51,13 +46,6 @@ public class GoodMushroom : Mushroom {
                 });
             });
         });
-    }
-
-    IEnumerator SpawnFirstPotion()
-    {
-        yield return new WaitForSeconds(2);
-        Debug.Log("passe");
-        Table.Instance.AddPotion();
     }
 
     private void OnDestroy()
