@@ -38,9 +38,9 @@ public class GoodMushroom : Mushroom {
                     Player.instance.transform.position = Vector3.Lerp(targetPosition, startPosition, progression);
 
                 }, delegate
-                {
+                {/*
                     if (Crown.Instance.IsEquipped || Scepter.Instance.IsEquipped)
-                        CheshireCat.Instance.Spawn();
+                        CheshireCat.Instance.Spawn();*/
                     Table.Instance.AddPotion();
                 });
             });
