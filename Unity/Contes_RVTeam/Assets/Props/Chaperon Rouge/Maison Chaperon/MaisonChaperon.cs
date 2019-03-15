@@ -16,6 +16,8 @@ public class MaisonChaperon : MonoBehaviour {
 
     public static MaisonChaperon instance;
 
+    public ParticleSystem particle;
+
     public int givenObject;
     private bool objectGiven;
     private void Awake()
@@ -71,10 +73,16 @@ public class MaisonChaperon : MonoBehaviour {
         }
     }
 
+    public void printParticles()
+    {
+        particle.Play();
+    }
+
   
 
     public void GiveItem(ObjectDropper.ObjectType itemType)
     {
+        particle.Stop();
         doorAnimator.SetTrigger("open");
         StartCoroutine(WaitAndOpen(itemType));
     }
