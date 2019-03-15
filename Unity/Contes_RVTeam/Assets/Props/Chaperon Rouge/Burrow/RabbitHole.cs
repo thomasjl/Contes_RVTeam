@@ -1,14 +1,13 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RabbitHole : MonoBehaviour {
 
     [SerializeField]
-    string nextScene= "Attente1";
+    string nextScene = "Attente1";
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("HeadCollider") && (!Thorns.instance || Thorns.instance.Cleared))
+        if (other.CompareTag("HeadCollider") && (!ThornSelect.instance || ThornSelect.instance.Clear))
             ToNextScene();
     }
 

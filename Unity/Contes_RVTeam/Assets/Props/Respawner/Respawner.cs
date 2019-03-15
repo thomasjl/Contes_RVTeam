@@ -3,6 +3,9 @@ using Valve.VR.InteractionSystem;
 
 public class Respawner : MonoBehaviour {
 
+    [SerializeField]
+    Interactable[] interactablesToRespawn;
+
     bool canRespaw = false;
     private void Start()
     {
@@ -17,7 +20,14 @@ public class Respawner : MonoBehaviour {
         Interactable interactable = other.GetComponent<Interactable>();
         if (!interactable)
             interactable = other.GetComponentInParent<Interactable>();
-        if (interactable && !interactable.IsGrabbed())
+        if (interactablesToRespawn.Length < 1)
+        {
+            if (interactable)
+                foreach (Interactable interactableToIgnore in interactablesToRespawn)
+                    if (interactable == interactableToIgnore && !interactable.IsGrabbed())
+                        this.Timer(4, delegate { Respawn(interactable); });
+        }
+        else if (interactable && !interactable.IsGrabbed())
             this.Timer(4, delegate { Respawn(interactable); });
     }
 

@@ -29,6 +29,4 @@ public class Wolf : MonoBehaviour {
     {
         StartCoroutine(AudioController.FadeIn(grognement2, 0.5f));
     }
-
-
 }

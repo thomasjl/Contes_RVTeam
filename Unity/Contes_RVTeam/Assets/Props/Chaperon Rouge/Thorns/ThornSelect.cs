@@ -1,10 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ThornSelect : MonoBehaviour {
 
     public static ThornSelect instance;
+    public bool Clear {
+        get {
+            foreach (ThornHache thorn in GetComponentsInChildren<ThornHache>())
+                if (!thorn.Clear)
+                    return false;
+            foreach (ThornMedaillon thorn in GetComponentsInChildren<ThornMedaillon>())
+                if (!thorn.Clear)
+                    return false;
+            return true;
+        }
+    }
+
 
     private void Awake()
     {
