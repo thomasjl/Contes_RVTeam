@@ -29,7 +29,7 @@ public class GoodMushroom : Mushroom {
         Vector3 targetPosition = (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * sizeFactor)).SetY(0);
         Player.instance.ProgressionAnim(2, delegate (float progression)
         {
-        // Animate in.
+            // Animate in.
             Player.instance.transform.position = Vector3.Lerp(startPosition, targetPosition, progression);
             Player.instance.transform.localScale = Mathf.Lerp(1, sizeFactor, progression) * Vector3.one;
         }, delegate
@@ -38,18 +38,17 @@ public class GoodMushroom : Mushroom {
             {
                 Player.instance.ProgressionAnim(2, delegate (float progression)
                 {
-                // Animate out.
-                    Player.instance.transform.localScale = Vector3.one;
-                    Player.instance.transform.position = startPosition;
+                    // Animate out.
+                    Player.instance.transform.localScale = Mathf.Lerp(sizeFactor, 1, progression) * Vector3.one;
+                    Player.instance.transform.position = Vector3.Lerp(targetPosition, startPosition, progression);
 
                 }, delegate
-             {
-                 if (Crown.Instance.IsEquipped || Scepter.Instance.IsEquipped)
-                     CheshireCat.Instance.Spawn();
-                 Lanterne.instance.PlayColorAnim(duration, Color.white);
-                 Table.Instance.AddPotion();
-             });
-
+                {
+                    if (Crown.Instance.IsEquipped || Scepter.Instance.IsEquipped)
+                        CheshireCat.Instance.Spawn();
+                    Lanterne.instance.PlayColorAnim(duration, Color.white);
+                    Table.Instance.AddPotion();
+                });
             });
         });
     }
