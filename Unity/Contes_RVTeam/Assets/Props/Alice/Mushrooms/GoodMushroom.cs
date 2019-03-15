@@ -25,35 +25,40 @@ public class GoodMushroom : Mushroom {
 
     protected override void OnConsumed()
     {
-        Player.instance.transform.position = (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * sizeFactor)).SetY(0);
-        Player.instance.transform.localScale = Vector3.one * sizeFactor;
-        Player.instance.Timer(duration, delegate
+        Vector3 startPosition = Player.instance.trackingOriginTransform.position;
+        Vector3 targetPosition = (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * sizeFactor)).SetY(0);
+        Player.instance.ProgressionAnim(2, delegate (float progression)
         {
-            Player.instance.transform.localScale = Vector3.one;
-            Player.instance.transform.position = Vector3.zero;
+        // Animate in.
+            Player.instance.transform.position = Vector3.Lerp(startPosition, targetPosition, progression);
+            Player.instance.transform.localScale = Mathf.Lerp(1, sizeFactor, progression) * Vector3.one;
+        }, delegate
+        {
+            Player.instance.Timer(duration, delegate
+            {
+                Player.instance.ProgressionAnim(2, delegate (float progression)
+                {
+                // Animate out.
+                    Player.instance.transform.localScale = Vector3.one;
+                    Player.instance.transform.position = startPosition;
 
-            /*
-            if (Crown.Instance.IsEquipped || Scepter.Instance.IsEquipped)
-                CheshireCat.Instance.Spawn();
-                */
+                }, delegate
+             {
+                 if (Crown.Instance.IsEquipped || Scepter.Instance.IsEquipped)
+                     CheshireCat.Instance.Spawn();
+                 Lanterne.instance.PlayColorAnim(duration, Color.white);
+                 Table.Instance.AddPotion();
+             });
+
+            });
         });
-        Lanterne.instance.PlayColorAnim(duration, Color.white);
-        Table.Instance.AddPotion();
-        /*
-        SpawnFirstPotion();
-        if (FirstEat)
-        {
-            StartCoroutine(SpawnFirstPotion());
-            FirstEat = false;
-        }
-        */
     }
 
     IEnumerator SpawnFirstPotion()
     {
         yield return new WaitForSeconds(2);
         Debug.Log("passe");
-        Table.Instance.AddPotion(); 
+        Table.Instance.AddPotion();
     }
 
     private void OnDestroy()

@@ -47,8 +47,13 @@ namespace PostProcess
 		System.Action onFadeInComplete;
 		System.Action onFadeOutComplete;
 
-		void Awake () 
+        public static BlinkEffect Instance;
+        
+
+        void Awake () 
 		{
+            Instance = this;
+
 			standard = Shader.Find ("Hidden/Image Effects/Blink");
 			curved = Shader.Find ("Hidden/Image Effects/Blink Curved");
 
