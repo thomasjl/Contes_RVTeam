@@ -60512,100 +60512,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1342693361778588, guid: f587e9fec3db38b40b21579fa5f9ed75,
     type: 2}
   m_PrefabInternal: {fileID: 827928190}
---- !u!114 &827928193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 827928192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783750eec4c41da428b7651515146d14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityAverageFrames: 5
-  angularVelocityAverageFrames: 11
-  estimateOnAwake: 0
---- !u!114 &827928194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 827928192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b93b6a877adcbf94c89a9d6e0c0e844d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activateActionSetOnAttach:
-    actionSetPath: 
-  hideHandOnAttach: 1
-  hideSkeletonOnAttach: 0
-  hideControllerOnAttach: 0
-  handAnimationOnPickup: 0
-  setRangeOfMotionOnPickup: -1
-  useHandObjectAttachmentPoint: 1
-  attachEaseIn: 0
-  snapAttachEaseInCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  snapAttachEaseInTime: 0.15
-  snapAttachEaseInCompleted: 0
-  skeletonPoser: {fileID: 0}
-  handFollowTransform: 1
-  highlightOnHover: 1
-  highlightRenderers: []
-  hideHighlight: []
---- !u!114 &827928195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 827928192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffefbea063cab884ca33e5a449e5c22c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attachmentFlags: 80
-  attachmentOffset: {fileID: 0}
-  catchingSpeedThreshold: -1
-  releaseVelocityStyle: 3
-  releaseVelocityTimeOffset: -0.011
-  scaleReleaseVelocity: 1.1
-  restoreOriginalParent: 0
-  onPickUp:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  onDetachFromHand:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  interactable: {fileID: 0}
 --- !u!65 &827928196
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60618,21 +60524,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14200638, y: 0.21695492, z: 0.03938914}
   m_Center: {x: 0, y: -2.7987644e-16, z: 0.019694518}
---- !u!54 &827928197
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 827928192}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &832950006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70814,20 +70705,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1647553562820918, guid: d1b86bc876689e145bd697d2b1cb4d21,
     type: 2}
   m_PrefabInternal: {fileID: 983490492}
---- !u!114 &983490495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 983490494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783750eec4c41da428b7651515146d14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityAverageFrames: 5
-  angularVelocityAverageFrames: 11
-  estimateOnAwake: 0
 --- !u!65 &983490496
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71450,20 +71327,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1647553562820918, guid: d1b86bc876689e145bd697d2b1cb4d21,
     type: 2}
   m_PrefabInternal: {fileID: 1062702913}
---- !u!114 &1062702916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1062702915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783750eec4c41da428b7651515146d14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityAverageFrames: 5
-  angularVelocityAverageFrames: 11
-  estimateOnAwake: 0
 --- !u!65 &1062702917
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71619,20 +71482,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1280718640708372, guid: aca6888c88de530469ed0c0681c57c76,
     type: 2}
   m_PrefabInternal: {fileID: 1093888550}
---- !u!114 &1093888553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1093888552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783750eec4c41da428b7651515146d14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityAverageFrames: 5
-  angularVelocityAverageFrames: 11
-  estimateOnAwake: 0
 --- !u!65 &1093888554
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -87279,7 +87128,6 @@ GameObject:
   - component: {fileID: 1391911636}
   - component: {fileID: 1391911639}
   - component: {fileID: 1391911638}
-  - component: {fileID: 1391911637}
   m_Layer: 0
   m_Name: Flames (1)
   m_TagString: Untagged
@@ -87305,19 +87153,6 @@ Transform:
   m_Father: {fileID: 2016162420}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 42.887, y: -38.527, z: -28.451002}
---- !u!114 &1391911637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114141462986266162, guid: 146b6f15167bf4140993dabbc95c5995,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1391911635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4864d5262b062a44ba50a92d68ff2923, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startColor: {r: 0.18, g: 0.9, b: 1, a: 1}
 --- !u!199 &1391911638
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -101867,7 +101702,6 @@ GameObject:
   - component: {fileID: 1513079691}
   - component: {fileID: 1513079694}
   - component: {fileID: 1513079693}
-  - component: {fileID: 1513079692}
   m_Layer: 0
   m_Name: Flames (1)
   m_TagString: Untagged
@@ -101893,19 +101727,6 @@ Transform:
   m_Father: {fileID: 1305433636}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 42.887, y: -38.527, z: -28.451002}
---- !u!114 &1513079692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114141462986266162, guid: 146b6f15167bf4140993dabbc95c5995,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1513079690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4864d5262b062a44ba50a92d68ff2923, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startColor: {r: 0.18, g: 0.9, b: 1, a: 1}
 --- !u!199 &1513079693
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -107212,20 +107033,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1280718640708372, guid: aca6888c88de530469ed0c0681c57c76,
     type: 2}
   m_PrefabInternal: {fileID: 1621556180}
---- !u!114 &1621556183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1621556182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783750eec4c41da428b7651515146d14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityAverageFrames: 5
-  angularVelocityAverageFrames: 11
-  estimateOnAwake: 0
 --- !u!65 &1621556184
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -107318,20 +107125,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1280718640708372, guid: aca6888c88de530469ed0c0681c57c76,
     type: 2}
   m_PrefabInternal: {fileID: 1625125435}
---- !u!114 &1625125438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1625125437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 783750eec4c41da428b7651515146d14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityAverageFrames: 5
-  angularVelocityAverageFrames: 11
-  estimateOnAwake: 0
 --- !u!65 &1625125439
 BoxCollider:
   m_ObjectHideFlags: 0
