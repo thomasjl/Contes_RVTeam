@@ -252,20 +252,24 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private void Awake()
 		{
-			if ( trackingOriginTransform == null )
+
+            /* edit projet contes */
+            if (_instance)
+                Destroy(gameObject);
+            /* endedit */
+
+            if ( trackingOriginTransform == null )
 			{
 				trackingOriginTransform = this.transform;
 			}
+
+
 		}
 
 
 		//-------------------------------------------------
 		private IEnumerator Start()
 		{
-            /* edit projet contes */
-            if (_instance)
-                Destroy(gameObject);
-            /* endedit */
 
 			_instance = this;
 

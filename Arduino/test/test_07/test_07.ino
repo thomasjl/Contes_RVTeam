@@ -124,7 +124,7 @@ void loop()
       DEFAULT_STATE_2=1;
       DEFAULT_STATE_4=0;
       
-      Serial.write(2);
+      Serial.println(2);
       Serial.flush();
       delay(20);
       
@@ -134,7 +134,7 @@ void loop()
     {
       DEFAULT_STATE_4=1;
       DEFAULT_STATE_2=0;
-      Serial.write(4);
+      Serial.println(4);
       Serial.flush();
       delay(20);
     }
@@ -144,7 +144,7 @@ void loop()
       change_6=1;
       DEFAULT_STATE_6=1;
       DEFAULT_STATE_8=0;
-      Serial.write(6);
+      Serial.println(6);
       Serial.flush();
       delay(20);
     }
@@ -154,7 +154,7 @@ void loop()
       DEFAULT_STATE_8=1;
       DEFAULT_STATE_6=0;
       
-      Serial.write(8);
+      Serial.println(8);
       Serial.flush();
       delay(20);
     }
@@ -164,7 +164,7 @@ void loop()
       change_10=1;
       DEFAULT_STATE_10=1;
       DEFAULT_STATE_12=0;
-      Serial.write(3);
+      Serial.println(3);
       Serial.flush();
       delay(20);
     }
@@ -173,7 +173,7 @@ void loop()
     {
       DEFAULT_STATE_12=1;
       DEFAULT_STATE_10=0;
-      Serial.write(5);
+      Serial.println(5);
       Serial.flush();
       delay(20);
     }
