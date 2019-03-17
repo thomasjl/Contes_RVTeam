@@ -5,13 +5,14 @@ public class Respawner : MonoBehaviour {
 
     float minYPosition = -5;
 
-    public Bounds Bounds { get; private set; }
+    Collider col;
+    public Bounds Bounds { get { return collider.bounds; } }
     public static Respawner Instance { get; private set; }
     Vector3 PlayerPosition{ get{ return Player.instance.transform.position; } }
 
     private void Awake()
     {
-        Bounds = GetComponent<Collider>().bounds;
+        col = GetComponent<Collider>();
         Instance = this;
     }
 
