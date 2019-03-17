@@ -35,6 +35,7 @@ public class GoodMushroom : Mushroom {
                 {
                     // Animate out.
                     Player.instance.transform.localScale = Mathf.Lerp(sizeFactor, 1, progression) * Vector3.one;
+                    Player.instance.headCollider.transform.localScale = Vector3.one / Player.instance.transform.localScale.x;
                     Player.instance.transform.position = Vector3.Lerp(targetPosition, startPosition, progression);
 
                 }, delegate
