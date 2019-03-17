@@ -4,8 +4,8 @@ public class Respawner : MonoBehaviour {
 
     float minYPosition = -5;
 
-    public  Bounds Bounds{ get; private set; }
-    public static Respawner Instance{ get; private set; }
+    public Bounds Bounds { get; private set; }
+    public static Respawner Instance { get; private set; }
 
     private void Awake()
     {
@@ -15,10 +15,11 @@ public class Respawner : MonoBehaviour {
 
     private void Update()
     {
-        // Respawn an object if it's out of bounds.
-        foreach (Respawnable respawnable in Respawnable.Objects)
-            if (respawnable.transform.position.y < minYPosition)
-                Respawn(respawnable, Vector3.up * .5f);
+        if (Respawnable.Objects != null)
+            // Respawn objects if they are out of bounds.
+            foreach (Respawnable respawnable in Respawnable.Objects)
+                if (respawnable.transform.position.y < minYPosition)
+                    Respawn(respawnable, Vector3.up * .5f);
     }
 
     private void OnTriggerExit(Collider other)
@@ -39,7 +40,7 @@ public class Respawner : MonoBehaviour {
         }
     }
 
-   public void Respawn(Respawnable respawnable, Vector3 respawnPosition)
+    public void Respawn(Respawnable respawnable, Vector3 respawnPosition)
     {
         // Reset the velocity and place the respawnable at the center of the room.
         respawnable.GetComponent<Rigidbody>().velocity = Vector3.zero;

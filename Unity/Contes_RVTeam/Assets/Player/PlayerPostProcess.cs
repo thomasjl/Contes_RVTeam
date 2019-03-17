@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using PostProcess;
+using Valve.VR.InteractionSystem;
 
 public class PlayerPostProcess : MonoBehaviour {
 
@@ -28,15 +29,20 @@ public class PlayerPostProcess : MonoBehaviour {
         StartHueshift = HueShift;
         StartColorFilter = colorGrading.colorFilter.value;
         StartVignetteStrength = vignette.intensity;
-        BlinkTime = 0;
         Instance = this;
+    }
+
+    private void Start()
+    {
+        BlinkTime = 0;
+        Blink.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
     }
 
     public void PlayBlinkFadeOut(float time, System.Action endAction)
     {
-        (this).ProgressionAnim(time, (System.Action<float>)delegate (float progression)
+        this.ProgressionAnim(time, delegate (float progression)
         {
-            this.Blink.time = progression;
+            Blink.time = progression;
         }, endAction);
     }
 
@@ -45,7 +51,6 @@ public class PlayerPostProcess : MonoBehaviour {
         
         this.ProgressionAnim(transitionDuration, delegate (float progression)
         {
-            //Debug.Log("progression "+ progression);
             ColorFilter = Color.Lerp(StartColorFilter, targetColor, progression);
         });
     }
