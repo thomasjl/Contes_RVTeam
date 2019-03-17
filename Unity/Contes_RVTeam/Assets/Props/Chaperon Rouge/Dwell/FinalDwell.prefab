@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 54781232463841826}
   - component: {fileID: 114420241365448692}
   - component: {fileID: 114076807129982334}
+  - component: {fileID: 114172226011694714}
   m_Layer: 0
   m_Name: Crank
   m_TagString: Untagged
@@ -1043,6 +1044,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780b78018445f3e4fbd8b31f8227e1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114172226011694714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1369059804340000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67a17c6432d0e74da678ad2bc08d4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitForFirstGrab: 0
+  interactable: {fileID: 0}
+  plannedRespawnPosition: {x: 0, y: 0.5, z: 0}
 --- !u!114 &114287860865299318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1199,5 +1214,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.32
+  m_Radius: 0.13
   m_Center: {x: 0, y: 0, z: -0.48}

@@ -8,10 +8,13 @@ public class Respawnable : MonoBehaviour {
 
     [SerializeField]
     bool waitForFirstGrab = false;
-    bool waitingForFirstGrab = false;
-    public bool CanRespawn { get { return !waitingForFirstGrab && interactable.IsGrabbed(); } }
+    public bool WaitingForFirstGrab { get; private set; }
+    public bool IsGrabbed { get { return interactable.IsGrabbed(); } }
     [SerializeField]
     Interactable interactable;
+    public Interactable Interactable { get { return interactable; } }
+    
+    public Vector3 plannedRespawnPosition = new Vector3(0, .5f);
 
     private void Awake()
     {
@@ -19,13 +22,22 @@ public class Respawnable : MonoBehaviour {
             Objects = new List<Respawnable>();
         Objects.Add(this);
 
-        waitingForFirstGrab = waitForFirstGrab;
-        if (!waitForFirstGrab)
-            interactable.onAttachedToHand += delegate { waitingForFirstGrab = false; };
+        WaitingForFirstGrab = waitForFirstGrab;
+        if (waitForFirstGrab)
+            interactable.onAttachedToHand += delegate { WaitingForFirstGrab = false; };
+        interactable.onDetachedFromHand += delegate { CheckOutOfBounds(); } ;
     }
 
     private void OnDestroy()
     {
         Objects.Remove(this);
+    }
+
+    void CheckOutOfBounds()
+    {
+        if (!Respawner.Instance)
+            return;
+        if (!Respawner.Instance.Bounds.Contains(transform.position))
+            Respawner.Instance.Respawn(this, plannedRespawnPosition);
     }
 }

@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114941569437794380}
   - component: {fileID: 114548176993335778}
   - component: {fileID: 82195912813348046}
+  - component: {fileID: 114149026048008896}
   m_Layer: 0
   m_Name: Potion
   m_TagString: Untagged
@@ -507,6 +508,20 @@ MonoBehaviour:
   highlightOnHover: 1
   highlightRenderers: []
   hideHighlight: []
+--- !u!114 &114149026048008896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1064752533524598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67a17c6432d0e74da678ad2bc08d4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitForFirstGrab: 0
+  interactable: {fileID: 114111705140992864}
+  plannedRespawnPosition: {x: 0, y: 0.5, z: 0}
 --- !u!114 &114300776202237732
 MonoBehaviour:
   m_ObjectHideFlags: 1

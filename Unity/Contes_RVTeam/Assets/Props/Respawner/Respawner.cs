@@ -4,12 +4,14 @@ public class Respawner : MonoBehaviour {
 
     float minYPosition = -5;
 
-    bool canRespaw = false;
-    private void Start()
-    {
-        this.Timer(5, delegate { canRespaw = true; });
-    }
+    public  Bounds Bounds{ get; private set; }
+    public static Respawner Instance{ get; private set; }
 
+    private void Awake()
+    {
+        Bounds = GetComponent<Collider>().bounds;
+        Instance = this;
+    }
 
     private void Update()
     {
@@ -21,23 +23,23 @@ public class Respawner : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (!canRespaw)
-            return;
-
         // Respawn an object that comes in contact.
         Respawnable respawnable = other.GetComponent<Respawnable>();
         if (!respawnable)
             respawnable = other.GetComponentInParent<Respawnable>();
 
-        if (respawnable && respawnable.CanRespawn)
+        if (respawnable && !respawnable.WaitingForFirstGrab)
         {
             Vector3 directionToCenter = other.transform.position.normalized;
-            Vector3 respawnPosition = other.transform.position + directionToCenter;
-            Respawn(respawnable, respawnPosition);
+            Vector3 respawnPosition = other.transform.position - directionToCenter * .5f;
+            if (!respawnable.IsGrabbed)
+                Respawn(respawnable, respawnPosition);
+            else
+                respawnable.plannedRespawnPosition = respawnPosition;
         }
     }
 
-    void Respawn(Respawnable respawnable, Vector3 respawnPosition)
+   public void Respawn(Respawnable respawnable, Vector3 respawnPosition)
     {
         // Reset the velocity and place the respawnable at the center of the room.
         respawnable.GetComponent<Rigidbody>().velocity = Vector3.zero;

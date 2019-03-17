@@ -262,6 +262,11 @@ namespace Valve.VR.InteractionSystem
 		//-------------------------------------------------
 		private IEnumerator Start()
 		{
+            /* edit projet contes */
+            if (_instance)
+                Destroy(gameObject);
+            /* endedit */
+
 			_instance = this;
 
             while (SteamVR.initializedState == SteamVR.InitializedStates.None || SteamVR.initializedState == SteamVR.InitializedStates.Initializing)

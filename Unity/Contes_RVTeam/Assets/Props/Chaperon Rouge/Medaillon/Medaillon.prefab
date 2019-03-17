@@ -487,8 +487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e67a17c6432d0e74da678ad2bc08d4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canRespawnOnStart: 1
-  interactableComponent: {fileID: 114120577219923646}
+  waitForFirstGrab: 1
+  interactable: {fileID: 114120577219923646}
 --- !u!114 &114426735367664482
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 65746792948281598}
   - component: {fileID: 114399712099452332}
   - component: {fileID: 114117284042464174}
+  - component: {fileID: 114939899178552742}
   m_Layer: 0
   m_Name: PoisonApple
   m_TagString: Untagged
@@ -461,6 +462,20 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   interactable: {fileID: 0}
+--- !u!114 &114939899178552742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076623710014444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67a17c6432d0e74da678ad2bc08d4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitForFirstGrab: 0
+  interactable: {fileID: 114545443886369412}
+  plannedRespawnPosition: {x: 0, y: 0.5, z: 0}
 --- !u!135 &135447034770483676
 SphereCollider:
   m_ObjectHideFlags: 1
