@@ -6,11 +6,11 @@ using Valve.VR.InteractionSystem;
 public class Potion : MonoBehaviour {
 
     [SerializeField]
-    float sizeFactor = .3f;
+    float newPlayerSize = .3f;
     [SerializeField]
     float timer = 10;
 
-    Vector3 ScaleCompensatedPosition { get { return (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * sizeFactor)).SetY(0); } }
+    Vector3 ScaleCompensatedPosition { get { return (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * newPlayerSize)).SetY(0); } }
 
     public delegate void EventHandler();
     public static event EventHandler ScaledNormal;
@@ -28,7 +28,7 @@ public class Potion : MonoBehaviour {
         {
             // Animate in.
             Player.instance.transform.position = Vector3.Lerp(startPosition, SmallDoor.instance.Spawnpoint.position, progression);
-            Player.instance.transform.localScale = Mathf.Lerp(1, sizeFactor, progression) * Vector3.one;
+            Player.instance.transform.localScale = Mathf.Lerp(1, newPlayerSize, progression) * Vector3.one;
 
         }, delegate
         {
@@ -42,7 +42,7 @@ public class Potion : MonoBehaviour {
             {
                 Player.instance.ProgressionAnim(2, delegate (float progression)
                 {
-                    Player.instance.transform.localScale = Mathf.Lerp(sizeFactor, 1, progression) * Vector3.one;
+                    Player.instance.transform.localScale = Mathf.Lerp(newPlayerSize, 1, progression) * Vector3.one;
                     Player.instance.transform.position = Vector3.Lerp(SmallDoor.instance.Spawnpoint.position, startPosition, progression);
                 }, delegate
                 {
