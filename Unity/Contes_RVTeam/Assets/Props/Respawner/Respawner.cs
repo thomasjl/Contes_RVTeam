@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Valve.VR.InteractionSystem;
 
 public class Respawner : MonoBehaviour {
 
@@ -6,6 +7,7 @@ public class Respawner : MonoBehaviour {
 
     public Bounds Bounds { get; private set; }
     public static Respawner Instance { get; private set; }
+    Vector3 PlayerPosition{ get{ return Player.instance.transform.position; } }
 
     private void Awake()
     {
@@ -16,10 +18,10 @@ public class Respawner : MonoBehaviour {
     private void Update()
     {
         if (Respawnable.Objects != null)
-            // Respawn objects if they are out of bounds.
+            // Respawn objects in the play area if they are under the player.
             foreach (Respawnable respawnable in Respawnable.Objects)
-                if (respawnable.transform.position.y < minYPosition)
-                    Respawn(respawnable, Vector3.up * .5f);
+                if (respawnable.transform.position.y < PlayerPosition.y - minYPosition)
+                    Respawn(respawnable, PlayerPosition + Vector3.up * .5f);
     }
 
     private void OnTriggerExit(Collider other)
@@ -31,7 +33,7 @@ public class Respawner : MonoBehaviour {
 
         if (respawnable && !respawnable.WaitingForFirstGrab)
         {
-            Vector3 directionToCenter = other.transform.position.normalized;
+            Vector3 directionToCenter = (other.transform.position - PlayerPosition).normalized;
             Vector3 respawnPosition = other.transform.position - directionToCenter * .5f;
             if (!respawnable.IsGrabbed)
                 Respawn(respawnable, respawnPosition);
