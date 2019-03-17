@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-using Valve.VR.InteractionSystem;
 
 public class Respawner : MonoBehaviour {
 
-    [SerializeField]
-    Interactable[] interactablesToRespawn;
+    float minYPosition = -5;
 
     bool canRespaw = false;
     private void Start()
@@ -13,29 +11,37 @@ public class Respawner : MonoBehaviour {
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
+    {
+        // Respawn an object if it's out of bounds.
+        foreach (Respawnable respawnable in Respawnable.Objects)
+            if (respawnable.transform.position.y < minYPosition)
+                Respawn(respawnable, Vector3.up * .5f);
+    }
+
+    private void OnTriggerExit(Collider other)
     {
         if (!canRespaw)
             return;
-        Interactable interactable = other.GetComponent<Interactable>();
-        if (!interactable)
-            interactable = other.GetComponentInParent<Interactable>();
-        if (interactablesToRespawn.Length < 1)
+
+        // Respawn an object that comes in contact.
+        Respawnable respawnable = other.GetComponent<Respawnable>();
+        if (!respawnable)
+            respawnable = other.GetComponentInParent<Respawnable>();
+
+        if (respawnable && respawnable.CanRespawn)
         {
-            if (interactable)
-                foreach (Interactable interactableToIgnore in interactablesToRespawn)
-                    if (interactable == interactableToIgnore && !interactable.IsGrabbed())
-                        this.Timer(4, delegate { Respawn(interactable); });
+            Vector3 directionToCenter = other.transform.position.normalized;
+            Vector3 respawnPosition = other.transform.position + directionToCenter;
+            Respawn(respawnable, respawnPosition);
         }
-        else if (interactable && !interactable.IsGrabbed())
-            this.Timer(4, delegate { Respawn(interactable); });
     }
 
-    void Respawn(Interactable interactable)
+    void Respawn(Respawnable respawnable, Vector3 respawnPosition)
     {
-        // Reset the velocity and place the interactable at the center of the room.
-        interactable.GetComponent<Rigidbody>().velocity = Vector3.zero;
-        interactable.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        interactable.transform.position = Vector3.up * .5f;
+        // Reset the velocity and place the respawnable at the center of the room.
+        respawnable.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        respawnable.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        respawnable.transform.position = respawnPosition;
     }
 }

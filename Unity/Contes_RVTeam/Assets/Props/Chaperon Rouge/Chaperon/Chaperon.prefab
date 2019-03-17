@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 114384159481351276}
   - component: {fileID: 114324153047929142}
   - component: {fileID: 82481587545180684}
+  - component: {fileID: 114512481223657720}
   m_Layer: 0
   m_Name: Chaperon grabbable
   m_TagString: Untagged
@@ -1203,6 +1204,19 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   interactable: {fileID: 0}
+--- !u!114 &114512481223657720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1340559154441954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67a17c6432d0e74da678ad2bc08d4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canRespawnOnStart: 0
+  interactableComponent: {fileID: 114544168623853566}
 --- !u!114 &114544168623853566
 MonoBehaviour:
   m_ObjectHideFlags: 1

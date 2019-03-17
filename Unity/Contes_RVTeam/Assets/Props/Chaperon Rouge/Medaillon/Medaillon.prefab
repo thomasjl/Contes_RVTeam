@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 82421665397855180}
   - component: {fileID: 114426735367664482}
   - component: {fileID: 65285276708130474}
+  - component: {fileID: 114184031984902968}
   m_Layer: 0
   m_Name: Medaillon
   m_TagString: Untagged
@@ -475,6 +476,19 @@ MonoBehaviour:
   highlightOnHover: 1
   highlightRenderers: []
   hideHighlight: []
+--- !u!114 &114184031984902968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662657256550876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67a17c6432d0e74da678ad2bc08d4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canRespawnOnStart: 1
+  interactableComponent: {fileID: 114120577219923646}
 --- !u!114 &114426735367664482
 MonoBehaviour:
   m_ObjectHideFlags: 1

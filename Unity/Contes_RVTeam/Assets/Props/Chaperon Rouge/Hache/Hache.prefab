@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114157525018085486}
   - component: {fileID: 114879602366042082}
   - component: {fileID: 33047757792246796}
+  - component: {fileID: 114835145136648610}
   m_Layer: 0
   m_Name: Hache
   m_TagString: Hache
@@ -260,6 +261,19 @@ MonoBehaviour:
   velocityAverageFrames: 5
   angularVelocityAverageFrames: 11
   estimateOnAwake: 0
+--- !u!114 &114835145136648610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1219556499204916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67a17c6432d0e74da678ad2bc08d4ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canRespawnOnStart: 0
+  interactableComponent: {fileID: 114374489056111696}
 --- !u!114 &114879602366042082
 MonoBehaviour:
   m_ObjectHideFlags: 1
