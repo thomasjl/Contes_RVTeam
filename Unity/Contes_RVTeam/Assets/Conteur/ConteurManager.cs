@@ -119,8 +119,9 @@ public class ConteurManager : MonoBehaviour {
     {
         if (arduino.arduinoEnable)
         {
+            StartCoroutine(arduino.ListenForMessages());
             arduino.ErraseLed();
-            arduino.EnableLed();
+            //arduino.EnableLed();
         }
     }
 
