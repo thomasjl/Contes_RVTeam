@@ -1,42 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class CheshireSound : MonoBehaviour {
 
-    public AudioClip firstAudio;
+    [SerializeField]
+    AudioClip firstAudio;
 
-    public List<AudioClip> listAudio;
+    [SerializeField]
+    List<AudioClip> listAudio;
 
-    private AudioSource audioSource;
+    new AudioSource audio;
 
-    private void Start()
+    bool playedFirstAudio;
+
+    private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-
-        Invoke("LaunchFirstAudio", 45);
+        audio = GetComponent<AudioSource>();
+        PlayerScaleManager.ScaledNormal += Talk;
     }
 
-    public void LaunchFirstAudio()
+    public void Talk()
     {
-        audioSource.clip = firstAudio;
-        audioSource.volume = 0.25f;
-        audioSource.Play();
-        
-
-        StartCoroutine(LaunchRandomAudio());
-    }
-
-    IEnumerator LaunchRandomAudio()
-    {
-        yield return new WaitForSeconds(Random.Range(15, 20));
-        audioSource.volume = 1f;
-
-        while (true)
-        {
-            audioSource.clip=listAudio[Random.Range(0,15)];
-            audioSource.Play();
-            yield return new WaitForSeconds(Random.Range(7,10));
-        }
+        if (!playedFirstAudio)
+            audio.clip = firstAudio;
+        else
+            audio.clip = listAudio[Random.Range(0, 15)];
+        audio.Play();
+        Table.Instance.AddPotion();
     }
 }

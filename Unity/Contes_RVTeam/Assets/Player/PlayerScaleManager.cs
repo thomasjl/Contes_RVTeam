@@ -5,6 +5,7 @@ using Valve.VR.InteractionSystem;
 public class PlayerScaleManager : MonoBehaviour {
 
     float transitionTime = 2.5f;
+    float scaleDelay = .5f;
     bool scaled;
 
     public delegate void EventHandler();
@@ -24,6 +25,12 @@ public class PlayerScaleManager : MonoBehaviour {
         if (scaled)
             return;
         scaled = true;
+
+        Player.instance.Timer(scaleDelay, delegate { ScaleDown(newPlayerSize, duration); });
+    }
+
+    void ScaleDown(float newPlayerSize, float duration)
+    {
         Vector3 startPosition = Player.instance.transform.position;
         Player.instance.ProgressionAnim(transitionTime, delegate (float progression)
         {
@@ -57,12 +64,16 @@ public class PlayerScaleManager : MonoBehaviour {
         });
     }
 
-
     public void TryScaleUp(float newPlayerSize, float duration)
     {
         if (scaled)
             return;
         scaled = true;
+        Player.instance.Timer(scaleDelay, delegate { ScaleUp(newPlayerSize, duration); });
+    }
+
+    void ScaleUp(float newPlayerSize, float duration)
+    {
         Vector3 playerStartPosition = Player.instance.trackingOriginTransform.position;
         Vector3 targetPosition = (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * newPlayerSize)).SetY(0);
         Player.instance.ProgressionAnim(transitionTime, delegate (float progression)
