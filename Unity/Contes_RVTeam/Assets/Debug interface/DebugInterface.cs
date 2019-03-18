@@ -69,6 +69,9 @@ public class DebugInterface : MonoBehaviour {
     }
     void UpdateLanternIndex()
     {
+        int number;
+        if (!int.TryParse(lanternIndexField.text, out number))
+            return;
         PlayerPrefs.SetInt(lanternKey, int.Parse(lanternIndexField.text));
         if (Lanterne.instance)
             Lanterne.instance.UpdateTrackerIndex();

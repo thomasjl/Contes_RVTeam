@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO.Ports;
 using System.Threading;
 using UnityEngine;
@@ -17,7 +16,7 @@ public class ArduinoThread : MonoBehaviour {
 
     SerialPort stream;
 
-    private bool threadIsRunning=false;
+    private bool threadIsRunning = false;
 
     public static ArduinoThread instance;
 
@@ -28,6 +27,8 @@ public class ArduinoThread : MonoBehaviour {
 
         if (PlayerPrefs.HasKey(DebugInterface.COMKey))
             portName = PlayerPrefs.GetString(DebugInterface.COMKey);
+        else
+            PlayerPrefs.SetString(DebugInterface.COMKey, portName);
 
         StartThread();
     }
@@ -49,8 +50,6 @@ public class ArduinoThread : MonoBehaviour {
         // Creates and starts the thread
         thread = new Thread(ThreadLoop);
         thread.Start();
-
-        
     }
 
     public void SendToArduino(string command)
@@ -60,7 +59,7 @@ public class ArduinoThread : MonoBehaviour {
 
     public string ReadFromArduino()
     {
-        if(inputQueue.Count == 0)
+        if (inputQueue.Count == 0)
         {
             return null;
         }
@@ -69,7 +68,7 @@ public class ArduinoThread : MonoBehaviour {
     }
 
     private void WriteToArduino(string message)
-    {        
+    {
         stream.WriteLine(message);
         stream.BaseStream.Flush();
     }
@@ -78,7 +77,7 @@ public class ArduinoThread : MonoBehaviour {
     {
         stream.ReadTimeout = timeout;
         try
-        {           
+        {
             return stream.ReadLine();
         }
         catch (TimeoutException e)
@@ -96,7 +95,7 @@ public class ArduinoThread : MonoBehaviour {
             stream = new SerialPort(portName, baudRate);
             stream.ReadTimeout = 20;
             stream.Open();
-                      
+
 
             while (true && threadIsRunning)
             {
@@ -121,13 +120,13 @@ public class ArduinoThread : MonoBehaviour {
             ConteurManager.instance.arduino.arduinoEnable = false;
             threadIsRunning = false;
         }
-       
+
     }
 
     private void OnDestroy()
     {
-       //Put boolean, otherwis, thread still run, after exiting application
-       if(threadIsRunning)
+        //Put boolean, otherwis, thread still run, after exiting application
+        if (threadIsRunning)
         {
             threadIsRunning = false;
 

@@ -16,11 +16,15 @@ public class AppleBox : MonoBehaviour {
     {
         apple = Instantiate(appleTemplate, appleSpawnPoint).GetComponent<Interactable>();
         apple.transform.localPosition = Vector3.zero;
-        apple.SetGrabEnabled(false);
-        boxBounds = GetComponent<Collider>();
+        apple.transform.eulerAngles = Vector3.one * 10;
         boxLid = GetComponentInChildren<BoxLid>();
-        boxLid.Opened += delegate { TrySetAppleGrab(true); };
-        boxLid.Closed += delegate { TrySetAppleGrab(false); };
+        if (boxLid)
+        {
+            apple.SetGrabEnabled(false);
+            boxBounds = GetComponent<Collider>();
+            boxLid.Opened += delegate { TrySetAppleGrab(true); };
+            boxLid.Closed += delegate { TrySetAppleGrab(false); };
+        }
     }
 
     public void TrySetAppleGrab(bool state)
