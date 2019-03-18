@@ -25,7 +25,11 @@ public class MagicMirrorInteraction : MonoBehaviour {
         plane.GetComponent<Renderer>().material.color = tmpColor;
     }
 
-    
+    private void Start()
+    {
+        //LaunchGoodOutro();
+    }
+
     public void SetMirror(MirrorType mirrorType)
     {
         switch (mirrorType)
