@@ -9,6 +9,7 @@ public class Potion : MonoBehaviour {
     float newPlayerSize = .3f;
     [SerializeField]
     float timer = 10;
+    float transitionTime = .5f;
 
     Vector3 ScaleCompensatedPosition { get { return (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * newPlayerSize)).SetY(0); } }
 
@@ -24,7 +25,7 @@ public class Potion : MonoBehaviour {
     public void PlayEffect()
     {
         Vector3 startPosition = Player.instance.transform.position;
-        Player.instance.ProgressionAnim(2, delegate (float progression)
+        Player.instance.ProgressionAnim(transitionTime, delegate (float progression)
         {
             // Animate in.
             Player.instance.transform.position = Vector3.Lerp(startPosition, SmallDoor.instance.Spawnpoint.position, progression);
@@ -40,7 +41,7 @@ public class Potion : MonoBehaviour {
             Lanterne.instance.PlayColorAnim(timer, Color.white);
             Player.instance.Timer(timer, delegate
             {
-                Player.instance.ProgressionAnim(2, delegate (float progression)
+                Player.instance.ProgressionAnim(transitionTime, delegate (float progression)
                 {
                     Player.instance.transform.localScale = Mathf.Lerp(newPlayerSize, 1, progression) * Vector3.one;
                     Player.instance.transform.position = Vector3.Lerp(SmallDoor.instance.Spawnpoint.position, startPosition, progression);
@@ -52,9 +53,6 @@ public class Potion : MonoBehaviour {
                 });
             });
         });
-
-
-
 
         StartCoroutine(SpawnNewPotion());
     }

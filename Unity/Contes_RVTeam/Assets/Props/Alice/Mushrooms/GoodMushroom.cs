@@ -8,7 +8,7 @@ public class GoodMushroom : Mushroom {
     float sizeFactor = 3;
 
     public static List<GoodMushroom> mushrooms = new List<GoodMushroom>();
-
+    float transitionTime = .5f;
 
     protected override void Awake()
     {
@@ -21,7 +21,7 @@ public class GoodMushroom : Mushroom {
     {
         Vector3 startPosition = Player.instance.trackingOriginTransform.position;
         Vector3 targetPosition = (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * sizeFactor)).SetY(0);
-        Player.instance.ProgressionAnim(2, delegate (float progression)
+        Player.instance.ProgressionAnim(transitionTime, delegate (float progression)
         {
             // Animate in.
             Player.instance.transform.position = Vector3.Lerp(startPosition, targetPosition, progression);
@@ -31,7 +31,7 @@ public class GoodMushroom : Mushroom {
             Lanterne.instance.PlayColorAnim(duration, Color.white);
             Player.instance.Timer(duration, delegate
             {
-                Player.instance.ProgressionAnim(2, delegate (float progression)
+                Player.instance.ProgressionAnim(transitionTime, delegate (float progression)
                 {
                     // Animate out.
                     Player.instance.transform.localScale = Mathf.Lerp(sizeFactor, 1, progression) * Vector3.one;
