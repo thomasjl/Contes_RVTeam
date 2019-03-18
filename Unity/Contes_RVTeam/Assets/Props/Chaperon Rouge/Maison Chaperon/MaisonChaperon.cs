@@ -11,8 +11,8 @@ public class MaisonChaperon : MonoBehaviour {
     [SerializeField]
     float giveItemDelay = 3;
 
-    [SerializeField]
-    UnityEvent ObjectGrabbed;
+    public delegate void EventHandler();
+    public event EventHandler ObjectGiven;
 
     public static MaisonChaperon instance;
 
@@ -48,7 +48,6 @@ public class MaisonChaperon : MonoBehaviour {
             givenObject = 8;
             //hache
             ThornSelect.instance.ThornsUsed(1);
-
         }
     }
 
@@ -85,6 +84,9 @@ public class MaisonChaperon : MonoBehaviour {
         particle.Stop();
         doorAnimator.SetTrigger("open");
         StartCoroutine(WaitAndOpen(itemType));
+        // Call event.
+        if (ObjectGiven != null)
+            ObjectGiven();
     }
 
     IEnumerator WaitAndOpen(ObjectDropper.ObjectType itemType)
@@ -98,7 +100,6 @@ public class MaisonChaperon : MonoBehaviour {
 
     void OnObjectGrabbed(Hand hand)
     {
-        ObjectGrabbed.Invoke();
         dropper.InteractableObject.onAttachedToHand -= OnObjectGrabbed;
     }
 }
