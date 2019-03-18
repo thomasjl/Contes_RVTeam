@@ -47,6 +47,7 @@ public class Lift : MonoBehaviour {
 
         transform.Translate(Vector3.up * velocity * Time.deltaTime);
         Player.instance.transform.position = Player.instance.transform.position.SetY(transform.position.y+ startPlayerPosY);
+       //Player.instance.transform.Translate(Vector3.up * velocity * Time.deltaTime);
         cordeRend.material.SetTextureOffset("_MainTex", Vector2.up * transform.position.y);
 
         if (transform.position.y >= targetY)

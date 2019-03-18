@@ -20,7 +20,6 @@ public class InterractionManagerAttente2 : InterractionManager
         ConteurManager.instance.LaunchChoices();
 
         Player.instance.transform.localScale = Vector3.one;
-        Player.instance.transform.position = Vector3.zero;
     }
 
     public override void LaunchNextScene()
