@@ -26,6 +26,9 @@ public class ArduinoThread : MonoBehaviour {
         DontDestroyOnLoad(this);
         instance = this;
 
+        if (PlayerPrefs.HasKey(DebugInterface.COMKey))
+            portName = PlayerPrefs.GetString(DebugInterface.COMKey);
+
         StartThread();
     }
 
