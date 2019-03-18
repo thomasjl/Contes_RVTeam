@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 [RequireComponent(typeof(Comestible))]
@@ -9,21 +8,32 @@ public class Potion : MonoBehaviour {
     float newPlayerSize = .3f;
     [SerializeField]
     float timer = 10;
-    float transitionTime = .5f;
+    float transitionTime = 2.5f;
 
     Vector3 ScaleCompensatedPosition { get { return (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * newPlayerSize)).SetY(0); } }
 
     public delegate void EventHandler();
     public static event EventHandler ScaledNormal;
     public static event EventHandler ScaledDown;
+    public static bool scaled;
 
     private void Awake()
     {
-        GetComponent<Comestible>().Consumed += PlayEffect;
+        GetComponent<Comestible>().Consumed += OnConsumed;
     }
 
-    public void PlayEffect()
+    public void OnConsumed()
     {
+        if (!scaled && !GoodMushroom.scaled)
+            AnimatePlayerScale();
+
+        // Create another potion.
+        Table.Instance.AddPotion();
+    }
+
+    void AnimatePlayerScale()
+    {
+        scaled = true;
         Vector3 startPosition = Player.instance.transform.position;
         Player.instance.ProgressionAnim(transitionTime, delegate (float progression)
         {
@@ -33,8 +43,6 @@ public class Potion : MonoBehaviour {
 
         }, delegate
         {
-            // Respawn a bottle.
-            Table.Instance.AddPotion();
             // Call event.
             if (ScaledDown != null)
                 ScaledDown();
@@ -47,19 +55,12 @@ public class Potion : MonoBehaviour {
                     Player.instance.transform.position = Vector3.Lerp(SmallDoor.instance.Spawnpoint.position, startPosition, progression);
                 }, delegate
                 {
+                    scaled = false;
                     // Call event.
                     if (ScaledNormal != null)
                         ScaledNormal();
                 });
             });
         });
-
-        StartCoroutine(SpawnNewPotion());
-    }
-
-    IEnumerator SpawnNewPotion()
-    {
-        yield return new WaitForSeconds(10);
-        Table.Instance.AddPotion();
     }
 }
