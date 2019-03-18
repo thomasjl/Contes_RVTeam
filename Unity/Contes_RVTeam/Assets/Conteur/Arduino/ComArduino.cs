@@ -59,7 +59,8 @@ public class ComArduino : MonoBehaviour {
     {
 
         //Launch Thread
-        ArduinoThread.instance.StartThread();
+        //ArduinoThread.instance.StartThread();
+
         Debug.Log("start com");
         //EnableLed();
 

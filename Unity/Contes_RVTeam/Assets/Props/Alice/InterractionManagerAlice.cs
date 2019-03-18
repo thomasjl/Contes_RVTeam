@@ -21,7 +21,7 @@ public class InterractionManagerAlice : InterractionManager
 
         SetChoicesRoom(ConteurManager.instance.choices);
 
-        //LaunchNextScene();
+        LaunchNextScene();
 
         //setChoicesRoom(new List<int> { 2, 6, 10 });
     }

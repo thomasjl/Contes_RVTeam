@@ -25,6 +25,13 @@ public class ArduinoThread : MonoBehaviour {
     {
         DontDestroyOnLoad(this);
         instance = this;
+
+        StartThread();
+    }
+
+    private void Start()
+    {
+        //StartThread();
     }
 
     public void StartThread()

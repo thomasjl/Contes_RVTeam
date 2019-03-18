@@ -133,10 +133,7 @@ public class ConteurManager : MonoBehaviour {
             arduino.ErraseLed();
             //arduino.EnableLed();
         }
-        else
-        {
-
-        }
+       
     }
 
     void GetChoicesRoom3()
