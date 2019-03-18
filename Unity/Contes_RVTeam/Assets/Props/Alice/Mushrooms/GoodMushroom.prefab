@@ -297,4 +297,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 30
-  sizeFactor: 1.6
+  newPlayerSize: 1.6

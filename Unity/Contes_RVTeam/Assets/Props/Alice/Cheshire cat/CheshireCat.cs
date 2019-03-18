@@ -74,7 +74,7 @@ public class CheshireCat : MonoBehaviour {
     {
         Teleport();
 
-        Potion.ScaledNormal += Talk;
+        PlayerScaleManager.ScaledNormal += Talk;
         cat.gameObject.SetActive(false);
     }
 

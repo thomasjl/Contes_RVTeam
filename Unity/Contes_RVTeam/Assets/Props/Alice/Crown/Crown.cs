@@ -17,7 +17,7 @@ public class Crown : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("HeadCollider"))
+        if (collision.gameObject.CompareTag("HeadCollider") && !IsEquipped)
         {
             // Detach from the hand and attach to the head.
             GetComponent<Interactable>().attachedToHand = null;
@@ -28,6 +28,13 @@ public class Crown : MonoBehaviour {
             transform.localRotation = Quaternion.identity;
             transform.localScale = Vector3.one * scaleOnHead;
             IsEquipped = true;
+
+            // Reset the player's scale after some time.
+            this.Timer(2, delegate
+            {
+                if (PlayerScaleManager.Instance)
+                    PlayerScaleManager.Instance.ForceStopWaiting();
+            });
         }
     }
 }

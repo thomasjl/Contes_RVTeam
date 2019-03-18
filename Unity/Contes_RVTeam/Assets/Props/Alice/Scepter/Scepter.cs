@@ -21,12 +21,19 @@ public class Scepter : MonoBehaviour {
     {
         ListenToPotions();
         IsEquipped = true;
+
+        // Reset the player's scale after some time.
+        this.Timer(2, delegate
+        {
+            if (PlayerScaleManager.Instance)
+                PlayerScaleManager.Instance.ForceStopWaiting();
+        });
     }
 
     void ListenToPotions()
     {
-        Potion.ScaledDown += ScaleDown;
-        Potion.ScaledNormal += ResetScale;
+        PlayerScaleManager.ScaledDown += ScaleDown;
+        PlayerScaleManager.ScaledNormal += ResetScale;
     }
 
     void ScaleDown()
@@ -44,7 +51,7 @@ public class Scepter : MonoBehaviour {
 
     void ResetScale()
     {
-        // Change the scale after a delay if we are note grabbed.
+        // Change the scale after a delay if we are not grabbed.
         if (interactable.IsGrabbed())
             transform.localScale = Vector3.one;
         else
