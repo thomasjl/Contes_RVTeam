@@ -37,9 +37,11 @@ public class ConteurManager : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
         idRoom = 1;
 
+        Debug.Log("conteur " + gameObject.name);
+
         ComArduino.onConteurHasChoose += FinishChoice;
 
-        LaunchChoices();
+        //LaunchChoices();
     }
 
     private void FinishChoice()
@@ -55,8 +57,7 @@ public class ConteurManager : MonoBehaviour {
         }
         else if(idRoom==3)
         {
-
-            StartCoroutine(LaunchTimer(1f, GetChoicesRoom3));
+            StartCoroutine(LaunchTimer(5f, GetChoicesRoom3));
         }
 
         idRoom++;
@@ -131,10 +132,7 @@ public class ConteurManager : MonoBehaviour {
             arduino.ErraseLed();
             //arduino.EnableLed();
         }
-        else
-        {
-
-        }
+       
     }
 
     void GetChoicesRoom3()

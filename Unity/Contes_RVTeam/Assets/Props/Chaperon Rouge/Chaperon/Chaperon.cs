@@ -18,6 +18,8 @@ public class Chaperon : MonoBehaviour {
     float clothHeight = 2;
 
     public bool isEquiped;
+    public delegate void EventHandler();
+    public event EventHandler Equipped;
 
 
     public static Chaperon instance;
@@ -81,10 +83,10 @@ public class Chaperon : MonoBehaviour {
             // Validate equip.
             grabbable.gameObject.SetActive(false);
             isEquiped = true;
-
-
+            // Call event.
+            if (Equipped != null)
+                Equipped();
         }
-
     }
 
     IEnumerator TryEquiping()

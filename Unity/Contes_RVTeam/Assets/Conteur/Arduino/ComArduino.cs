@@ -59,7 +59,8 @@ public class ComArduino : MonoBehaviour {
     {
 
         //Launch Thread
-        ArduinoThread.instance.StartThread();
+        //ArduinoThread.instance.StartThread();
+
         Debug.Log("start com");
         //EnableLed();
 
@@ -79,6 +80,7 @@ public class ComArduino : MonoBehaviour {
 
     private void CheckComingMessages()
     {
+        Debug.Log("check coming msg");
         String msg = ArduinoThread.instance.ReadFromArduino();
 
         if(msg!=null)

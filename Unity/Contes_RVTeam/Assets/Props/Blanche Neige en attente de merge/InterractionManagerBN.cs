@@ -26,10 +26,10 @@ public class InterractionManagerBN : InterractionManager
 
     private void Start()
     {
-        setChoicesRoom(ConteurManager.instance.choices);
+        SetChoicesRoom(ConteurManager.instance.choices);
     }
 
-    public override void setChoicesRoom(List<int> choices)
+    public override void SetChoicesRoom(List<int> choices)
     {
         choicesBN = choices;
 

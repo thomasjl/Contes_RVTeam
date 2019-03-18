@@ -22,7 +22,14 @@ public class Respawnable : MonoBehaviour {
             Objects = new List<Respawnable>();
         Objects.Add(this);
 
+        if (!interactable)
+            interactable = GetComponent<Interactable>();
+
         WaitingForFirstGrab = waitForFirstGrab;
+    }
+        
+    private void Start()
+    {
         if (waitForFirstGrab)
             interactable.onAttachedToHand += delegate { WaitingForFirstGrab = false; };
         interactable.onDetachedFromHand += delegate { CheckOutOfBounds(); } ;

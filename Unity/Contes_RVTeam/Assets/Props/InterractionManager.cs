@@ -19,7 +19,7 @@ public class InterractionManager : MonoBehaviour {
        
     }
 
-    public virtual void setChoicesRoom(List<int> choices)
+    public virtual void SetChoicesRoom(List<int> choices)
     {
 
     }
