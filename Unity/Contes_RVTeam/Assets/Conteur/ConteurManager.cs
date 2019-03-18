@@ -126,12 +126,14 @@ public class ConteurManager : MonoBehaviour {
 
     public void LaunchChoices()
     {
+        Debug.Log("coroutine lance");
+        StartCoroutine(arduino.ListenForMessages());
         if (arduino.arduinoEnable)
-        {
-            StartCoroutine(arduino.ListenForMessages());
+        {            
             arduino.ErraseLed();
             //arduino.EnableLed();
         }
+
        
     }
 

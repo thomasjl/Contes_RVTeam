@@ -26,6 +26,9 @@ public class ArduinoThread : MonoBehaviour {
         DontDestroyOnLoad(this);
         instance = this;
 
+        if (PlayerPrefs.HasKey(DebugInterface.COMKey))
+            portName = PlayerPrefs.GetString(DebugInterface.COMKey);
+
         StartThread();
     }
 
@@ -46,6 +49,8 @@ public class ArduinoThread : MonoBehaviour {
         // Creates and starts the thread
         thread = new Thread(ThreadLoop);
         thread.Start();
+
+        
     }
 
     public void SendToArduino(string command)
@@ -84,40 +89,39 @@ public class ArduinoThread : MonoBehaviour {
 
     public void ThreadLoop()
     {
+        Debug.Log("StartThread loop");
         //open the connetion on the serial port
-        stream = new SerialPort(portName, baudRate);
-        stream.ReadTimeout = 20;
-        stream.Open();
-
-        if(!stream.IsOpen)
+        try
         {
-            Debug.Log("stream not open");
+            stream = new SerialPort(portName, baudRate);
+            stream.ReadTimeout = 20;
+            stream.Open();
+                      
 
-            ConteurManager.instance.arduino.arduinoEnable = false;
-            return;
-        }
-        else
-        {
-            Debug.Log("stream open");
-
-        }
-
-        while (true && threadIsRunning)
-        {
-            //send to Arduino
-            if(outputQueue.Count != 0)
+            while (true && threadIsRunning)
             {
-                string command = (string) outputQueue.Dequeue();
-                WriteToArduino(command);
+                //send to Arduino
+                if (outputQueue.Count != 0)
+                {
+                    string command = (string)outputQueue.Dequeue();
+                    WriteToArduino(command);
+                }
+
+                //read from Arduino
+                string result = ReadFromArduino(20);
+                if (result != null)
+                {
+                    inputQueue.Enqueue(result);
+                }
             }
-
-            //read from Arduino
-            string result = ReadFromArduino(20);
-            if (result !=null)
-            {
-                inputQueue.Enqueue(result);
-            }            
         }
+        catch (Exception)
+        {
+            Debug.Log("Cannot open SerialPort");
+            ConteurManager.instance.arduino.arduinoEnable = false;
+            threadIsRunning = false;
+        }
+       
     }
 
     private void OnDestroy()

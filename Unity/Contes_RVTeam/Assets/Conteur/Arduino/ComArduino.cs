@@ -73,14 +73,53 @@ public class ComArduino : MonoBehaviour {
     {
         while(true)
         {
-            CheckComingMessages();
-            yield return new WaitForSeconds(0.25f);
+            if(arduinoEnable)
+            {
+                CheckComingMessages();
+                yield return new WaitForSeconds(0.25f);
+            }
+            else
+            {
+                Debug.Log("check if not button pressed");
+                if(Input.GetKeyDown(KeyCode.Keypad1))
+                {
+                    Debug.Log("press 1");
+                    button2 = true;
+                    button4 = false;
+                }
+                else if(Input.GetKeyDown(KeyCode.Keypad2))
+                {
+                    button2 = false;
+                    button4 = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.Keypad3))
+                {
+                    button6 = false;
+                    button8 = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.Keypad4))
+                {
+                    button6 = false;
+                    button8 = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.Keypad5))
+                {
+                    button10 = false;
+                    button12 = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.Keypad6))
+                {
+                    button10 = false;
+                    button12 = true;
+                }
+                yield return new WaitForEndOfFrame();
+            }
+           
         }
     }
 
     private void CheckComingMessages()
     {
-        Debug.Log("check coming msg");
         String msg = ArduinoThread.instance.ReadFromArduino();
 
         if(msg!=null)

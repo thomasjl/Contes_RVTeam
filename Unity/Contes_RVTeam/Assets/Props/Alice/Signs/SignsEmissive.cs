@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SignsEmissive : MonoBehaviour {
@@ -13,7 +12,7 @@ public class SignsEmissive : MonoBehaviour {
 
     private void Start()
     {
-        lanterne = GameObject.FindGameObjectWithTag("Lanterne");
+        lanterne = Lanterne.instance.gameObject;
         maxDist = lanterne.GetComponent<SphereCollider>().radius;
         rend = GetComponent<Renderer>();
 
@@ -42,7 +41,7 @@ public class SignsEmissive : MonoBehaviour {
         }
     }
 
-    
+
     IEnumerator SetFootprintMaterial()
     {
         while (true)
@@ -61,5 +60,5 @@ public class SignsEmissive : MonoBehaviour {
             yield return null;
         }
     }
-    
+
 }
