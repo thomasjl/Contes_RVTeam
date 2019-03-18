@@ -8,6 +8,8 @@ public class Table : MonoBehaviour {
     Potion potionTemplate;
     [SerializeField]
     Transform potionSpawn;
+    public bool AddedAPotionOnce{ get; private set; }
+
 
     public static Table Instance { get; private set; }
 
@@ -18,6 +20,7 @@ public class Table : MonoBehaviour {
 
     public void AddPotion()
     {
+        AddedAPotionOnce = true;
         tableObjects.DestroyChidren();
         Instantiate(potionTemplate, potionSpawn);
     }

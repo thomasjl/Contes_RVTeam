@@ -53,10 +53,7 @@ public class SmallDoor : MonoBehaviour {
     private void OnTriggerStay(Collider other)
     {
         if (open && other.CompareTag("HeadCollider") && Time.time - openTime > delayBeforeTransition)
-        {
             InterractionManagerAlice.instance.LaunchNextScene();
-        }
-           
     }
 
     public void Open()

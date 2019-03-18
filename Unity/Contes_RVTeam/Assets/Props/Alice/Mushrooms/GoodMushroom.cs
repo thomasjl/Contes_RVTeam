@@ -67,7 +67,8 @@ public class GoodMushroom : Mushroom {
 
                 }, delegate
                 {
-                    Table.Instance.AddPotion();
+                    if (!Table.Instance.AddedAPotionOnce)
+                        Table.Instance.AddPotion();
                     scaled = false;
                     // Call event.
                     if (ScaledNormal != null)
