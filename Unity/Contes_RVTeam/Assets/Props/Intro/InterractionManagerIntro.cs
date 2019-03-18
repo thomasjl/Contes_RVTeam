@@ -13,6 +13,8 @@ public class InterractionManagerIntro : InterractionManager {
         AudioManager.instance.audioSource.clip = soundR1;
 
         Invoke("PlaySound", 10f);
+
+        ConteurManager.instance.LaunchChoices();
     }
 
     void PlaySound()
