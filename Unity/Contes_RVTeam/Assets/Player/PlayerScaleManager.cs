@@ -4,7 +4,7 @@ using Valve.VR.InteractionSystem;
 
 public class PlayerScaleManager : MonoBehaviour {
 
-    float transitionTime = 2.5f;
+    float transitionTime = .5f;
     float scaleDelay = .5f;
     bool scaled;
 
