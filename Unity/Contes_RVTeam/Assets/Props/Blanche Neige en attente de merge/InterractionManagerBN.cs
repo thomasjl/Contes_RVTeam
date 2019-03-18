@@ -18,7 +18,9 @@ public class InterractionManagerBN : InterractionManager
 
     public override void LaunchGoodOutro()
     {
-        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(goodOutro); }); });
+
+        SceneManager.LoadSceneAsync(goodOutro);
+       // PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { }); });
 
     }
 

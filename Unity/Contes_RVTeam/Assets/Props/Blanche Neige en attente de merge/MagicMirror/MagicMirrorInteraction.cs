@@ -18,13 +18,14 @@ public class MagicMirrorInteraction : MonoBehaviour {
     {
         instance = this;
         SetWebcamMirror();
+
+        Color tmpColor = plane.GetComponent<Renderer>().material.color;
+        tmpColor.a = 0f;
+        
+        plane.GetComponent<Renderer>().material.color = tmpColor;
     }
 
-    private void Start()
-    {
-        LaunchGoodOutro();
-    }
-
+    
     public void SetMirror(MirrorType mirrorType)
     {
         switch (mirrorType)
@@ -43,6 +44,8 @@ public class MagicMirrorInteraction : MonoBehaviour {
     public void ShowWebcamMirror()
     {
         rawimage.enabled = true;
+
+        StartCoroutine(WaitUntilNextScene());
     }
 
     WebCamTexture webcamTexture;
@@ -65,15 +68,29 @@ public class MagicMirrorInteraction : MonoBehaviour {
 
     }
 
+    IEnumerator WaitUntilNextScene()
+    {
+        yield return new WaitForSeconds(7);
+        LaunchGoodOutro();
+    }
+
     public void LaunchGoodOutro()
     {
-        
-        this.ProgressionAnim(3f, delegate (float progression)
+
+        float tmpLightSettings = RenderSettings.ambientIntensity;
+
+        this.ProgressionAnim(5f, delegate (float progression)
         {
+
             Color tmpColor = plane.GetComponent<Renderer>().material.color;
             tmpColor.a = progression;
 
+            RenderSettings.ambientIntensity = Mathf.Lerp(tmpLightSettings, 8f, progression);
+
             plane.GetComponent<Renderer>().material.color = tmpColor;
+        }, delegate
+        {
+            InterractionManagerBN.instance.LaunchGoodOutro();
         });
          
     }

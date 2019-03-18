@@ -95,7 +95,6 @@ public class ConteurManager : MonoBehaviour {
 
         //InterractionManager.instance.setChoicesRoom(choices);
         InterractionManager.instance.LaunchNextScene();
-
         
 
     }
@@ -131,6 +130,10 @@ public class ConteurManager : MonoBehaviour {
             StartCoroutine(arduino.ListenForMessages());
             arduino.ErraseLed();
             //arduino.EnableLed();
+        }
+        else
+        {
+
         }
     }
 

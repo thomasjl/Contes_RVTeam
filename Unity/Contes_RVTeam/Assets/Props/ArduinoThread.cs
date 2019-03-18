@@ -82,6 +82,12 @@ public class ArduinoThread : MonoBehaviour {
         stream.ReadTimeout = 20;
         stream.Open();
 
+        if(!stream.IsOpen)
+        {
+            ConteurManager.instance.arduino.arduinoEnable = false;
+            return;
+        }
+
         while(true && threadIsRunning)
         {
             //send to Arduino
@@ -89,7 +95,6 @@ public class ArduinoThread : MonoBehaviour {
             {
                 string command = (string) outputQueue.Dequeue();
                 WriteToArduino(command);
-
             }
 
             //read from Arduino

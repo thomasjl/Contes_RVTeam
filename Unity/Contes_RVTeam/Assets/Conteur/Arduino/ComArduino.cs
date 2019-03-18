@@ -65,8 +65,6 @@ public class ComArduino : MonoBehaviour {
 
         choiceDone = false;
 
-
-
     }
 
    
@@ -82,6 +80,7 @@ public class ComArduino : MonoBehaviour {
     private void CheckComingMessages()
     {
         String msg = ArduinoThread.instance.ReadFromArduino();
+
         if(msg!=null)
         {
             Debug.Log("message reçu d'arduino : " + msg);
