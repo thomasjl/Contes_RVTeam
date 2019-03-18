@@ -24,7 +24,7 @@ public class GoodMushroom : Mushroom {
 
     protected override void OnConsumed()
     {
-        PlayerScaleManager.Instance.TryScaleDown(newPlayerSize, duration);
+        PlayerScaleManager.Instance.TryScaleUp(newPlayerSize, duration);
 
         // Create another mushroom.
         if (mushrooms.Count <= 1)

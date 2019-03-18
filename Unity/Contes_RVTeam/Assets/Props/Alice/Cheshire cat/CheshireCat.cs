@@ -140,7 +140,7 @@ public class CheshireCat : MonoBehaviour {
     IEnumerator PlayRandomVideo()
     {
         PlayPreparedClip();
-
+        Table.Instance.AddPotion();
         lastVideo = Utilities.ExclusiveRange(0, randomVideos.Length, lastVideo);
         PrepareClip(randomVideos[lastVideo]);
         while (aPlays || bPlays || !aPrepared || !bPrepared)

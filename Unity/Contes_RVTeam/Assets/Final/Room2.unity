@@ -4136,48 +4136,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4509282065239934, guid: 98c8230505d3ebf4c99e2e685d20a353,
     type: 2}
   m_PrefabInternal: {fileID: 305806038}
---- !u!1001 &605349143
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 1.1606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 1.5358
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.0667503
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.9977697
-      objectReference: {fileID: 0}
-    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cd489ef54119f264e923265a038d16d1, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1001 &612941519
 Prefab:
   m_ObjectHideFlags: 0
@@ -10471,6 +10429,48 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2331eadfde07e3642b2cfb5c829d8f55,
     type: 3}
   m_PrefabInternal: {fileID: 1887390}
+--- !u!1001 &1807415629
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.1606
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.5358
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.0667503
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9977697
+      objectReference: {fileID: 0}
+    - target: {fileID: 4832214164973956, guid: cd489ef54119f264e923265a038d16d1, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd489ef54119f264e923265a038d16d1, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!4 &1807961125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: d716d4c98f802fe498e00048d4305413,

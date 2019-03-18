@@ -86,8 +86,6 @@ public class PlayerScaleManager : MonoBehaviour {
 
                 }, delegate
                 {
-                    if (!Table.Instance.AddedAPotionOnce)
-                        Table.Instance.AddPotion();
                     scaled = false;
                     // Call event.
                     if (ScaledNormal != null)
