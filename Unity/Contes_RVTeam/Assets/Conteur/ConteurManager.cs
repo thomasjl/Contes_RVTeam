@@ -37,9 +37,11 @@ public class ConteurManager : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
         idRoom = 1;
 
+        Debug.Log("conteur " + gameObject.name);
+
         ComArduino.onConteurHasChoose += FinishChoice;
 
-        LaunchChoices();
+        //LaunchChoices();
     }
 
     private void FinishChoice()

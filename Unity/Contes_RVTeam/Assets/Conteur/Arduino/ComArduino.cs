@@ -79,6 +79,7 @@ public class ComArduino : MonoBehaviour {
 
     private void CheckComingMessages()
     {
+        Debug.Log("check coming msg");
         String msg = ArduinoThread.instance.ReadFromArduino();
 
         if(msg!=null)

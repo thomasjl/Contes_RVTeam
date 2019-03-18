@@ -27,12 +27,12 @@ public class ArduinoThread : MonoBehaviour {
         instance = this;
     }
 
-   
-
     public void StartThread()
     {
         outputQueue = Queue.Synchronized(new Queue());
         inputQueue = Queue.Synchronized(new Queue());
+
+        Debug.Log("Start thread");
 
         threadIsRunning = true;
 
@@ -84,11 +84,18 @@ public class ArduinoThread : MonoBehaviour {
 
         if(!stream.IsOpen)
         {
+            Debug.Log("stream not open");
+
             ConteurManager.instance.arduino.arduinoEnable = false;
             return;
         }
+        else
+        {
+            Debug.Log("stream open");
 
-        while(true && threadIsRunning)
+        }
+
+        while (true && threadIsRunning)
         {
             //send to Arduino
             if(outputQueue.Count != 0)
