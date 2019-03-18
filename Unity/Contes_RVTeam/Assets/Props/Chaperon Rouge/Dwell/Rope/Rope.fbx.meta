@@ -6,9 +6,11 @@ ModelImporter:
     100000: //RootNode
     400000: //RootNode
     2100000: No Name
+    2100002: default
     2300000: //RootNode
     3300000: //RootNode
     4300000: Rope
+    4300002: Cylinder001
   externalObjects: {}
   materials:
     importMaterials: 1
