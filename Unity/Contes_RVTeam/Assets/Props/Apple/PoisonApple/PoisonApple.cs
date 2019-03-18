@@ -22,7 +22,7 @@ public class PoisonApple : MonoBehaviour {
 
     private bool hasEatenApple;
 
-    private bool drunkRemede;
+    private IEnumerator coroutineTmp;
 
     private void Awake()
     {
@@ -31,10 +31,11 @@ public class PoisonApple : MonoBehaviour {
         SetAlpha(0);
         remedPresent = false;
         hasEatenApple = false;
-        drunkRemede = false;
 
         Debug.Log("poison apple"+gameObject.name);
     }
+
+
 
     void OnConsumed()
     {        
@@ -48,45 +49,43 @@ public class PoisonApple : MonoBehaviour {
             PlayerPostProcess.Instance.PlayPoison(8, colorFilter);
 
             //Wait for remede
-            StartCoroutine(WaitForRemede());
-
+            coroutineTmp = WaitForRemede();
+            StartCoroutine(coroutineTmp);
 
         }
     }
 
+  
     
     IEnumerator WaitForRemede()
     {
+
+        Debug.Log("start coroutine");
         //spawn remede
         FioleRemede.instance.SpawnFiole();
 
-        int timer = 9;
+        float startime = Time.time;
        
-        while (timer > 0)
+        while (Time.time- startime < 11f)
         {
-            yield return new WaitForSeconds(1);
-            timer--;
-
-            if(drunkRemede)
-            {
-                yield return null;
-                break;
-            }
+            yield return null;
+            Debug.Log("tourne");
         }       
 
-        if(!drunkRemede)
-        {
-            Debug.Log("go to Outro");
-            //remede not found
-            this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression); }, delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
-        }        
+       
+        Debug.Log("go to Outro");
+        //remede not found
+        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression); }, delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
+             
     }
     
 
     public void RemedeFound()
     {
-        drunkRemede = true;
+       
         Debug.Log("remde found");
+        StopCoroutine(coroutineTmp);
+
         //found Remede
         
         //reset normal vignette
