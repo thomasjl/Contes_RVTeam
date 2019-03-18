@@ -19,12 +19,12 @@ public class InterractionManagerAlice : InterractionManager
         LanterneFlame.instance.SetColor(newColor);
 
 
-        setChoicesRoom(ConteurManager.instance.choices);
+        SetChoicesRoom(ConteurManager.instance.choices);
 
         //setChoicesRoom(new List<int> { 2, 6, 10 });
     }
 
-    public override void setChoicesRoom(List<int> choices)
+    public override void SetChoicesRoom(List<int> choices)
     {
         choicesAlice = choices;
 

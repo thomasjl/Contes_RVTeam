@@ -1,43 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InterractionManagerRRH : InterractionManager
-{
+public class InterractionManagerRRH : InterractionManager {
 
-    public GameObject footprintArbre;
-    public GameObject footprintPuit;
-    public GameObject plumeParticle;
-    
+    [SerializeField]
+    GameObject plumeParticle;
+
     private List<int> choicesRRH;
 
+    [SerializeField]
+    GameObject footprintsToThorns;
 
-    public string nextScene = "Attente1";
+    [SerializeField]
+    string nextScene = "Attente1";
 
     private void Start()
     {
         actorIsInScene = false;
-        setChoicesRoom(ConteurManager.instance.choices);
+        if (ConteurManager.instance)
+            SetChoicesRoom(ConteurManager.instance.choices);
 
+        // Setup footprints.
+        footprintsToThorns.SetActive(false);
+        MaisonChaperon.instance.ObjectGiven += delegate { footprintsToThorns.SetActive(true); };
     }
 
-    public override void setChoicesRoom(List<int> choices)
+    public override void SetChoicesRoom(List<int> choices)
     {
         choicesRRH = choices;
 
         if (choices[0] == 2)
         {
             Chaperon.instance.SetFirstChoice(2);
-
-            footprintArbre.SetActive(true);
-            footprintPuit.SetActive(false);
         }
         else if (choices[0] == 4)
         {
             Chaperon.instance.SetFirstChoice(4);
-            footprintArbre.SetActive(false);
-            footprintPuit.SetActive(true);
         }
         else
         {
@@ -68,7 +67,6 @@ public class InterractionManagerRRH : InterractionManager
         else
         {
             MailBox.instance.SetPaperMaterial(MailBox.PaperType.JabberWocky);
-
         }
 
         actorIsInScene = true;
