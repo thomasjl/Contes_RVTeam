@@ -2,7 +2,7 @@
 
 public class SoldatDeCarte : MonoBehaviour {
 
-    bool moved = false;
+    bool triggeredOnce = false;
 
     public static SoldatDeCarte instance;
 
@@ -13,14 +13,16 @@ public class SoldatDeCarte : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!moved && other.CompareTag("HeadCollider") && Crown.Instance.IsEquipped)
-            MoveFromDoor();
+        if (!triggeredOnce && other.CompareTag("HeadCollider") && Crown.Instance.IsEquipped)
+        {
+            triggeredOnce = true;
+            this.Timer(1, MoveFromDoor);
+        }
     }
 
     void MoveFromDoor()
     {
         GetComponentInChildren<Animator>().SetTrigger("move");
-        moved = true;
         this.Timer(2, delegate { SmallDoor.instance.Open(); });
     }
 }

@@ -22,7 +22,7 @@ public class PoisonApple : MonoBehaviour {
 
     private bool hasEatenApple;
 
-    private bool drunkRemede;
+  
 
     private void Awake()
     {
@@ -31,7 +31,6 @@ public class PoisonApple : MonoBehaviour {
         SetAlpha(0);
         remedPresent = false;
         hasEatenApple = false;
-        drunkRemede = false;
 
         Debug.Log("poison apple"+gameObject.name);
     }
@@ -54,39 +53,37 @@ public class PoisonApple : MonoBehaviour {
         }
     }
 
+  
     
     IEnumerator WaitForRemede()
     {
         //spawn remede
         FioleRemede.instance.SpawnFiole();
 
-        int timer = 9;
+        int timer = 11;
        
         while (timer > 0)
-        {
+        {            
+
             yield return new WaitForSeconds(1);
             timer--;
-
-            if(drunkRemede)
-            {
-                yield return null;
-                break;
-            }
+           
         }       
 
-        if(!drunkRemede)
-        {
-            Debug.Log("go to Outro");
-            //remede not found
-            this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression); }, delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
-        }        
+       
+        Debug.Log("go to Outro");
+        //remede not found
+        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression); }, delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
+             
     }
     
 
     public void RemedeFound()
     {
-        drunkRemede = true;
+       
         Debug.Log("remde found");
+        StopAllCoroutines();
+
         //found Remede
         
         //reset normal vignette

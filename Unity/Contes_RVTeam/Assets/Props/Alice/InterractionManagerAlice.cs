@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InterractionManagerAlice : InterractionManager
-{
+public class InterractionManagerAlice : InterractionManager {
     public AudioSource ambianceSound;
     public string nextScene = "Attente2";
 
@@ -37,7 +35,7 @@ public class InterractionManagerAlice : InterractionManager
             SoldatDeCarte.instance.gameObject.transform.GetChild(0).gameObject.SetActive(false);
 
         }
-        else if(choices[0] == 4)
+        else if (choices[0] == 4)
         {
             //couronne appear
             Crown.Instance.gameObject.GetComponent<PaintingInteractable>().SetGrabbableInPainting(true);
@@ -75,7 +73,7 @@ public class InterractionManagerAlice : InterractionManager
         }
         else if (choices[2] == 12)
         {
-            //panneaxu usefull
+            //panneaxu useful
 
             Signs.instance.SetChoicesSigns(Signs.ChoicesSigns.choice2);
         }
@@ -89,6 +87,14 @@ public class InterractionManagerAlice : InterractionManager
 
     public override void LaunchNextScene()
     {
-        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(nextScene); }); });
+        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate
+        {
+            this.Timer(2, delegate
+            {
+                SceneManager.LoadSceneAsync(nextScene);
+                if (Crown.Instance.IsEquipped)
+                    Destroy(Crown.Instance.gameObject);
+            });
+        });
     }
 }
