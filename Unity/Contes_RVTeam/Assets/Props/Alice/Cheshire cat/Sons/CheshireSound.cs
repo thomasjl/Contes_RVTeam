@@ -8,6 +8,7 @@ public class CheshireSound : MonoBehaviour {
 
     [SerializeField]
     List<AudioClip> listAudio;
+    int lastChoice = 0;
 
     new AudioSource audio;
 
@@ -21,10 +22,11 @@ public class CheshireSound : MonoBehaviour {
 
     public void Talk()
     {
+        lastChoice = Utilities.ExclusiveRange(0, listAudio.Count - 1, lastChoice);
         if (!playedFirstAudio)
             audio.clip = firstAudio;
         else
-            audio.clip = listAudio[Random.Range(0, 15)];
+            audio.clip = listAudio[lastChoice];
         audio.Play();
         Table.Instance.AddPotion();
     }

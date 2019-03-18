@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FioleRemede : MonoBehaviour {
 
     public static FioleRemede instance;
+    public static bool Consumed { get; private set; }
 
     private void Awake()
     {
@@ -14,17 +13,11 @@ public class FioleRemede : MonoBehaviour {
     private void Start()
     {
         transform.GetChild(0).gameObject.SetActive(false);
-
-        transform.GetChild(0).gameObject.GetComponent<Comestible>().Consumed += FioleUsed;
+        transform.GetChild(0).gameObject.GetComponent<Comestible>().Consumed += delegate { Consumed = true; };
     }
 
     public void SpawnFiole()
     {
         transform.GetChild(0).gameObject.SetActive(true);
-    }
-
-    public void FioleUsed()
-    {
-        PoisonApple.instance.RemedeFound();
     }
 }

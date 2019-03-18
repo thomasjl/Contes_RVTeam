@@ -37,7 +37,7 @@ public class PoisonApple : MonoBehaviour {
 
     private void Start()
     {
-        startColor= deathSymbol.material.color;
+        startColor = deathSymbol.material.color;
         deathSymbol.material.SetColor("_EmissionColor", off);
 
         deathSymbol.material.EnableKeyword("_EMISSION");
@@ -67,9 +67,16 @@ public class PoisonApple : MonoBehaviour {
 
         float startime = Time.time;
 
-        while (Time.time - startime < 11f)
+        while (Time.time - startime < 11)
+        {
+            if (FioleRemede.Consumed)
+            {
+                // Stop the poison and play victory if we use the fiole.
+                PlayerPostProcess.Instance.PlayRemede(3);
+                yield break;
+            }
             yield return null;
-
+        }
 
         // Kill the player.
         this.ProgressionAnim(2, delegate (float progression)
@@ -80,13 +87,7 @@ public class PoisonApple : MonoBehaviour {
             InterractionManagerBN.instance.LaunchBadOutro();
         });
     }
-
-    public void RemedeFound()
-    {
-        StopCoroutine(waitingForRemede);
-        PlayerPostProcess.Instance.PlayRemede(3);
-    }
-
+    
     private void Update()
     {
         // Update the alpha of the death symbol.
@@ -104,7 +105,6 @@ public class PoisonApple : MonoBehaviour {
 
     void SetAlpha(float alpha)
     {
-        Debug.Log("alpha " + alpha);
         deathSymbol.material.SetColor("_EmissionColor", Color.Lerp(off, on, alpha));
     }
 }
