@@ -15,11 +15,15 @@ public class GoodMushroom : Mushroom {
     {
         base.Awake();
         mushrooms.Add(this);
-        startPosition = transform.position;
-        startRotation = transform.rotation;
         // Create player scale manager.
         if (!PlayerScaleManager.Instance)
             new GameObject().AddComponent<PlayerScaleManager>();
+    }
+
+    private void Start()
+    {
+        startPosition = transform.position;
+        startRotation = transform.rotation;
     }
 
     protected override void OnConsumed()
@@ -33,7 +37,6 @@ public class GoodMushroom : Mushroom {
             GameObject newMush = Instantiate(gameObject);
             newMush.transform.position = startPosition;
             newMush.transform.rotation = startRotation;
-            newMush.transform.position = Vector3.up * .3f;
             newMush.SetActive(true);
         }
     }
