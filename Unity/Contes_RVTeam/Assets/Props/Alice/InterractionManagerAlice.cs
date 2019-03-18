@@ -7,6 +7,8 @@ public class InterractionManagerAlice : InterractionManager
 {
     public AudioSource ambianceSound;
     public string nextScene = "Attente2";
+    [SerializeField]
+    GameObject footprintsToDoor;
 
     [SerializeField]
     Color newColor = new Color(0, 0.4251068f, 1f);
@@ -21,9 +23,9 @@ public class InterractionManagerAlice : InterractionManager
 
         SetChoicesRoom(ConteurManager.instance.choices);
 
-        //LaunchNextScene();
-
-        //setChoicesRoom(new List<int> { 2, 6, 10 });
+        footprintsToDoor.SetActive(false);
+        Crown.Instance.Equipped += delegate { footprintsToDoor.SetActive(true); };
+        Scepter.Instance.Grabbed += delegate { footprintsToDoor.SetActive(true); };
     }
 
     public override void SetChoicesRoom(List<int> choices)

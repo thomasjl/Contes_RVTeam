@@ -6,7 +6,8 @@ public class Scepter : MonoBehaviour {
     Interactable interactable;
     public bool ScaledDown { get; private set; }
     public bool IsEquipped { get; private set; }
-
+    public delegate void EventHandler();
+    public event EventHandler Grabbed;
 
     public static Scepter Instance { get; private set; }
 
@@ -21,6 +22,9 @@ public class Scepter : MonoBehaviour {
     {
         ListenToPotions();
         IsEquipped = true;
+        // Call event.
+        if (Grabbed != null)
+            Grabbed();
 
         // Reset the player's scale after some time.
         this.Timer(2, delegate

@@ -8,6 +8,8 @@ public class Crown : MonoBehaviour {
     [SerializeField]
     float scaleOnHead = .8f;
     public bool IsEquipped { get; private set; }
+    public delegate void EventHandler();
+    public event EventHandler Equipped;
 
     public static Crown Instance { get; private set; }
     private void Awake()
@@ -28,6 +30,9 @@ public class Crown : MonoBehaviour {
             transform.localRotation = Quaternion.identity;
             transform.localScale = Vector3.one * scaleOnHead;
             IsEquipped = true;
+            // Call event.
+            if (Equipped != null)
+                Equipped();
 
             // Reset the player's scale after some time.
             this.Timer(2, delegate
