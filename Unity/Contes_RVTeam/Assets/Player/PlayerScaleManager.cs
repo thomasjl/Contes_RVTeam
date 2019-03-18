@@ -58,7 +58,7 @@ public class PlayerScaleManager : MonoBehaviour {
     }
 
 
-    void TryScaleUp(float newPlayerSize, float duration)
+    public void TryScaleUp(float newPlayerSize, float duration)
     {
         if (scaled)
             return;
