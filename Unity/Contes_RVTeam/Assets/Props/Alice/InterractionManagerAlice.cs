@@ -22,10 +22,11 @@ public class InterractionManagerAlice : InterractionManager
 
 
         SetChoicesRoom(ConteurManager.instance.choices);
-
+        
         footprintsToDoor.SetActive(false);
         Crown.Instance.Equipped += delegate { footprintsToDoor.SetActive(true); };
         Scepter.Instance.Grabbed += delegate { footprintsToDoor.SetActive(true); };
+
     }
 
     public override void SetChoicesRoom(List<int> choices)
