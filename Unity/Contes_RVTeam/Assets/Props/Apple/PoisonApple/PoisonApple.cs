@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class PoisonApple : MonoBehaviour {
@@ -20,9 +18,8 @@ public class PoisonApple : MonoBehaviour {
 
     public bool remedPresent;
 
-    private bool hasEatenApple;
+    private bool consumed;
 
-    private IEnumerator coroutineTmp;
 
     private void Awake()
     {
@@ -30,70 +27,56 @@ public class PoisonApple : MonoBehaviour {
         GetComponent<Comestible>().Consumed += OnConsumed;
         SetAlpha(0);
         remedPresent = false;
-        hasEatenApple = false;
-
-        Debug.Log("poison apple"+gameObject.name);
+        consumed = false;
     }
 
-
-
     void OnConsumed()
-    {        
-        if(!hasEatenApple)
+    {
+        if (!consumed)
         {
-            hasEatenApple = true;
-
-            Debug.Log("apple poison");
+            consumed = true;
 
             // Make the poison effect
             PlayerPostProcess.Instance.PlayPoison(8, colorFilter);
 
             //Wait for remede
-            coroutineTmp = WaitForRemede();
-            StartCoroutine(coroutineTmp);
-
+            waitingForRemede = WaitForRemede();
+            StartCoroutine(waitingForRemede);
         }
     }
 
-  
-    
+
+    IEnumerator waitingForRemede;
     IEnumerator WaitForRemede()
     {
-
-        Debug.Log("start coroutine");
         //spawn remede
         FioleRemede.instance.SpawnFiole();
 
         float startime = Time.time;
-       
-        while (Time.time- startime < 11f)
-        {
-            yield return null;
-            Debug.Log("tourne");
-        }       
 
-       
-        Debug.Log("go to Outro");
-        //remede not found
-        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression); }, delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
-             
+        while (Time.time - startime < 11f)
+            yield return null;
+
+
+        // Kill the player.
+        this.ProgressionAnim(2, delegate (float progression)
+        {
+            PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression);
+        }, delegate
+        {
+            InterractionManagerBN.instance.LaunchBadOutro();
+        });
     }
-    
 
     public void RemedeFound()
     {
-       
-        Debug.Log("remde found");
-        StopCoroutine(coroutineTmp);
-
-        //found Remede
-        
-        //reset normal vignette
+        StopCoroutine(waitingForRemede);
         PlayerPostProcess.Instance.PlayRemede(3);
     }
 
     private void Update()
     {
+        // Update the alpha of the death symbol.
         float distance = Vector3.Distance(transform.position, Lanterne.instance.FlamePosition);
         if (distance < minLanterneDistance)
             SetAlpha(Mathf.Lerp(1, 0, distance / minLanterneDistance));

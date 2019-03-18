@@ -27,5 +27,4 @@ public class FioleRemede : MonoBehaviour {
     {
         PoisonApple.instance.RemedeFound();
     }
-
 }
