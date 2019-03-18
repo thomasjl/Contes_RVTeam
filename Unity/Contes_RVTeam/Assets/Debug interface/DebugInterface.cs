@@ -48,14 +48,14 @@ public class DebugInterface : MonoBehaviour {
     #region COM port -------------------
     void SetupCOMPort()
     {
+        if (PlayerPrefs.HasKey(COMKey))
+            COMPortField.text = PlayerPrefs.GetInt(COMKey).ToString();
         COMPortField.onEndEdit.AddListener(delegate { UpdateCOMPort(); });
     }
     void UpdateCOMPort()
     {
-        if (COMPortField.text.Length == 1)
-            PlayerPrefs.SetString(COMKey, COMPortField.text);
-        else if (COMPortField.text.Length > 1)
-            PlayerPrefs.SetString(COMKey, "\\\\.\\" + COMPortField.text);
+        if (COMPortField.text.Length >= 1)
+            PlayerPrefs.SetInt(COMKey, int.Parse(COMPortField.text));
     }
     #endregion -------------------
 

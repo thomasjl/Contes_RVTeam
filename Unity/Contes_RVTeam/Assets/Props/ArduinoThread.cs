@@ -11,7 +11,8 @@ public class ArduinoThread : MonoBehaviour {
     private Queue outputQueue;
     private Queue inputQueue;
 
-    private string portName = "\\\\.\\COM12";
+    int defaultPortNumber = 12;
+    private string portName;
     private int baudRate = 9600;
 
     SerialPort stream;
@@ -25,17 +26,13 @@ public class ArduinoThread : MonoBehaviour {
         DontDestroyOnLoad(this);
         instance = this;
 
-        if (PlayerPrefs.HasKey(DebugInterface.COMKey))
-            portName = PlayerPrefs.GetString(DebugInterface.COMKey);
-        else
-            PlayerPrefs.SetString(DebugInterface.COMKey, portName);
+        // Set port name.
+        if (!PlayerPrefs.HasKey(DebugInterface.COMKey))
+            PlayerPrefs.SetInt(DebugInterface.COMKey, defaultPortNumber);
+        string portNumber = PlayerPrefs.GetInt(DebugInterface.COMKey).ToString();
+        portName = (portNumber.Length > 1 ? "\\\\.\\" : "") + "COM" + portNumber;
 
         StartThread();
-    }
-
-    private void Start()
-    {
-        //StartThread();
     }
 
     public void StartThread()
