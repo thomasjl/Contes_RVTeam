@@ -57,8 +57,7 @@ public class ConteurManager : MonoBehaviour {
         }
         else if(idRoom==3)
         {
-
-            StartCoroutine(LaunchTimer(1f, GetChoicesRoom3));
+            StartCoroutine(LaunchTimer(5f, GetChoicesRoom3));
         }
 
         idRoom++;
