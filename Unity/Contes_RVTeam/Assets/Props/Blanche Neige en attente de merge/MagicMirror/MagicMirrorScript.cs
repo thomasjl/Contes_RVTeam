@@ -535,7 +535,7 @@ namespace DigitalRuby.MagicMirror
             reflectCamera.orthographic = sourceCamera.orthographic;
             reflectCamera.orthographicSize = sourceCamera.orthographicSize;
             reflectCamera.renderingPath = (ReflectionCameraRenderingPath == RenderingPath.UsePlayerSettings ? sourceCamera.renderingPath : ReflectionCameraRenderingPath);
-            reflectCamera.backgroundColor = Color.red;
+            reflectCamera.backgroundColor = Color.black;
             reflectCamera.clearFlags = ReflectSkybox ? CameraClearFlags.Skybox : CameraClearFlags.SolidColor;
             reflectCamera.cullingMask = (CurrentRecursionLevel == 0 || ReflectionMaskRecursion.value == 0 ? ReflectionMask : ReflectionMaskRecursion);
             reflectCamera.stereoSeparation = sourceCamera.stereoSeparation;

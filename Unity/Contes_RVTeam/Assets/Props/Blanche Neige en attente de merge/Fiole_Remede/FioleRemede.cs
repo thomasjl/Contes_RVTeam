@@ -6,9 +6,13 @@ public class FioleRemede : MonoBehaviour {
 
     public static FioleRemede instance;
 
-    private void Start()
+    private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
         transform.GetChild(0).gameObject.SetActive(false);
 
         transform.GetChild(0).gameObject.GetComponent<Comestible>().Consumed += FioleUsed;

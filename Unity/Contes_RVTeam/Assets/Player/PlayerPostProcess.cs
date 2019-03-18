@@ -28,12 +28,15 @@ public class PlayerPostProcess : MonoBehaviour {
         profile.TryGetSettings(out vignette);
         StartHueshift = HueShift;
         StartColorFilter = colorGrading.colorFilter.value;
+
+        Debug.Log("start color filter " + colorGrading.colorFilter.value);
         StartVignetteStrength = vignette.intensity;
         Instance = this;
     }
 
     private void Start()
     {
+        Debug.Log("POST PROCESS");
         BlinkTime = 0;
         Blink.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
     }
@@ -52,17 +55,20 @@ public class PlayerPostProcess : MonoBehaviour {
         this.ProgressionAnim(transitionDuration, delegate (float progression)
         {
             ColorFilter = Color.Lerp(StartColorFilter, targetColor, progression);
+            VignetteStrength = Mathf.Lerp(StartVignetteStrength, 0.7f,progression);
         });
     }
 
     public void PlayRemede(float transitionDuration)
     {
         Debug.Log("remede");
-        StopAllCoroutines();
         Color currentColorVignette = ColorFilter;
+        float currentVignette = VignetteStrength;
         this.ProgressionAnim(transitionDuration, delegate (float progression)
         {
             ColorFilter = Color.Lerp(currentColorVignette, StartColorFilter, progression);
+            VignetteStrength = Mathf.Lerp(currentVignette,StartVignetteStrength, progression);
         });
+
     }
 }

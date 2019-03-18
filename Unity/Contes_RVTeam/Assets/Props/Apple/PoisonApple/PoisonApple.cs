@@ -22,6 +22,8 @@ public class PoisonApple : MonoBehaviour {
 
     private bool hasEatenApple;
 
+    private bool drunkRemede;
+
     private void Awake()
     {
         instance = this;
@@ -29,14 +31,18 @@ public class PoisonApple : MonoBehaviour {
         SetAlpha(0);
         remedPresent = false;
         hasEatenApple = false;
+        drunkRemede = false;
+
+        Debug.Log("poison apple"+gameObject.name);
     }
 
-    
     void OnConsumed()
     {        
         if(!hasEatenApple)
         {
             hasEatenApple = true;
+
+            Debug.Log("apple poison");
 
             // Make the poison effect
             PlayerPostProcess.Instance.PlayPoison(8, colorFilter);
@@ -44,8 +50,6 @@ public class PoisonApple : MonoBehaviour {
             //Wait for remede
             StartCoroutine(WaitForRemede());
 
-
-            //this.Timer(5, delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
 
         }
     }
@@ -62,19 +66,28 @@ public class PoisonApple : MonoBehaviour {
         {
             yield return new WaitForSeconds(1);
             timer--;
+
+            if(drunkRemede)
+            {
+                yield return null;
+                break;
+            }
         }       
 
-        //remede not found
-        this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression); },delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
-        
+        if(!drunkRemede)
+        {
+            Debug.Log("go to Outro");
+            //remede not found
+            this.ProgressionAnim(2, delegate (float progression) { PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression); }, delegate { InterractionManagerBN.instance.LaunchBadOutro(); });
+        }        
     }
     
 
     public void RemedeFound()
     {
+        drunkRemede = true;
         Debug.Log("remde found");
         //found Remede
-        StopAllCoroutines();
         
         //reset normal vignette
         PlayerPostProcess.Instance.PlayRemede(3);

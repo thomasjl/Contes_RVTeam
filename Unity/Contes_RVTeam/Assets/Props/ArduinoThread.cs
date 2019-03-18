@@ -17,6 +17,8 @@ public class ArduinoThread : MonoBehaviour {
 
     SerialPort stream;
 
+    private bool threadIsRunning=false;
+
     public static ArduinoThread instance;
 
     private void Awake()
@@ -31,6 +33,8 @@ public class ArduinoThread : MonoBehaviour {
     {
         outputQueue = Queue.Synchronized(new Queue());
         inputQueue = Queue.Synchronized(new Queue());
+
+        threadIsRunning = true;
 
         // Creates and starts the thread
         thread = new Thread(ThreadLoop);
@@ -78,7 +82,7 @@ public class ArduinoThread : MonoBehaviour {
         stream.ReadTimeout = 20;
         stream.Open();
 
-        while(true)
+        while(true && threadIsRunning)
         {
             //send to Arduino
             if(outputQueue.Count != 0)
@@ -93,13 +97,18 @@ public class ArduinoThread : MonoBehaviour {
             if (result !=null)
             {
                 inputQueue.Enqueue(result);
-            }
-            
+            }            
         }
     }
 
     private void OnDestroy()
     {
-        thread.Abort();
+       //Put boolean, otherwis, thread still run, after exiting application
+       if(threadIsRunning)
+        {
+            threadIsRunning = false;
+
+            thread.Join();
+        }
     }
 }

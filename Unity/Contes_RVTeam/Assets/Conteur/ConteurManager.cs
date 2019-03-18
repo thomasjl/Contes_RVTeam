@@ -9,7 +9,16 @@ public class ConteurManager : MonoBehaviour {
     public ComArduino arduino;
     public Slider timer;
 
-    public List<int> choices;
+    private List<int> defaultValueChoices = new List<int> { 2,6, 10 };
+
+    public List<int> choices
+    {
+        get
+        {
+            return defaultValueChoices;
+        }
+        set { defaultValueChoices = value; }
+    }
 
     public static ConteurManager instance;
 

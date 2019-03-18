@@ -27,7 +27,6 @@ public class InterractionManagerBN : InterractionManager
         setChoicesRoom(ConteurManager.instance.choices);
     }
 
-
     public override void setChoicesRoom(List<int> choices)
     {
         choicesBN = choices;
@@ -44,7 +43,6 @@ public class InterractionManagerBN : InterractionManager
             //pomme sur table
             AppleInteraction.Instance.SetPoisonAppleInteraction(AppleInteraction.AppleInterraction.PoisonApple);
             */
-
 
         }
         else if (choices[0] == 4)

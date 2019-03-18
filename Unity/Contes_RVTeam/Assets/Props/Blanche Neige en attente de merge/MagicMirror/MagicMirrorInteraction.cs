@@ -12,12 +12,18 @@ public class MagicMirrorInteraction : MonoBehaviour {
 
     public RawImage rawimage;
 
+    public GameObject plane;
+
     private void Awake()
     {
         instance = this;
         SetWebcamMirror();
     }
 
+    private void Start()
+    {
+        LaunchGoodOutro();
+    }
 
     public void SetMirror(MirrorType mirrorType)
     {
@@ -57,6 +63,19 @@ public class MagicMirrorInteraction : MonoBehaviour {
             }
         }
 
+    }
+
+    public void LaunchGoodOutro()
+    {
+        
+        this.ProgressionAnim(3f, delegate (float progression)
+        {
+            Color tmpColor = plane.GetComponent<Renderer>().material.color;
+            tmpColor.a = progression;
+
+            plane.GetComponent<Renderer>().material.color = tmpColor;
+        });
+         
     }
 
 }
