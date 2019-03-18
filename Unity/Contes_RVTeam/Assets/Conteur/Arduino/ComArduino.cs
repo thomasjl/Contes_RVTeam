@@ -23,6 +23,8 @@ public class ComArduino : MonoBehaviour {
     public delegate void OnConteurHasChoose();
     public static event OnConteurHasChoose onConteurHasChoose;
 
+    private bool listenToInput;
+
     /*
     private void Awake()
     {
@@ -65,6 +67,7 @@ public class ComArduino : MonoBehaviour {
         //EnableLed();
 
         choiceDone = false;
+        listenToInput = false;
 
     }
 
@@ -80,39 +83,8 @@ public class ComArduino : MonoBehaviour {
             }
             else
             {
-                Debug.Log("check if not button pressed");
-                if(Input.GetKeyDown(KeyCode.Keypad1))
-                {
-                    Debug.Log("press 1");
-                    button2 = true;
-                    button4 = false;
-                }
-                else if(Input.GetKeyDown(KeyCode.Keypad2))
-                {
-                    button2 = false;
-                    button4 = true;
-                }
-                else if (Input.GetKeyDown(KeyCode.Keypad3))
-                {
-                    button6 = false;
-                    button8 = true;
-                }
-                else if (Input.GetKeyDown(KeyCode.Keypad4))
-                {
-                    button6 = false;
-                    button8 = true;
-                }
-                else if (Input.GetKeyDown(KeyCode.Keypad5))
-                {
-                    button10 = false;
-                    button12 = true;
-                }
-                else if (Input.GetKeyDown(KeyCode.Keypad6))
-                {
-                    button10 = false;
-                    button12 = true;
-                }
-                yield return new WaitForEndOfFrame();
+                listenToInput = true;
+                yield break;
             }
            
         }
@@ -183,7 +155,56 @@ public class ComArduino : MonoBehaviour {
         }
        
     }
-    
+
+
+    private void Update()
+    {
+        if(listenToInput)
+        {
+            if (Input.GetKeyDown(KeyCode.Keypad1))
+            {
+                button2 = true;
+                button4 = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                button2 = false;
+                button4 = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Keypad3))
+            {
+                button6 = true;
+                button8 = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.Keypad4))
+            {
+                button6 = false;
+                button8 = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.Keypad5))
+            {
+                button10 = true;
+                button12 = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.Keypad6))
+            {
+                button10 = false;
+                button12 = true;
+            }
+
+            if (!choiceDone && (button2 || button4) && (button6 || button8) && (button10 || button12))
+            {
+                Debug.Log("conteur a choisi");
+                if (onConteurHasChoose != null)
+                {
+                    onConteurHasChoose();
+                }
+                choiceDone = true;
+                listenToInput = false;
+            }
+        }
+    }
+
     /*
     private void Update()
     {
