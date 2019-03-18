@@ -16,10 +16,18 @@ public class Lift : MonoBehaviour {
     [SerializeField]
     Renderer cordeRend;
 
+
+    private float startPlayerPosY;
+
     private void Awake()
     {
         circularDrive = GetComponentInChildren<CircularDrive>();
         audio = GetComponentInChildren<AudioSource>();
+    }
+
+    private void Start()
+    {
+        startPlayerPosY = Player.instance.transform.position.y;
     }
 
     private void Update()
@@ -38,7 +46,7 @@ public class Lift : MonoBehaviour {
             */
 
         transform.Translate(Vector3.up * velocity * Time.deltaTime);
-        Player.instance.transform.position = Player.instance.transform.position.SetY(transform.position.y);
+        Player.instance.transform.position = Player.instance.transform.position.SetY(transform.position.y+ startPlayerPosY);
         cordeRend.material.SetTextureOffset("_MainTex", Vector2.up * transform.position.y);
 
         if (transform.position.y >= targetY)
