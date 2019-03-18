@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 136845561290032106}
   - component: {fileID: 114050864820296244}
   m_Layer: 0
-  m_Name: Chaperon
+  m_Name: Chaperon lowpoly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
