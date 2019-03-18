@@ -6,19 +6,14 @@ using UnityEngine.SceneManagement;
 public class InterractionManagerGoodOutro : InterractionManager
 {
 
-    [SerializeField]
-    string credit = "Credit";
-
     private void Start()
     {
-        Invoke("GoCredit",13f);
         Camera.main.backgroundColor = Color.white;
-
+        if(GameObject.FindGameObjectWithTag("HeadCollider").transform.parent.GetChild(1)!=null)
+        {
+            GameObject.FindGameObjectWithTag("HeadCollider").transform.parent.GetChild(1).gameObject.SetActive(false);
+        }
     }
 
-    public void GoCredit()
-    {
-        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(credit); }); });
-
-    }
+    
 }

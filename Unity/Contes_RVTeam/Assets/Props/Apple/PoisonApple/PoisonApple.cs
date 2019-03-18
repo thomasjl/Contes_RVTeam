@@ -4,7 +4,7 @@ using System.Collections;
 public class PoisonApple : MonoBehaviour {
 
     [SerializeField]
-    float minLanterneDistance = .4f;
+    float minLanterneDistance = 1f;
     [SerializeField]
     Renderer deathSymbol;
 
@@ -20,14 +20,27 @@ public class PoisonApple : MonoBehaviour {
 
     private bool consumed;
 
+    private Color startColor;
+
+    public Color off;
+    public Color on;
+
 
     private void Awake()
     {
         instance = this;
         GetComponent<Comestible>().Consumed += OnConsumed;
-        SetAlpha(0);
         remedPresent = false;
         consumed = false;
+    }
+
+
+    private void Start()
+    {
+        startColor= deathSymbol.material.color;
+        deathSymbol.material.SetColor("_EmissionColor", off);
+
+        deathSymbol.material.EnableKeyword("_EMISSION");
     }
 
     void OnConsumed()
@@ -79,11 +92,19 @@ public class PoisonApple : MonoBehaviour {
         // Update the alpha of the death symbol.
         float distance = Vector3.Distance(transform.position, Lanterne.instance.FlamePosition);
         if (distance < minLanterneDistance)
+        {
             SetAlpha(Mathf.Lerp(1, 0, distance / minLanterneDistance));
+        }
+        else
+        {
+            deathSymbol.material.SetColor("_EmissionColor", off);
+        }
+
     }
 
     void SetAlpha(float alpha)
     {
-        deathSymbol.material.SetColor("_Color", new Color(1, 1, 1, alpha));
+        Debug.Log("alpha " + alpha);
+        deathSymbol.material.SetColor("_EmissionColor", Color.Lerp(off, on, alpha));
     }
 }

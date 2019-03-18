@@ -16,8 +16,8 @@ public class MirrorMissingPiece : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == missingPiece && other.GetComponent<Interactable>().IsGrabbed())
-        {            
-            other.GetComponent<Interactable>().attachedToHand = null;
+        {
+            other.GetComponent<Interactable>().attachedToHand.DetachObject(other.gameObject);
             Destroy(missingPiece);
 
             hider.SetActive(false);

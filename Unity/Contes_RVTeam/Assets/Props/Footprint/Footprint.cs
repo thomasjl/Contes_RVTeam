@@ -7,16 +7,14 @@ public class Footprint : MonoBehaviour
     public Material footPrintClosed;
     public Material footPrintFar;
     public Material outOfRangeFootprint;
-
-    private GameObject lanterne;
+    
     private float maxDist;
     private Renderer rend;
 
 
     private void Start()
     {
-        lanterne = GameObject.FindGameObjectWithTag("Lanterne");
-        maxDist = lanterne.GetComponent<SphereCollider>().radius;
+        maxDist = Lanterne.instance.GetComponent<SphereCollider>().radius;
         rend = GetComponent<Renderer>();
 
         rend.material = outOfRangeFootprint;
@@ -69,7 +67,7 @@ public class Footprint : MonoBehaviour
         {
             //Debug.Log("lanterne");
             // set transparacy depending on distance from Lanterne (max distance = radius)
-            float distance = Vector3.Distance(transform.position, lanterne.transform.position);
+            float distance = Vector3.Distance(transform.position, Lanterne.instance.transform.position);
             // Debug.Log("distance " +distance);
             float ratio = distance / maxDist;
             //Debug.Log("ratio "+ratio);

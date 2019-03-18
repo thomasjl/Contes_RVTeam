@@ -37,6 +37,7 @@ public class GoodMushroom : Mushroom {
             GameObject newMush = Instantiate(gameObject);
             newMush.transform.position = startPosition;
             newMush.transform.rotation = startRotation;
+            newMush.GetComponent<Rigidbody>().useGravity = true;
             newMush.SetActive(false);
             PlayerScaleManager.Instance.Timer(1, delegate { newMush.SetActive(true); });
         }
