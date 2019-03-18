@@ -20,7 +20,10 @@ public class MagicMirrorInteraction : MonoBehaviour {
         SetWebcamMirror();
     }
 
-   
+    private void Start()
+    {
+        LaunchGoodOutro();
+    }
 
     public void SetMirror(MirrorType mirrorType)
     {
@@ -65,13 +68,10 @@ public class MagicMirrorInteraction : MonoBehaviour {
     public void LaunchGoodOutro()
     {
         
-        this.ProgressionAnim(5f, delegate (float progression)
+        this.ProgressionAnim(3f, delegate (float progression)
         {
-            float tmpLightSettings= RenderSettings.ambientIntensity;
-
             Color tmpColor = plane.GetComponent<Renderer>().material.color;
             tmpColor.a = progression;
-            RenderSettings.ambientIntensity = Mathf.Lerp(tmpLightSettings,8f,progression);
 
             plane.GetComponent<Renderer>().material.color = tmpColor;
         });
