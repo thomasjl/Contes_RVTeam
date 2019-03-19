@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 65746792948281598}
   - component: {fileID: 114399712099452332}
   - component: {fileID: 114117284042464174}
-  - component: {fileID: 114939899178552742}
   m_Layer: 0
   m_Name: PoisonApple
   m_TagString: Untagged
@@ -108,8 +107,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1076623710014444}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2584267, y: -1.6959028, z: 0.60664755}
+  m_LocalRotation: {x: -0.0510521, y: 0.63777184, z: 0.06132295, w: 0.76608115}
+  m_LocalPosition: {x: 1.238, y: 1.1321, z: -1.273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4520146368747940}
@@ -117,7 +116,7 @@ Transform:
   - {fileID: 4967583186826288}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -9, y: 79.424, z: 1.6730001}
 --- !u!4 &4499417678557978
 Transform:
   m_ObjectHideFlags: 1
@@ -221,7 +220,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 2efa520dcce7a2b4db754e14da2fdd0b, type: 2}
+  - {fileID: 2100000, guid: dde6141bfa17c9d4e83e600987099833, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -354,6 +353,8 @@ MonoBehaviour:
   colorFilter: {r: 0.5, g: 1, b: 0.5, a: 1}
   blinkValue: 0.3
   remedPresent: 0
+  off: {r: 0, g: 0, b: 0, a: 0}
+  on: {r: 0.14285529, g: 1, b: 0, a: 0}
 --- !u!114 &114375010266132916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -381,7 +382,7 @@ MonoBehaviour:
   delayBetweenBites: 0.5
   sfx: {fileID: 8300000, guid: a0916316e393c2848b89da99093e2eb9, type: 3}
   volume: 1
-  destroyInTheEnd: 1
+  destroyInTheEnd: 0
 --- !u!114 &114545443886369412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -462,20 +463,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   interactable: {fileID: 0}
---- !u!114 &114939899178552742
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1076623710014444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e67a17c6432d0e74da678ad2bc08d4ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitForFirstGrab: 0
-  interactable: {fileID: 114545443886369412}
-  plannedRespawnPosition: {x: 0, y: 0.5, z: 0}
 --- !u!135 &135447034770483676
 SphereCollider:
   m_ObjectHideFlags: 1
