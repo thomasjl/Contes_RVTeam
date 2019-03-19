@@ -10,29 +10,28 @@ public class CheshireSound : MonoBehaviour {
     List<AudioClip> listAudio;
     int lastChoice = 0;
 
-    new AudioSource audio;
+    AudioSource Audio { get { return GetComponent<AudioSource>(); } }
 
     bool playedFirstAudio;
 
     private void Awake()
     {
-        audio = GetComponent<AudioSource>();
         PlayerScaleManager.ScaledNormal += Talk;
     }
 
     public void Talk()
     {
-        if (audio.isPlaying)
+        if (Audio.isPlaying)
             return;
         lastChoice = Utilities.ExclusiveRange(0, listAudio.Count - 1, lastChoice);
         if (!playedFirstAudio)
         {
-            audio.clip = firstAudio;
+            Audio.clip = firstAudio;
             playedFirstAudio = true;
         }
         else
-            audio.clip = listAudio[lastChoice];
-        audio.Play();
+            Audio.clip = listAudio[lastChoice];
+        Audio.Play();
         Table.Instance.AddPotion();
     }
 }

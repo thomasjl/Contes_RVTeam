@@ -40,7 +40,7 @@ public class InterractionManagerBN : InterractionManager
         SetChoicesRoom(ConteurManager.instance.choices);
 
         AudioManager.instance.audioSource.clip = ambianceSound;
-        StartCoroutine(AudioController.FadeIn(AudioManager.instance.audioSource, 3f));
+        //StartCoroutine(AudioController.FadeIn(AudioManager.instance.audioSource, 3f));
 
     }
 

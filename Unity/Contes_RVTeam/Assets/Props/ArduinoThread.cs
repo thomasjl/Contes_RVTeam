@@ -31,6 +31,7 @@ public class ArduinoThread : MonoBehaviour {
             PlayerPrefs.SetInt(DebugInterface.COMKey, defaultPortNumber);
         string portNumber = PlayerPrefs.GetInt(DebugInterface.COMKey).ToString();
         portName = (portNumber.Length > 1 ? "\\\\.\\" : "") + "COM" + portNumber;
+        print(portName);
 
         StartThread();
     }
