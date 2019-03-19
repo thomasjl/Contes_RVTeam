@@ -69,7 +69,7 @@ public class PoisonApple : MonoBehaviour {
 
         while (Time.time - startime < 11)
         {
-            if (FioleRemede.Consumed)
+            if (FioleRemede.Consumed && remedPresent)
             {
                 // Stop the poison and play victory if we use the fiole.
                 PlayerPostProcess.Instance.PlayRemede(3);

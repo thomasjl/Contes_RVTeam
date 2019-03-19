@@ -111,7 +111,8 @@ public class InterractionManagerBN : InterractionManager
         else if (choices[2] == 12)
         {
             //pas d'anti-poison
-            PoisonApple.instance.remedPresent = false;
+            //PoisonApple.instance.remedPresent = false;
+            Destroy(PoisonApple.instance.gameObject);
         }
         else
         {
