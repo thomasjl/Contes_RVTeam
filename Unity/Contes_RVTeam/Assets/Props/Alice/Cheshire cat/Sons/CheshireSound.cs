@@ -22,6 +22,8 @@ public class CheshireSound : MonoBehaviour {
 
     public void Talk()
     {
+        if (audio.isPlaying)
+            return;
         lastChoice = Utilities.ExclusiveRange(0, listAudio.Count - 1, lastChoice);
         if (!playedFirstAudio)
             audio.clip = firstAudio;
