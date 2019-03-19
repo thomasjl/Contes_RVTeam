@@ -616,7 +616,7 @@ Prefab:
     - target: {fileID: 224490532781187476, guid: a5b45cd5b91bae54fa222acfcfc73b7c,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 1.21
+      value: 4.04
       objectReference: {fileID: 0}
     - target: {fileID: 224490532781187476, guid: a5b45cd5b91bae54fa222acfcfc73b7c,
         type: 2}
@@ -677,6 +677,24 @@ Prefab:
         type: 2}
       propertyPath: m_fontColor.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791085845852400, guid: a5b45cd5b91bae54fa222acfcfc73b7c,
+        type: 2}
+      propertyPath: m_text
+      value: 'The evil storyteller tricked the Hero whom forever fell into a sleeping
+        death.
+
+
+        ~ The End ~'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114426183325573788, guid: a5b45cd5b91bae54fa222acfcfc73b7c,
+        type: 2}
+      propertyPath: m_text
+      value: 'The successful Hero then confronted the wrongdoer and finally restored
+        the natural order of tales and stories.
+
+
+        ~ The End ~ '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5b45cd5b91bae54fa222acfcfc73b7c, type: 2}
