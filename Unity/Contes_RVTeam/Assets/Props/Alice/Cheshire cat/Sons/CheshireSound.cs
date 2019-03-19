@@ -26,7 +26,10 @@ public class CheshireSound : MonoBehaviour {
             return;
         lastChoice = Utilities.ExclusiveRange(0, listAudio.Count - 1, lastChoice);
         if (!playedFirstAudio)
+        {
             audio.clip = firstAudio;
+            playedFirstAudio = true;
+        }
         else
             audio.clip = listAudio[lastChoice];
         audio.Play();
