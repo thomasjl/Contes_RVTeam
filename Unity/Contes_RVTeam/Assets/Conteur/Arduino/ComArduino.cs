@@ -23,7 +23,7 @@ public class ComArduino : MonoBehaviour {
     public delegate void OnConteurHasChoose();
     public static event OnConteurHasChoose onConteurHasChoose;
 
-    private bool listenToInput;
+    public bool listenToInput;
 
     /*
     private void Awake()
@@ -57,6 +57,11 @@ public class ComArduino : MonoBehaviour {
     }
     */
 
+    private void Awake()
+    {
+        listenToInput = false;
+    }
+
     private void Start()
     {
 
@@ -67,7 +72,6 @@ public class ComArduino : MonoBehaviour {
         //EnableLed();
 
         choiceDone = false;
-        listenToInput = false;
 
     }
 
@@ -83,6 +87,7 @@ public class ComArduino : MonoBehaviour {
             }
             else
             {
+                Debug.Log("listen for message");
                 listenToInput = true;
                 yield break;
             }
@@ -151,6 +156,8 @@ public class ComArduino : MonoBehaviour {
                     onConteurHasChoose();
                 }
                 choiceDone = true;
+
+                
             }
         }
        
@@ -161,8 +168,10 @@ public class ComArduino : MonoBehaviour {
     {
         if(listenToInput)
         {
+            Debug.Log("valide");
             if (Input.GetKeyDown(KeyCode.Keypad1))
             {
+                Debug.Log("press 1");
                 button2 = true;
                 button4 = false;
             }
@@ -201,8 +210,32 @@ public class ComArduino : MonoBehaviour {
                 }
                 choiceDone = true;
                 listenToInput = false;
+
+                List<int> tempKeyboard = new List<int>();
+                tempKeyboard.Add((button2) ? 2 : 4);
+                tempKeyboard.Add((button6) ? 6 : 8);
+                tempKeyboard.Add((button10) ? 10 : 12);
+
+                if (SceneInstance.instance.currentSceneId == 0)
+                {
+
+                    Debug.Log("taille du keykey1 " + tempKeyboard.Count);
+                    ConteurManager.instance.keyboardChoices1 = tempKeyboard;
+                }
+                else if (SceneInstance.instance.currentSceneId == 2)
+                {
+                    Debug.Log("taille du keykey2 " + tempKeyboard.Count);
+                    ConteurManager.instance.keyboardChoices2 = tempKeyboard;
+                }
+                else if (SceneInstance.instance.currentSceneId == 4)
+                {
+
+                    Debug.Log("taille du keykey3 " + tempKeyboard.Count);
+                    ConteurManager.instance.keyboardChoices3 = tempKeyboard;
+                }
             }
         }
+       
     }
 
     /*
@@ -297,6 +330,16 @@ public class ComArduino : MonoBehaviour {
         button12 = false;
 
         EnableLed();
+    }
+
+    public void ErraseLedKeyboard()
+    {
+        button2 = false;
+        button4 = false;
+        button6 = false;
+        button8 = false;
+        button10 = false;
+        button12 = false;
     }
 
     public void EnableLed()

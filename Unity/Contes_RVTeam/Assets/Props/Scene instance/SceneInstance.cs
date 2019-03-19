@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneInstance : MonoBehaviour {
 
-    private static SceneInstance instance;
+    public static SceneInstance instance;
 
     private List<string> listScene=new List<string> {"Intro","Room1","Attente1","Room2","Attente2","Room3","GoodOutro"};
+
+    public int currentSceneId;
 
     private void Awake()
     {
@@ -18,7 +20,8 @@ public class SceneInstance : MonoBehaviour {
             {
                 child.gameObject.SetActive(true);
             }
-
+            string currentScene = SceneManager.GetActiveScene().name;
+            currentSceneId = listScene.IndexOf(currentScene);
         }
         else
         {

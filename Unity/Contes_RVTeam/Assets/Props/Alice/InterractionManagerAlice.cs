@@ -32,6 +32,7 @@ public class InterractionManagerAlice : InterractionManager
     public override void SetChoicesRoom(List<int> choices)
     {
         choicesAlice = choices;
+        Debug.Log("choices0 : " + choices[0]);
 
         if (choices[0] == 2)
         {
