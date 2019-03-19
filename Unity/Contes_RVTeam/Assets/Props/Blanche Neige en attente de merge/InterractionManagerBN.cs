@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Valve.VR.InteractionSystem;
 
 public class InterractionManagerBN : InterractionManager
 {
@@ -16,12 +17,22 @@ public class InterractionManagerBN : InterractionManager
 
     private List<int> choicesBN;
 
+    [SerializeField]
+    CamOccluder occluderTemplate;
+
     public override void LaunchGoodOutro()
     {
+        if (!CamOccluder.Instance)
+            Instantiate(occluderTemplate);
+        CamOccluder.Instance.SetCamera(Player.instance.headCollider.GetComponentInParent<Camera>());
+        
+        // Fade to white and load the next scene.
+        CamOccluder.Instance.FadeIn(5, delegate { SceneManager.LoadSceneAsync(goodOutro); });
+    }
 
-        SceneManager.LoadSceneAsync(goodOutro);
-       // PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { }); });
-
+    public override void LaunchBadOutro()
+    {
+        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(badOutro); }); });
     }
 
     private void Start()
@@ -109,10 +120,4 @@ public class InterractionManagerBN : InterractionManager
     }
 
 
-
-    public override void LaunchBadOutro()
-    {
-        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(badOutro); }); });
-
-    }
 }

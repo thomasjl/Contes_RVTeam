@@ -140,6 +140,25 @@ public static class Utilities {
     }
     #endregion ------------------------------------------
 
+    #region Set Color values ---------------------
+    public static Color SetR(this Color color, float value)
+    {
+        return new Color(value, color.g, color.b, color.a);
+    }
+    public static Color SetG(this Color color, float value)
+    {
+        return new Color(color.r, value, color.b, color.a);
+    }
+    public static Color SetB(this Color color, float value)
+    {
+        return new Color(color.r, color.g, value, color.a);
+    }
+    public static Color SetA(this Color color, float value)
+    {
+        return new Color(color.r, color.g, color.b, value);
+    }
+    #endregion ------------------------------------------
+
 
     #region Duplicating a component ---------------------------
     public static T GetCopyOf<T>(this Component comp, T other) where T : Component
