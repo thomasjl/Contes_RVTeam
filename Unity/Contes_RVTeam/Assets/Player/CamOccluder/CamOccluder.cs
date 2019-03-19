@@ -19,7 +19,8 @@ public class CamOccluder : MonoBehaviour {
     internal void SetCamera(Camera cam)
     {
         transform.parent = cam.transform;
-        GetComponent<Canvas>().worldCamera = cam;
+        transform.localPosition = Vector3.zero;
+        transform.localEulerAngles = Vector3.zero;
     }
 
     public void FadeIn(float duration, System.Action endAction)
