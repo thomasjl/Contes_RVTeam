@@ -112,7 +112,7 @@ public class InterractionManagerBN : InterractionManager
         {
             //pas d'anti-poison
             //PoisonApple.instance.remedPresent = false;
-            Destroy(PoisonApple.instance.gameObject);
+            FioleRemede.instance.gameObject.Hide();
         }
         else
         {
