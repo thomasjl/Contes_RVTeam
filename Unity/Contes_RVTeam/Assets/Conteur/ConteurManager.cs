@@ -11,6 +11,11 @@ public class ConteurManager : MonoBehaviour {
 
     private List<int> defaultValueChoices = new List<int> { 2,6, 10 };
 
+    public List<int> keyboardChoices1;
+    public List<int> keyboardChoices2;
+    public List<int> keyboardChoices3;
+
+
     public List<int> choices
     {
         get
@@ -47,16 +52,19 @@ public class ConteurManager : MonoBehaviour {
     private void FinishChoice()
     {
         Debug.Log("GetChoices "+idRoom);
-        if(idRoom==1)
+        if(SceneInstance.instance.currentSceneId == 0)
         {
+            Debug.Log("scene 1");
             StartCoroutine(LaunchTimer(5f, GetChoicesRoom1));
         }
-        else if(idRoom==2)
+        else if(SceneInstance.instance.currentSceneId == 2)
         {
+            Debug.Log("scene 2");
             StartCoroutine(LaunchTimer(5f, GetChoicesRoom2));
         }
-        else if(idRoom==3)
+        else if(SceneInstance.instance.currentSceneId == 4)
         {
+            Debug.Log("scene 3");
             StartCoroutine(LaunchTimer(5f, GetChoicesRoom3));
         }
 
@@ -89,9 +97,16 @@ public class ConteurManager : MonoBehaviour {
         }
         else
         {
-            choices.Add(4);
-            choices.Add(6);
-            choices.Add(10);
+            if(ConteurManager.instance.keyboardChoices1!=null && ConteurManager.instance.keyboardChoices1.Count>0)
+            {
+                choices = ConteurManager.instance.keyboardChoices1;
+            }
+            else
+            {
+                choices.Add(4);
+                choices.Add(6);
+                choices.Add(10);
+            }
         }
 
         //InterractionManager.instance.setChoicesRoom(choices);
@@ -113,9 +128,18 @@ public class ConteurManager : MonoBehaviour {
         }
         else
         {
-            choices.Add(2);
-            choices.Add(6);
-            choices.Add(10);
+            if(ConteurManager.instance.keyboardChoices2 != null && ConteurManager.instance.keyboardChoices2.Count>0)
+            {
+                Debug.Log("taille tableau " + ConteurManager.instance.keyboardChoices2.Count);
+                choices = ConteurManager.instance.keyboardChoices2;
+            }
+            else
+            {
+
+                choices.Add(2);
+                choices.Add(6);
+                choices.Add(10);
+            }
         }
 
         //change scene
@@ -133,6 +157,11 @@ public class ConteurManager : MonoBehaviour {
             arduino.ErraseLed();
             //arduino.EnableLed();
         }
+        else
+        {
+            arduino.ErraseLedKeyboard();
+            arduino.choiceDone = false;
+        }
 
        
     }
@@ -147,10 +176,18 @@ public class ConteurManager : MonoBehaviour {
 
         }
         else
-        {
-            choices.Add(2);
-            choices.Add(6);
-            choices.Add(10);
+        {            
+            if (ConteurManager.instance.keyboardChoices3 != null && ConteurManager.instance.keyboardChoices3.Count>0)
+            {
+                
+                choices = ConteurManager.instance.keyboardChoices3;
+            }
+            else
+            {
+                choices.Add(2);
+                choices.Add(6);
+                choices.Add(10);
+            }
         }
 
         //change scene
