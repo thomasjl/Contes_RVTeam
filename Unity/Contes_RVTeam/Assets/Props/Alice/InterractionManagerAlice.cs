@@ -95,6 +95,9 @@ public class InterractionManagerAlice : InterractionManager
 
     public override void LaunchNextScene()
     {
-        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(nextScene); }); });
+        PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate {
+            Destroy(Crown.Instance.gameObject);
+            SceneManager.LoadSceneAsync(nextScene); });
+        });
     }
 }
