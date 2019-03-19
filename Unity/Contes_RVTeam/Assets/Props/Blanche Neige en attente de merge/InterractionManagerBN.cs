@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class InterractionManagerBN : InterractionManager
 {
-    public AudioSource ambianceSound;
+    public AudioClip ambianceSound;
 
     [SerializeField]
     string goodOutro = "GoodOutro";
@@ -27,6 +27,10 @@ public class InterractionManagerBN : InterractionManager
     private void Start()
     {
         SetChoicesRoom(ConteurManager.instance.choices);
+
+        AudioManager.instance.audioSource.clip = ambianceSound;
+        StartCoroutine(AudioController.FadeIn(AudioManager.instance.audioSource, 3f));
+
     }
 
     public override void SetChoicesRoom(List<int> choices)

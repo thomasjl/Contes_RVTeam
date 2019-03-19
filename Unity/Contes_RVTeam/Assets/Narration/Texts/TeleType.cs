@@ -48,7 +48,7 @@ namespace TMPro.Examples
 
                 counter += 1;
 
-                yield return new WaitForSeconds(0.08f);
+                yield return new WaitForSeconds(0.04f);
             }
 
             //Debug.Log("Done revealing the text.");
