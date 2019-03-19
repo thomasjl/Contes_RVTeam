@@ -13,6 +13,10 @@ public class PlayerScaleManager : MonoBehaviour {
     public static event EventHandler ScaledDown;
     public static event EventHandler ScaledUp;
 
+    Vector3 playerStartPosition;
+
+    IEnumerator scaleRoutine;
+
     public static PlayerScaleManager Instance { get; private set; }
     private void Awake()
     {
@@ -26,16 +30,16 @@ public class PlayerScaleManager : MonoBehaviour {
             return;
         scaled = true;
 
-        Player.instance.Timer(scaleDelay, delegate { ScaleDown(newPlayerSize, duration); });
+        this.Timer(scaleDelay, delegate { ScaleDown(newPlayerSize, duration); });
     }
 
     void ScaleDown(float newPlayerSize, float duration)
     {
-        Vector3 startPosition = Player.instance.transform.position;
-        Player.instance.ProgressionAnim(transitionTime, delegate (float progression)
+        playerStartPosition = Player.instance.transform.position;
+        this.ProgressionAnim(transitionTime, delegate (float progression)
         {
             // Scale down the player and move it in front of the small door.
-            Player.instance.transform.position = Vector3.Lerp(startPosition, SmallDoor.instance.Spawnpoint.position, progression);
+            Player.instance.transform.position = Vector3.Lerp(playerStartPosition, SmallDoor.instance.Spawnpoint.position, progression);
             Player.instance.transform.localScale = Mathf.Lerp(1, newPlayerSize, progression) * Vector3.one;
 
         }, delegate
@@ -45,10 +49,10 @@ public class PlayerScaleManager : MonoBehaviour {
             // Reset the player's scale and position over time after a delay.
             StartCoroutine(WaitThenRescale(duration, delegate
             {
-                Player.instance.ProgressionAnim(transitionTime, delegate (float progression)
+                this.ProgressionAnim(transitionTime, delegate (float progression)
                 {
                     Player.instance.transform.localScale = Mathf.Lerp(newPlayerSize, 1, progression) * Vector3.one;
-                    Player.instance.transform.position = Vector3.Lerp(SmallDoor.instance.Spawnpoint.position, startPosition, progression);
+                    Player.instance.transform.position = Vector3.Lerp(SmallDoor.instance.Spawnpoint.position, playerStartPosition, progression);
                 }, delegate
                 {
                     scaled = false;
@@ -69,14 +73,14 @@ public class PlayerScaleManager : MonoBehaviour {
         if (scaled)
             return;
         scaled = true;
-        Player.instance.Timer(scaleDelay, delegate { ScaleUp(newPlayerSize, duration); });
+        this.Timer(scaleDelay, delegate { ScaleUp(newPlayerSize, duration); });
     }
 
     void ScaleUp(float newPlayerSize, float duration)
     {
-        Vector3 playerStartPosition = Player.instance.trackingOriginTransform.position;
+        playerStartPosition = Player.instance.trackingOriginTransform.position;
         Vector3 targetPosition = (Player.instance.headCollider.transform.position - (Player.instance.headCollider.transform.position * newPlayerSize)).SetY(0);
-        Player.instance.ProgressionAnim(transitionTime, delegate (float progression)
+        this.ProgressionAnim(transitionTime, delegate (float progression)
         {
             // Scale up the Player while maintaining the camera world position.
             Player.instance.transform.position = Vector3.Lerp(playerStartPosition, targetPosition, progression);
@@ -89,7 +93,7 @@ public class PlayerScaleManager : MonoBehaviour {
             // Reset the player's scale and position over time after a delay.
             StartCoroutine(WaitThenRescale(duration, delegate
             {
-                Player.instance.ProgressionAnim(transitionTime, delegate (float progression)
+                this.ProgressionAnim(transitionTime, delegate (float progression)
                 {
                     Player.instance.transform.localScale = Mathf.Lerp(newPlayerSize, 1, progression) * Vector3.one;
                     Player.instance.headCollider.transform.localScale = Vector3.one / Player.instance.transform.localScale.x;
@@ -128,4 +132,10 @@ public class PlayerScaleManager : MonoBehaviour {
         forceStopWaiting = true;
     }
     #endregion --------------------------------------
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+        Player.instance.transform.position = playerStartPosition;
+    }
 }

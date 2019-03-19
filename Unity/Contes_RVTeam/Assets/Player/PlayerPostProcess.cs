@@ -20,6 +20,7 @@ public class PlayerPostProcess : MonoBehaviour {
 
     public static PlayerPostProcess Instance { get; private set; }
 
+    public Vector3 PlayerStartPos{ get; private set; }
 
     private void Awake()
     {
@@ -28,17 +29,15 @@ public class PlayerPostProcess : MonoBehaviour {
         profile.TryGetSettings(out vignette);
         StartHueshift = HueShift;
         StartColorFilter = colorGrading.colorFilter.value;
-
-        Debug.Log("start color filter " + colorGrading.colorFilter.value);
         StartVignetteStrength = vignette.intensity;
         Instance = this;
     }
-
+    
     private void Start()
     {
-        Debug.Log("POST PROCESS");
         BlinkTime = 0;
         Blink.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
+        PlayerStartPos = Player.instance.transform.position;
     }
 
     public void PlayBlinkFadeOut(float time, System.Action endAction)
@@ -61,7 +60,6 @@ public class PlayerPostProcess : MonoBehaviour {
 
     public void PlayRemede(float transitionDuration)
     {
-        Debug.Log("remede");
         Color currentColorVignette = ColorFilter;
         float currentVignette = VignetteStrength;
         this.ProgressionAnim(transitionDuration, delegate (float progression)
