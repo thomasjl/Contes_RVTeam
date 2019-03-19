@@ -210,6 +210,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114482410634542096, guid: a5b45cd5b91bae54fa222acfcfc73b7c,
+        type: 2}
+      propertyPath: startType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5b45cd5b91bae54fa222acfcfc73b7c, type: 2}
   m_IsPrefabAsset: 0
@@ -761,6 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021b00271eecc814cb5d37c8f98f66c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSceneId: 0
 --- !u!4 &1043159850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4068135774568852, guid: 570000d6a646d0242ae8643cc87ebf3c,
