@@ -38,6 +38,9 @@ public class PlayerPostProcess : MonoBehaviour {
         BlinkTime = 0;
         Blink.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
         PlayerStartPos = Player.instance.transform.position;
+
+        if (CamOccluder.Instance != null)
+            Destroy(CamOccluder.Instance.gameObject);
     }
 
     public void PlayBlinkFadeOut(float time, System.Action endAction)
