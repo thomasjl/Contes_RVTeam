@@ -2,7 +2,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InterractionManagerRRH : InterractionManager {
+public class InterractionManagerRRH : InterractionManager
+{
 
     [SerializeField]
     GameObject plumeParticle;
@@ -10,7 +11,8 @@ public class InterractionManagerRRH : InterractionManager {
     private List<int> choicesRRH;
 
     [SerializeField]
-    GameObject footprintsToThorns;
+    GameObject footprintsToThorns, footprintsToTreeDwell;
+
 
     [SerializeField]
     string nextScene = "Attente1";
@@ -23,7 +25,11 @@ public class InterractionManagerRRH : InterractionManager {
 
         // Setup footprints.
         footprintsToThorns.SetActive(false);
-        MaisonChaperon.instance.ObjectGiven += delegate { footprintsToThorns.SetActive(true); };
+        MaisonChaperon.instance.ObjectGiven += delegate
+        {
+            footprintsToThorns.SetActive(true);
+            footprintsToTreeDwell.SetActive(false); 
+        };
     }
 
     public override void SetChoicesRoom(List<int> choices)

@@ -73,11 +73,13 @@ public class Medaillon : MonoBehaviour {
             Debug.Log("proche medaillon");
             Thorns.instance.Flatten();
         }
+        /*
         else
         {
             Debug.Log("loin medaillon");
             Thorns.instance.Unflatten();
         }
+        */
     }
 
     void UpdateSound()

@@ -23,6 +23,7 @@ public class ThornMedaillon : MonoBehaviour {
         Clear = true;
     }
 
+    /*
     public void Unflatten()
     {
         Debug.Log("unflattent avant");
@@ -38,15 +39,8 @@ public class ThornMedaillon : MonoBehaviour {
         flattening = false;
         Clear = false;
     }
-
-    /*
-    IEnumerator WaitThenSetCleared()
-    {
-        flattening = false;
-        yield return new WaitForSeconds(2);
-        flattening = true;
-        Clear = true;
-    }
     */
+
+   
 
 }

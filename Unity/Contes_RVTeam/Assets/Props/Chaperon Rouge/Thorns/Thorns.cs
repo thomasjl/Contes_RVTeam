@@ -51,9 +51,11 @@ public class Thorns : MonoBehaviour {
             thornMed.Flatten();
     }
 
+    /*
     internal void Unflatten()
     {
         foreach (ThornMedaillon thornMed in thornsMedaillon)
             thornMed.Unflatten();
     }
+    */
 }
