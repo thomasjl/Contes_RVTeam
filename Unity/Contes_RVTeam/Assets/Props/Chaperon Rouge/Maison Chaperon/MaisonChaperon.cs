@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using Valve.VR.InteractionSystem;
 
-public class MaisonChaperon : MonoBehaviour {
-
+public class MaisonChaperon : MonoBehaviour
+{
     [SerializeField]
     Animator doorAnimator, objectAnimator;
     ObjectDropper dropper;
@@ -29,18 +28,16 @@ public class MaisonChaperon : MonoBehaviour {
     {
         dropper = objectAnimator.GetComponent<ObjectDropper>();
         objectAnimator.gameObject.SetActive(false);
-        givenObject = 0;
-        objectGiven = false;
 
         //GiveItem(ObjectDropper.ObjectType.Hache);
     }
 
     public void SetSecondChoice(int choice)
     {
-        if(choice==6)
+        if (choice == 6)
         {
             //medaillon
-            givenObject= 6;
+            givenObject = 6;
             ThornSelect.instance.ThornsUsed(0);
         }
         else
@@ -53,9 +50,9 @@ public class MaisonChaperon : MonoBehaviour {
 
 
     private void OnTriggerEnter(Collider other)
-    {       
+    {
         if (other.gameObject.CompareTag("HeadCollider") && givenObject != 0 && !objectGiven && Chaperon.instance.isEquiped)
-        {           
+        {
             if (givenObject == 6)
             {
                 GiveItem(ObjectDropper.ObjectType.Medaillon);
@@ -68,7 +65,7 @@ public class MaisonChaperon : MonoBehaviour {
                 Debug.Log("hache");
             }
             objectGiven = true;
-            
+
         }
     }
 
@@ -77,7 +74,7 @@ public class MaisonChaperon : MonoBehaviour {
         particle.Play();
     }
 
-  
+
 
     public void GiveItem(ObjectDropper.ObjectType itemType)
     {
