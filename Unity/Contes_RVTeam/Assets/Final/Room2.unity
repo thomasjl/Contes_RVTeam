@@ -239,6 +239,22 @@ Prefab:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 05ef53e8850e95e41b206e73201cbca5, type: 2}
+    - target: {fileID: 20500000, guid: 2331eadfde07e3642b2cfb5c829d8f55, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 2331eadfde07e3642b2cfb5c829d8f55, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 2331eadfde07e3642b2cfb5c829d8f55, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 2331eadfde07e3642b2cfb5c829d8f55, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2331eadfde07e3642b2cfb5c829d8f55, type: 3}
   m_IsPrefabAsset: 0
@@ -1960,6 +1976,22 @@ Prefab:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 8e43d0af22b251e4fb9bbe9dc69ebbd4, type: 2}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
   m_IsPrefabAsset: 0
@@ -2243,6 +2275,22 @@ Prefab:
     - target: {fileID: 400004, guid: d716d4c98f802fe498e00048d4305413, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
@@ -2595,6 +2643,22 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.8649
       objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
   m_IsPrefabAsset: 0
@@ -2799,6 +2863,22 @@ Prefab:
       propertyPath: m_Name
       value: ArbreAliceFeuille001 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
   m_IsPrefabAsset: 0
@@ -2939,6 +3019,22 @@ Prefab:
       propertyPath: m_Name
       value: ArbreAliceFeuille001 (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
   m_IsPrefabAsset: 0
@@ -3001,6 +3097,22 @@ Prefab:
       propertyPath: m_Name
       value: ArbreAliceFeuille001 (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
   m_IsPrefabAsset: 0
@@ -3062,6 +3174,22 @@ Prefab:
     - target: {fileID: 100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
       propertyPath: m_Name
       value: ArbreAliceFeuille001 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
@@ -3132,6 +3260,26 @@ Prefab:
     - target: {fileID: 100000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
@@ -3571,6 +3719,22 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4279bf4228ce7db439fd9f0c5ef1600d, type: 3}
   m_IsPrefabAsset: 0
@@ -3641,6 +3805,22 @@ Prefab:
     - target: {fileID: 100000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
@@ -3901,6 +4081,22 @@ Prefab:
     - target: {fileID: 400004, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.8649
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
@@ -5094,6 +5290,22 @@ Prefab:
       propertyPath: m_Name
       value: ArbreAliceFeuille001 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
   m_IsPrefabAsset: 0
@@ -5229,6 +5441,22 @@ Prefab:
     - target: {fileID: 100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
       propertyPath: m_Name
       value: ArbreAliceFeuille001 (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
@@ -8504,6 +8732,22 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
   m_IsPrefabAsset: 0
@@ -8565,6 +8809,22 @@ Prefab:
     - target: {fileID: 100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
       propertyPath: m_Name
       value: ArbreAliceFeuille001 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
@@ -8714,6 +8974,22 @@ Prefab:
       propertyPath: m_Name
       value: ArbreAliceFeuille001 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
   m_IsPrefabAsset: 0
@@ -8779,6 +9055,22 @@ Prefab:
     - target: {fileID: 100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
       propertyPath: m_Name
       value: ArbreAliceFeuille001 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
@@ -11205,6 +11497,22 @@ Prefab:
       propertyPath: m_Name
       value: ArbreAliceFeuille001 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 292a47001a782f54e84730fbc365a66f, type: 3}
   m_IsPrefabAsset: 0
@@ -12344,6 +12652,22 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[3].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[2].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[1].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 20500000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d716d4c98f802fe498e00048d4305413, type: 3}
   m_IsPrefabAsset: 0
@@ -13144,6 +13468,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021b00271eecc814cb5d37c8f98f66c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSceneId: 0
 --- !u!1 &2124308112
 GameObject:
   m_ObjectHideFlags: 0
