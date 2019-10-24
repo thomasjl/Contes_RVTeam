@@ -52,17 +52,17 @@ public class ConteurManager : MonoBehaviour {
     private void FinishChoice()
     {
         Debug.Log("GetChoices "+idRoom);
-        if(SceneInstance.instance.currentSceneId == 0)
+        if(SceneInstance.Instance.currentSceneId == 0)
         {
             Debug.Log("scene 1");
             StartCoroutine(LaunchTimer(5f, GetChoicesRoom1));
         }
-        else if(SceneInstance.instance.currentSceneId == 2)
+        else if(SceneInstance.Instance.currentSceneId == 2)
         {
             Debug.Log("scene 2");
             StartCoroutine(LaunchTimer(5f, GetChoicesRoom2));
         }
-        else if(SceneInstance.instance.currentSceneId == 4)
+        else if(SceneInstance.Instance.currentSceneId == 4)
         {
             Debug.Log("scene 3");
             StartCoroutine(LaunchTimer(5f, GetChoicesRoom3));
@@ -154,7 +154,7 @@ public class ConteurManager : MonoBehaviour {
         StartCoroutine(arduino.ListenForMessages());
         if (arduino.arduinoEnable)
         {            
-            arduino.ErraseLed();
+            arduino.EraseLed();
             //arduino.EnableLed();
         }
         else

@@ -168,10 +168,8 @@ public class ComArduino : MonoBehaviour {
     {
         if(listenToInput)
         {
-            Debug.Log("valide");
             if (Input.GetKeyDown(KeyCode.Keypad1))
             {
-                Debug.Log("press 1");
                 button2 = true;
                 button4 = false;
             }
@@ -216,18 +214,18 @@ public class ComArduino : MonoBehaviour {
                 tempKeyboard.Add((button6) ? 6 : 8);
                 tempKeyboard.Add((button10) ? 10 : 12);
 
-                if (SceneInstance.instance.currentSceneId == 0)
+                if (SceneInstance.Instance.currentSceneId == 0)
                 {
 
                     Debug.Log("taille du keykey1 " + tempKeyboard.Count);
                     ConteurManager.instance.keyboardChoices1 = tempKeyboard;
                 }
-                else if (SceneInstance.instance.currentSceneId == 2)
+                else if (SceneInstance.Instance.currentSceneId == 2)
                 {
                     Debug.Log("taille du keykey2 " + tempKeyboard.Count);
                     ConteurManager.instance.keyboardChoices2 = tempKeyboard;
                 }
-                else if (SceneInstance.instance.currentSceneId == 4)
+                else if (SceneInstance.Instance.currentSceneId == 4)
                 {
 
                     Debug.Log("taille du keykey3 " + tempKeyboard.Count);
@@ -237,88 +235,10 @@ public class ComArduino : MonoBehaviour {
         }
        
     }
-
-    /*
-    private void Update()
-    {
-        
     
-        if (sp.IsOpen)
-        {
-            try
-            {
-                string msgFromArduino = sp.ReadByte().ToString();
-                // Debug.Log("detect button" + msgFromArduino + "**");
-
-                switch (msgFromArduino)
-                {
-                    case ("2"):
-                        {
-                            button2 = true;
-                            button4 = false;
-                            Debug.Log("2");
-                            break;
-                        }
-                    case ("4"):
-                        {
-                            button4 = true;
-                            button2 = false;
-                            Debug.Log("4");
-                            break;
-                        }
-                    case ("6"):
-                        {
-                            button6 = true;
-                            button8 = false;
-                            Debug.Log("6");
-                            break;
-                        }
-                    case ("8"):
-                        {
-                            button8 = true;
-                            button6 = false;
-                            Debug.Log("8");
-                            break;
-                        }
-                    case ("3"):
-                        {
-                            button10 = true;
-                            button12 = false;
-                            Debug.Log("10");
-                            break;
-                        }
-                    case ("5"):
-                        {
-                            button12 = true;
-                            button10 = false;
-                            Debug.Log("12");
-                            break;
-                        }
-                }
-            }
-            catch (Exception e)
-            {
-                //Debug.LogException(e, this);
-            }
-        }
-
-        if (!choiceDone && (button2 || button4) && (button6 || button8) && (button10 || button12))
-        {
-            Debug.Log("conteur a choisi");
-            if (onConteurHasChoose != null)
-            {
-                onConteurHasChoose();
-            }
-            choiceDone = true;
-        }
-    }
-    */
-
-    public void ErraseLed()
+    public void EraseLed()
     {
         Debug.Log("erraseLed");
-
-        //sp.Write("R");
 
         //Send "R" to Arduino
         ArduinoThread.instance.SendToArduino("R");

@@ -6,30 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Final/Init.unity
+    path: Assets/_Final/Init.unity
     guid: 7a0263c618d153341b6068da636ccd7e
   - enabled: 1
-    path: Assets/Final/Intro.unity
+    path: Assets/_Final/Intro.unity
     guid: 58d4d9d90c104a64eb200f071b22aa03
   - enabled: 1
-    path: Assets/Final/Room1.unity
+    path: Assets/_Final/Room1.unity
     guid: 7c865800a052d23439d85aaf30c1749d
   - enabled: 1
-    path: Assets/Final/Room2.unity
+    path: Assets/_Final/Room2.unity
     guid: 49c9c8e577592da419ee1aed2f397614
   - enabled: 1
-    path: Assets/Final/Room3.unity
+    path: Assets/_Final/Room3.unity
     guid: b0dbdce6a683fbd44887cc4871c65390
   - enabled: 1
-    path: Assets/Final/Attente1.unity
+    path: Assets/_Final/Attente1.unity
     guid: cbffa6aff60091241abe12eab2b92795
   - enabled: 1
-    path: Assets/Final/Attente2.unity
+    path: Assets/_Final/Attente2.unity
     guid: 03fb7baa7b08e7148a3557e0f7085924
   - enabled: 1
-    path: Assets/Final/BadOutro.unity
+    path: Assets/_Final/BadOutro.unity
     guid: 73840f0fe80294c4bb883882db646dd2
   - enabled: 1
-    path: Assets/Final/GoodOutro.unity
+    path: Assets/_Final/GoodOutro.unity
     guid: c82cbb7432e6a5444910297d733d9449
   m_configObjects: {}

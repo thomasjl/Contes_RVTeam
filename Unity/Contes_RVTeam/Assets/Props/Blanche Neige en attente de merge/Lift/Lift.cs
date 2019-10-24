@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using Valve.VR.InteractionSystem;
 
-public class Lift : MonoBehaviour {
-
+public class Lift : MonoBehaviour
+{
     CircularDrive circularDrive;
 
     float previousDrive;
@@ -16,8 +17,14 @@ public class Lift : MonoBehaviour {
     [SerializeField]
     Renderer cordeRend;
 
+    float startPlayerPosY;
+    bool moved;
 
-    private float startPlayerPosY;
+    [SerializeField]
+    UnityEvent Moves;
+    [SerializeField]
+    UnityEvent StopsMoving;
+
 
     private void Awake()
     {
@@ -32,25 +39,24 @@ public class Lift : MonoBehaviour {
 
     private void Update()
     {
+        // Get velocity from circular drive.
         velocity += ((circularDrive.outAngle - previousDrive > 3) ? 1 : -1) * Time.deltaTime * accelerationSpeed;
         velocity = Mathf.Clamp(velocity, 0, maxVelocity);
         previousDrive = circularDrive.outAngle;
-        /*
-        if (velocity > .1f)
-        {
-            if (!audio.isPlaying)
-                audio.Play();
-        }
-        else
-            audio.Pause();
-            */
 
+        // Move up the player from our velocity.
         transform.Translate(Vector3.up * velocity * Time.deltaTime);
-        Player.instance.transform.position = Player.instance.transform.position.SetY(transform.position.y+ startPlayerPosY);
-       //Player.instance.transform.Translate(Vector3.up * velocity * Time.deltaTime);
+        Player.instance.transform.position = Player.instance.transform.position.SetY(transform.position.y + startPlayerPosY);
         cordeRend.material.SetTextureOffset("_MainTex", Vector2.up * transform.position.y);
 
+        // Call event.
+        if (Player.instance.transform.position.y > startPlayerPosY + .1f && !moved)
+            Moves.Invoke();
+
         if (transform.position.y >= targetY)
-            this.enabled = false;
+        {
+            StopsMoving.Invoke();
+            enabled = false;
+        }
     }
 }
