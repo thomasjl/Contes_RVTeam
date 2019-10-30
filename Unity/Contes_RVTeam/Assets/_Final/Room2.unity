@@ -13670,6 +13670,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 114835531763037122, guid: ce3c81b4f0957564fa586489eff1378d,
+        type: 2}
+      propertyPath: pointerValidColor.b
+      value: 0.8901961
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce3c81b4f0957564fa586489eff1378d, type: 2}
   m_IsPrefabAsset: 0

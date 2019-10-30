@@ -37,17 +37,14 @@ public class ConteurManager : MonoBehaviour {
 
     private void Start()
     {
-        //LaunchChoicesRoom1();
-
         DontDestroyOnLoad(this.gameObject);
         idRoom = 1;
 
         Debug.Log("conteur " + gameObject.name);
 
         ComArduino.onConteurHasChoose += FinishChoice;
-
-        //LaunchChoices();
     }
+
 
     private void FinishChoice()
     {
@@ -71,21 +68,6 @@ public class ConteurManager : MonoBehaviour {
         idRoom++;
     }
 
-    /*
-    private void LaunchChoicesRoom1()
-    {
-        StartCoroutine(LaunchTimer( 1f, GetChoicesRoom1));
-    }
-    public void LaunchChoicesRoom2()
-    {
-        StartCoroutine(LaunchTimer(30f, GetChoicesRoom2));
-    }
-
-    public void LaunchChoicesRoom3()
-    {
-        StartCoroutine(LaunchTimer(30f, GetChoicesRoom3));
-    }
-    */
     void GetChoicesRoom1()
     {
        choices = new List<int>();
