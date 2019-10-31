@@ -847,6 +847,21 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114253203575003860, guid: 570000d6a646d0242ae8643cc87ebf3c,
+        type: 2}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114253203575003860, guid: 570000d6a646d0242ae8643cc87ebf3c,
+        type: 2}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 114253203575003860, guid: 570000d6a646d0242ae8643cc87ebf3c,
+        type: 2}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 570000d6a646d0242ae8643cc87ebf3c, type: 2}
   m_IsPrefabAsset: 0

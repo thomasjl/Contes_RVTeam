@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+
 public class Thorn : MonoBehaviour {
 
     Hache currenthache;
@@ -8,6 +9,7 @@ public class Thorn : MonoBehaviour {
     [SerializeField]
     AudioClip cut, flatten;
     bool flattening = false;
+
 
     private void Awake()
     {
@@ -25,8 +27,8 @@ public class Thorn : MonoBehaviour {
                 Cut();
             }
         }
-       
     }
+
 
     void Cut()
     {

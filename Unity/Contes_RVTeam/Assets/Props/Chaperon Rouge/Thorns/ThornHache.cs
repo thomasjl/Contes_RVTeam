@@ -40,6 +40,7 @@ public class ThornHache : MonoBehaviour {
         RemoveChild(transform.childCount - 1 - childrenToRemove);
         childrenToRemove--;
         AudioSource.PlayClipAtPoint(cut, transform.position);
+        Cut();
     }
 
     void RemoveChild(int index)

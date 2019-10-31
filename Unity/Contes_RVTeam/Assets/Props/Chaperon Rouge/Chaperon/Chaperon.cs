@@ -46,13 +46,9 @@ public class Chaperon : MonoBehaviour {
     public void SetFirstChoice(int choice)
     {
         if (choice == 2)
-        {
             AttachToTree();
-        }
         else
-        {
             AttachToDwell();
-        }
     }
 
     public void AttachToDwell()

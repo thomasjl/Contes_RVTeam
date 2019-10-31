@@ -55,7 +55,7 @@ public class SmallDoor : MonoBehaviour {
     {
         if (open && other.CompareTag("HeadCollider") && Time.time - openTime > delayBeforeTransition && !sceneStarted)
         {
-            InterractionManagerAlice.instance.LaunchNextScene();
+            InteractionManagerAlice.instance.LaunchNextScene();
             sceneStarted = true;
         }
     }

@@ -11,9 +11,13 @@ public class GoodMushroom : Mushroom {
     Vector3 startPosition;
     Quaternion startRotation;
 
+    public static GoodMushroom Instance { get; private set; }
+
+
     protected override void Awake()
     {
         base.Awake();
+        Instance = this;
         mushrooms.Add(this);
         // Create player scale manager.
         if (!PlayerScaleManager.Instance)

@@ -33,6 +33,8 @@ public class DebugInterface : MonoBehaviour {
         // Hide the interface.
         gameObject.Hide();
         hidden = true;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     void SetupLanguages()

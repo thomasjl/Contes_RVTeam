@@ -8,7 +8,7 @@ public class RabbitHole : MonoBehaviour {
         
         if (other.CompareTag("HeadCollider") && (!ThornSelect.instance || ThornSelect.instance.Clear))
         {
-            InterractionManagerRRH.instance.LaunchNextScene();
+            InteractionManagerRRH.instance.LaunchNextScene();
         }
         
     }
