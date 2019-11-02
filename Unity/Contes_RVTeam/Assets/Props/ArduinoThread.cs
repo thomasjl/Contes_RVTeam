@@ -6,20 +6,21 @@ using UnityEngine;
 
 public class ArduinoThread : MonoBehaviour {
 
-    private Thread thread;
+    Thread thread;
 
-    private Queue outputQueue;
-    private Queue inputQueue;
+    Queue outputQueue;
+    Queue inputQueue;
 
     int defaultPortNumber = 12;
-    private string portName;
-    private int baudRate = 9600;
+    string portName;
+    int baudRate = 9600;
 
     SerialPort stream;
 
     private bool threadIsRunning = false;
 
     public static ArduinoThread instance;
+
 
     private void Awake()
     {
@@ -31,17 +32,18 @@ public class ArduinoThread : MonoBehaviour {
             PlayerPrefs.SetInt(DebugInterface.COMKey, defaultPortNumber);
         string portNumber = PlayerPrefs.GetInt(DebugInterface.COMKey).ToString();
         portName = (portNumber.Length > 1 ? "\\\\.\\" : "") + "COM" + portNumber;
-        print(portName);
+        print("Using " + portName);
 
         StartThread();
     }
+
 
     public void StartThread()
     {
         outputQueue = Queue.Synchronized(new Queue());
         inputQueue = Queue.Synchronized(new Queue());
 
-        Debug.Log("Start thread");
+        Debug.Log("Starting the Arduino thread");
 
         threadIsRunning = true;
 
@@ -58,9 +60,7 @@ public class ArduinoThread : MonoBehaviour {
     public string ReadFromArduino()
     {
         if (inputQueue.Count == 0)
-        {
             return null;
-        }
 
         return (string)inputQueue.Dequeue();
     }
@@ -86,7 +86,7 @@ public class ArduinoThread : MonoBehaviour {
 
     public void ThreadLoop()
     {
-        Debug.Log("StartThread loop");
+        Debug.Log("Starting the Arduino thread loop");
         //open the connetion on the serial port
         try
         {
@@ -95,7 +95,7 @@ public class ArduinoThread : MonoBehaviour {
             stream.Open();
 
 
-            while (true && threadIsRunning)
+            while (threadIsRunning)
             {
                 //send to Arduino
                 if (outputQueue.Count != 0)
@@ -114,7 +114,7 @@ public class ArduinoThread : MonoBehaviour {
         }
         catch (Exception)
         {
-            Debug.Log("Cannot open SerialPort");
+            Debug.Log("/!\\ Cannot open the SerialPort");
             ConteurManager.instance.arduino.arduinoEnable = false;
             threadIsRunning = false;
         }

@@ -16,9 +16,9 @@ public class InteractionManagerAlice : InterractionManager
 
     [Header("Arrows")]
     [SerializeField]
-    GameObject arrowMushroom;
+    GameObject arrowPainting;
     [SerializeField]
-    GameObject arrowPainting, arrowDoor;
+    GameObject  arrowDoor;
 
 
     private void Start()
@@ -26,20 +26,15 @@ public class InteractionManagerAlice : InterractionManager
         //change lanternFlame color
         LanterneFlame.instance.SetColor(newColor);
 
-        SetChoicesRoom(ConteurManager.instance.choices);
+        SetChoicesRoom(ConteurManager.instance.Choices);
 
         footprintsToDoor.SetActive(false);
         Crown.Instance.Equipped += ShowDoorHint;
         Scepter.Instance.Grabbed += ShowDoorHint;
 
         // Setting up the arrows.
-        arrowPainting.SetActive(false);
+        arrowPainting.SetActive(true);
         arrowDoor.SetActive(false);
-        GoodMushroom.Instance.Consumed += delegate
-        {
-            arrowMushroom.SetActive(false);
-            arrowPainting.SetActive(true);
-        };
     }
 
 

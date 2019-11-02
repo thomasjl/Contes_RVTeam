@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class InteractionManagerRRH : InterractionManager
 {
-
     [SerializeField]
     GameObject plumeParticle;
 
@@ -13,7 +12,6 @@ public class InteractionManagerRRH : InterractionManager
     [SerializeField]
     GameObject footprintsToThorns, footprintsToTreeDwell;
 
-
     [SerializeField]
     string nextScene = "Attente1";
 
@@ -21,14 +19,14 @@ public class InteractionManagerRRH : InterractionManager
     [SerializeField]
     GameObject arrowChaperon;
     [SerializeField]
-    GameObject arrowDoor, arrowThorns;
+    GameObject arrowDwell, arrowDoor, arrowThorns;
 
 
     private void Start()
     {
         actorIsInScene = false;
         if (ConteurManager.instance)
-            SetChoicesRoom(ConteurManager.instance.choices);
+            SetChoicesRoom(ConteurManager.instance.Choices);
 
         // Setup footprints.
         footprintsToThorns.SetActive(false);
@@ -40,10 +38,11 @@ public class InteractionManagerRRH : InterractionManager
 
         // Setup arrows.
         arrowChaperon.SetActive(true);
+        arrowDwell.SetActive(Chaperon.Instance.PointOfAttach == Chaperon.AttachPoint.Dwell);
         arrowDoor.SetActive(false);
         arrowThorns.SetActive(false);
         // Got to the arrow of the door when the chaperon is equipped.
-        Chaperon.instance.Equipped += delegate
+        Chaperon.Instance.Equipped += delegate
         {
             arrowChaperon.SetActive(false);
             arrowDoor.SetActive(true);
@@ -54,46 +53,40 @@ public class InteractionManagerRRH : InterractionManager
             arrowDoor.SetActive(false);
             arrowThorns.SetActive(true);
         };
+
+        print("imanager start");
     }
+
 
     public override void SetChoicesRoom(List<int> choices)
     {
+        print("setting room choices");
         choicesRRH = choices;
 
         if (choices[0] == 2)
-            Chaperon.instance.SetFirstChoice(2);
+            Chaperon.Instance.SetFirstChoice(Chaperon.AttachPoint.Tree);
         else if (choices[0] == 4)
-            Chaperon.instance.SetFirstChoice(4);
-        else
         {
-            Chaperon.instance.SetFirstChoice(2);
+            Chaperon.Instance.SetFirstChoice(Chaperon.AttachPoint.Dwell);
+            arrowDwell.SetActive(true);
+            Dwell.instance.Axis.HasCrank += delegate { arrowDwell.SetActive(false); };
         }
+        else
+            Chaperon.Instance.SetFirstChoice(Chaperon.AttachPoint.Tree);
 
         if (choices[1] == 6)
-        {
             MaisonChaperon.instance.SetSecondChoice(6);
-        }
         else if (choices[1] == 8)
-        {
             MaisonChaperon.instance.SetSecondChoice(8);
-        }
         else
-        {
             MaisonChaperon.instance.SetSecondChoice(6);
-        }
 
         if (choices[2] == 10)
-        {
             MailBox.instance.SetPaperMaterial(MailBox.PaperType.JabberWocky);
-        }
         else if (choices[2] == 12)
-        {
             MailBox.instance.SetPaperMaterial(MailBox.PaperType.Poison);
-        }
         else
-        {
             MailBox.instance.SetPaperMaterial(MailBox.PaperType.JabberWocky);
-        }
 
         actorIsInScene = true;
     }
@@ -105,7 +98,7 @@ public class InteractionManagerRRH : InterractionManager
 
     public override List<int> GetChoices()
     {
-        Debug.Log("passe rrh");
+        Debug.Log("interaction manager sends rrh choices");
         return choicesRRH;
     }
 

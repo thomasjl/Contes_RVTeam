@@ -2,14 +2,14 @@
 
 public class Dwell : MonoBehaviour {
 
-    DwellAxis axis;
-    public Transform Bucket { get { return axis.Bucket; } }
-    public float Bottom { get { return axis.Bottom; } }
+    public DwellAxis Axis { get; private set; }
+    public Transform Bucket { get { return Axis.Bucket; } }
+    public float Bottom { get { return Axis.Bottom; } }
 
     public static Dwell instance;
     private void Awake()
     {
         instance = this;
-        axis = GetComponentInChildren<DwellAxis>(true);
+        Axis = GetComponentInChildren<DwellAxis>(true);
     }
 }

@@ -453,6 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 021b00271eecc814cb5d37c8f98f66c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSceneId: 0
 --- !u!1001 &1195764960
 Prefab:
   m_ObjectHideFlags: 0
@@ -944,6 +945,21 @@ Prefab:
     - target: {fileID: 4068135774568852, guid: 570000d6a646d0242ae8643cc87ebf3c, type: 2}
       propertyPath: m_LocalPosition.y
       value: -3.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114253203575003860, guid: 570000d6a646d0242ae8643cc87ebf3c,
+        type: 2}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114253203575003860, guid: 570000d6a646d0242ae8643cc87ebf3c,
+        type: 2}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 114253203575003860, guid: 570000d6a646d0242ae8643cc87ebf3c,
+        type: 2}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 570000d6a646d0242ae8643cc87ebf3c, type: 2}

@@ -1,18 +1,19 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MagicMirrorInteraction : MonoBehaviour {
-
+public class MagicMirrorInteraction : MonoBehaviour
+{
     public static MagicMirrorInteraction instance;
     [SerializeField]
     GameObject mirrorToRepare, mirrorToBrake;
     public enum MirrorType { ToRepare, ToBrake }
+    public MirrorType Type { get; private set; }
 
     public RawImage rawimage;
 
     public GameObject plane;
+
 
     private void Awake()
     {
@@ -21,14 +22,10 @@ public class MagicMirrorInteraction : MonoBehaviour {
 
         Color tmpColor = plane.GetComponent<Renderer>().material.color;
         tmpColor.a = 0f;
-        
+
         plane.GetComponent<Renderer>().material.color = tmpColor;
     }
 
-    private void Start()
-    {
-        //LaunchGoodOutro();
-    }
 
     public void SetMirror(MirrorType mirrorType)
     {
@@ -43,6 +40,7 @@ public class MagicMirrorInteraction : MonoBehaviour {
                 mirrorToBrake.SetActive(true);
                 break;
         }
+        Type = mirrorType;
     }
 
     public void ShowWebcamMirror()
@@ -55,7 +53,7 @@ public class MagicMirrorInteraction : MonoBehaviour {
     WebCamTexture webcamTexture;
     private void SetWebcamMirror()
     {
-       
+
         webcamTexture = new WebCamTexture();
 
         WebCamDevice[] devices = WebCamTexture.devices;
@@ -94,8 +92,8 @@ public class MagicMirrorInteraction : MonoBehaviour {
             plane.GetComponent<Renderer>().material.color = tmpColor;
         }, delegate
         {
-            InterractionManagerBN.instance.LaunchGoodOutro();
+            InteractionManagerBN.instance.LaunchGoodOutro();
         });
-         
+
     }
 }

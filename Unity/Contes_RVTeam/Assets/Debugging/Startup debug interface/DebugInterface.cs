@@ -31,7 +31,7 @@ public class DebugInterface : MonoBehaviour {
             SetupLanternIndex();
 
         // Hide the interface.
-        gameObject.Hide();
+        gameObject.HideChildren();
         hidden = true;
 
         DontDestroyOnLoad(gameObject);
@@ -87,9 +87,9 @@ public class DebugInterface : MonoBehaviour {
         {
             hidden = !hidden;
             if (hidden)
-                gameObject.Hide();
+                gameObject.HideChildren();
             else
-                gameObject.Show();
+                gameObject.ShowChildren();
         }
     }
 }

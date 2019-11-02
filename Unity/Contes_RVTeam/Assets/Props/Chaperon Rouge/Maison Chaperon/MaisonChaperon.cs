@@ -51,7 +51,7 @@ public class MaisonChaperon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("HeadCollider") && givenObject != 0 && !objectGiven && Chaperon.instance.isEquiped)
+        if (other.gameObject.CompareTag("HeadCollider") && givenObject != 0 && !objectGiven && Chaperon.Instance.isEquiped)
         {
             if (givenObject == 6)
             {

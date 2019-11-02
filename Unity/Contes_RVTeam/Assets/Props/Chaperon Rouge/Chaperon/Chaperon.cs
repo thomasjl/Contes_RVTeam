@@ -18,19 +18,18 @@ public class Chaperon : MonoBehaviour {
     float clothHeight = 2;
 
     public bool isEquiped;
-    public delegate void EventHandler();
-    public event EventHandler Equipped;
+    public event System.Action Equipped;
 
+    public enum AttachPoint { Dwell, Tree}
+    public AttachPoint PointOfAttach { get; private set; }
 
-    public static Chaperon instance;
+    public static Chaperon Instance { get; private set; }
 
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
-
-
 
     private void Start()
     {
@@ -43,9 +42,15 @@ public class Chaperon : MonoBehaviour {
         isEquiped = false;
     }
 
-    public void SetFirstChoice(int choice)
+
+    /// <summary>
+    /// 2: tree, else: dwell.
+    /// </summary>
+    /// <param name="choice"></param>
+    public void SetFirstChoice(AttachPoint pointOfAttach)
     {
-        if (choice == 2)
+        PointOfAttach = pointOfAttach;
+        if (PointOfAttach == AttachPoint.Tree)
             AttachToTree();
         else
             AttachToDwell();
@@ -93,7 +98,7 @@ public class Chaperon : MonoBehaviour {
             if (GrabbableIsClose && !grabbableWasClose)
             {
                 // Temporary equip.
-                grabbable.gameObject.Hide();
+                grabbable.gameObject.HideChildren();
                 wearable.gameObject.SetActive(true);
                 wearable.Equip();
                 grabbableWasClose = GrabbableIsClose;
@@ -103,7 +108,7 @@ public class Chaperon : MonoBehaviour {
             {
                 // Cancel temporary equip.
                 wearable.gameObject.SetActive(false);
-                grabbable.gameObject.Show();
+                grabbable.gameObject.ShowChildren();
                 grabbableWasClose = GrabbableIsClose;
                 PlayGroundCorrection();
             }

@@ -84,7 +84,7 @@ public class PoisonApple : MonoBehaviour {
             PlayerPostProcess.Instance.BlinkTime = Mathf.Lerp(0, blinkValue, progression);
         }, delegate
         {
-            InterractionManagerBN.instance.LaunchBadOutro();
+            InteractionManagerBN.instance.LaunchBadOutro();
         });
     }
     

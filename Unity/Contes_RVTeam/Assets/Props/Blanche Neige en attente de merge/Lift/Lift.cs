@@ -20,14 +20,15 @@ public class Lift : MonoBehaviour
     float startPlayerPosY;
     bool moved;
 
-    [SerializeField]
-    UnityEvent Moves;
-    [SerializeField]
-    UnityEvent StopsMoving;
+    public UnityEvent Moves;
+    public UnityEvent StopsMoving;
+
+    public static Lift Instance { get; private set; }
 
 
     private void Awake()
     {
+        Instance = this;
         circularDrive = GetComponentInChildren<CircularDrive>();
         audio = GetComponentInChildren<AudioSource>();
     }

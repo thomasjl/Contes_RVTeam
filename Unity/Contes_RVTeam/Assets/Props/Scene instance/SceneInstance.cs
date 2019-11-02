@@ -4,11 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneInstance : MonoBehaviour
 {
-    public static SceneInstance Instance { get; private set; }
-
-    private List<string> listScene = new List<string> { "Intro", "Room1", "Attente1", "Room2", "Attente2", "Room3", "GoodOutro" };
-
     public int currentSceneId;
+    List<string> listScene = new List<string> { "Intro", "Room1", "Attente1", "Room2", "Attente2", "Room3", "GoodOutro" };
+
+    public static SceneInstance Instance { get; private set; }
 
 
     private void Awake()
@@ -22,23 +21,21 @@ public class SceneInstance : MonoBehaviour
             currentSceneId = listScene.IndexOf(currentScene);
         }
         else
-            foreach (Transform child in transform)
-                child.gameObject.SetActive(false);
+            gameObject.HideChildren();
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Return))
+        if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown(KeyCode.Return))
         {
             string currentScene = SceneManager.GetActiveScene().name;
             int currentId = listScene.IndexOf(currentScene);
-            Debug.Log("currentId " + currentId);
+            Debug.Log("current scene id: " + currentId);
             if (currentId < listScene.Count)
             {
                 string sceneToLaunch = listScene[currentId + 1];
-                Debug.Log("scenetoLaunch " + sceneToLaunch);
+                Debug.Log("force loading scene " + sceneToLaunch);
                 PlayerPostProcess.Instance.PlayBlinkFadeOut(1, delegate { this.Timer(2, delegate { SceneManager.LoadSceneAsync(sceneToLaunch); }); });
-
             }
         }
     }
