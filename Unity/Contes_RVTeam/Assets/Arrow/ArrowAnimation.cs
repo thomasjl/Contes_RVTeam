@@ -2,8 +2,11 @@
 
 public class ArrowAnimation : MonoBehaviour
 {
-    Renderer rend;
+    [SerializeField]
     float wakeUpDelay = 10;
+    [SerializeField]
+    float minAlpha = .2f;
+    Renderer rend;
 
 
     private void Awake()
@@ -27,7 +30,7 @@ public class ArrowAnimation : MonoBehaviour
     {
         this.ProgressionAnim(2, delegate (float progression)
         {
-            rend.material.color = rend.material.color.SetA(Mathf.Lerp(.2f, 1, AniMath.Bell(progression)));
+            rend.material.color = rend.material.color.SetA(Mathf.Lerp(minAlpha, 1, AniMath.Bell(progression)));
         }, AnimationLoop);
     }
 }

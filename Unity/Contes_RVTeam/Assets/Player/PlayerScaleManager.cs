@@ -39,7 +39,7 @@ public class PlayerScaleManager : MonoBehaviour {
         this.ProgressionAnim(transitionTime, delegate (float progression)
         {
             // Scale down the player and move it in front of the small door.
-            Player.instance.transform.position = Vector3.Lerp(playerStartPosition, SmallDoor.instance.Spawnpoint.position, progression);
+            Player.instance.transform.position = Vector3.Lerp(playerStartPosition, SmallDoor.Instance.Spawnpoint.position, progression);
             Player.instance.transform.localScale = Mathf.Lerp(1, newPlayerSize, progression) * Vector3.one;
 
         }, delegate
@@ -52,7 +52,7 @@ public class PlayerScaleManager : MonoBehaviour {
                 this.ProgressionAnim(transitionTime, delegate (float progression)
                 {
                     Player.instance.transform.localScale = Mathf.Lerp(newPlayerSize, 1, progression) * Vector3.one;
-                    Player.instance.transform.position = Vector3.Lerp(SmallDoor.instance.Spawnpoint.position, playerStartPosition, progression);
+                    Player.instance.transform.position = Vector3.Lerp(SmallDoor.Instance.Spawnpoint.position, playerStartPosition, progression);
                 }, delegate
                 {
                     scaled = false;

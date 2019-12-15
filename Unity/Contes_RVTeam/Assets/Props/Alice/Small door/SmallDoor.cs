@@ -1,10 +1,7 @@
-﻿using UnityEditor;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
-public class SmallDoor : MonoBehaviour {
-
-
+public class SmallDoor : MonoBehaviour
+{
     [SerializeField]
     Transform scepterParent;
     [SerializeField]
@@ -24,19 +21,23 @@ public class SmallDoor : MonoBehaviour {
     public Transform Spawnpoint;
 
     bool open = false;
+    bool sceneStarted = false;
 
-    public static SmallDoor instance;
+    public static SmallDoor Instance { get; private set; }
+
+
     private void Awake()
     {
+        Instance = this;
         animator = GetComponent<Animator>();
         playerTrigger.enabled = false;
-        instance = this;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (open)
             return;
+
         // Try to get the scepter if close, else try to get the player's head.
         Scepter scepter = other.GetComponentInParent<Scepter>();
         if (scepter && scepter.ScaledDown)
@@ -50,15 +51,15 @@ public class SmallDoor : MonoBehaviour {
         }
     }
 
-    bool sceneStarted = false;
     private void OnTriggerStay(Collider other)
     {
         if (open && other.CompareTag("HeadCollider") && Time.time - openTime > delayBeforeTransition && !sceneStarted)
         {
-            InteractionManagerAlice.instance.LaunchNextScene();
+            InterractionManager.instance.LaunchNextScene();
             sceneStarted = true;
         }
     }
+
 
     public void Open()
     {
@@ -68,5 +69,4 @@ public class SmallDoor : MonoBehaviour {
         open = true;
         openTime = Time.time;
     }
-
 }

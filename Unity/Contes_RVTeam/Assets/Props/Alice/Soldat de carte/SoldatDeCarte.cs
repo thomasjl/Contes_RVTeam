@@ -21,6 +21,6 @@ public class SoldatDeCarte : MonoBehaviour {
     {
         GetComponentInChildren<Animator>().SetTrigger("move");
         moved = true;
-        this.Timer(2, delegate { SmallDoor.instance.Open(); });
+        this.Timer(2, delegate { SmallDoor.Instance.Open(); });
     }
 }

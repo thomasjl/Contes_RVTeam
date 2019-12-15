@@ -1,26 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Signs : MonoBehaviour {
-
-    public static Signs instance;
-
+public class Signs : MonoBehaviour
+{
     [SerializeField]
     private GameObject choice1;
-
     [SerializeField]
-    private GameObject choice2;   
+    private GameObject choice2;
 
+    public enum ChoicesSigns { choice1, choice2 };
 
-    public enum ChoicesSigns { choice1, choice2};
+    public static Signs Instance { get; private set; }
+
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
-    public void SetChoicesSigns(ChoicesSigns choicesSigns )
+
+    public void SetChoicesSigns(ChoicesSigns choicesSigns)
     {
         switch (choicesSigns)
         {
@@ -36,6 +34,4 @@ public class Signs : MonoBehaviour {
                 break;
         }
     }
-
-
 }

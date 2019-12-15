@@ -83,18 +83,18 @@ public class InteractionManagerAlice : InterractionManager
         if (choices[2] == 10)
         {
             //panneaux, useless
-            Signs.instance.SetChoicesSigns(Signs.ChoicesSigns.choice1);
+            Signs.Instance.SetChoicesSigns(Signs.ChoicesSigns.choice1);
 
         }
         else if (choices[2] == 12)
         {
             //panneaxu usefull
 
-            Signs.instance.SetChoicesSigns(Signs.ChoicesSigns.choice2);
+            Signs.Instance.SetChoicesSigns(Signs.ChoicesSigns.choice2);
         }
         else
         {
-            Signs.instance.SetChoicesSigns(Signs.ChoicesSigns.choice1);
+            Signs.Instance.SetChoicesSigns(Signs.ChoicesSigns.choice1);
         }
     }
 

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using Valve.VR.InteractionSystem;
 
-public class PaintingInteractable : MonoBehaviour {
-
+public class PaintingInteractable : MonoBehaviour
+{
     Interactable interactable;
     Painting painting;
     Rigidbody rb;
@@ -23,6 +23,17 @@ public class PaintingInteractable : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         interactable.SetGrabEnabled(false);
     }
+
+    private void OnDestroy()
+    {
+        interactable.onAttachedToHand -= OnGrabbed;
+        painting.Shown -= EnableGrab;
+        painting.Hidden -= DisableGrab;
+        // Call event.
+        if (Detached != null)
+            Detached();
+    }
+
 
     /// <summary>
     /// Set which painting this belongs to.
@@ -78,15 +89,5 @@ public class PaintingInteractable : MonoBehaviour {
     {
         if (isGrabbable)
             interactable.SetGrabEnabled(false);
-    }
-
-    private void OnDestroy()
-    {
-        interactable.onAttachedToHand -= OnGrabbed;
-        painting.Shown -= EnableGrab;
-        painting.Hidden -= DisableGrab;
-        // Call event.
-        if (Detached != null)
-            Detached();
     }
 }
